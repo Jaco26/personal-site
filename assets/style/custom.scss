@@ -1,7 +1,13 @@
 @import '~bulma/sass/utilities/_all';
 
+// custom css
+.nuxt-link-exact-active {
+  text-decoration: underline;
+}
+
+// custom scss
 $navbar-breakpoint: $tablet;
 
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
-// @import '@mdi/font/scss/materialdesignicons.scss';
+

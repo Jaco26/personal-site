@@ -1,17 +1,27 @@
-<template>
-  <a class="footer-link" :href="href">
-    <b-icon :icon="icon"></b-icon>
-    {{text}}
+<template functional>
+  <a v-if="props.tag === 'a'" class="footer-link" :href="props.href">
+    <b-icon :icon="props.icon"></b-icon>
+    <slot name="text">{{props.text}}</slot>
   </a>
+  <nuxt-link v-else class="footer-link"  :to="props.to">
+    <b-icon :icon="props.icon"></b-icon>
+    <slot name="text">{{props.text}}</slot>
+  </nuxt-link>
 </template>
+
 
 <script>
 export default {
   props: {
-    href: {
+    tag: {
       type: String,
-      required: true,
+      default: 'a',
+      validator(val) {
+        return !!val && val === 'a' || val === 'nuxt-link'
+      }
     },
+    to: String,
+    href: String,
     icon: {
       type: String,
       required: true,
@@ -20,7 +30,7 @@ export default {
       type: String,
       required: true,
     }
-  }
+  },
 }
 </script>
 

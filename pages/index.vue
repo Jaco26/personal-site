@@ -1,9 +1,8 @@
 <template>
   <section class="hero is-white is-fullheight-with-navbar">
     <div class="hero-body">
-      <div class="container ">
-        jo
-
+      <div class="container">
+        This is the landing page
       </div>
     </div>
   </section>

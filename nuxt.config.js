@@ -8,11 +8,17 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'jacobsalright',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Jacob Albright is a full stack web developer whose interests include' + 
+        'making 2D videogames for the web, coffee, photography and reading books that imagine' +
+        'a hopeful tomorrow'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
