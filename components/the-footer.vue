@@ -2,18 +2,19 @@
   <footer class="footer has-background-dark">
     <div class="container">
       <div class="columns">
-        <div class="column">
-          <footer-link
+        
+        <div class="column is-one-fifth">
+          <h3 class="subtitle has-text-light">Pages</h3>
+          <FooterLink
             v-for="link in pageLinks"
             :key="link.href"
             v-bind="link"
-          >
-            <template v-slot:text>
-              <h3 class="subtitle has-text-light">{{link.text}}</h3>
-            </template>
-          </footer-link>
+          />
         </div>
-        <div class="column is-one-third">
+        <div class="column">
+          <!-- Spacerrrr -->
+        </div>
+        <div class="column is-one-fifth">
           <h3 class="subtitle has-text-light">Contact</h3>
           <FooterLink
             v-for="link in socialLinks"
@@ -36,23 +37,22 @@ export default {
     pageLinks() {
       return [
         {
-          tag: 'nuxt-link',
           to: '/photos',
-          icon: 'photos',
           text: 'Photos'
         },
         {
-          tag: 'nuxt-link',
           to: '/games',
-          icon: 'games',
           text: 'Games'
+        },
+        {
+          to: '/doodads',
+          text: 'Doodads'
         },
       ]
     },
     socialLinks() {
       return [
         {
-
           href: 'mailto:jacob.albright23@gmail.com',
           text: 'Email',
           icon: 'email',

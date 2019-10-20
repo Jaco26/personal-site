@@ -5,6 +5,14 @@
   text-decoration: underline;
 }
 
+// router transition classes
+.page-enter-active, .page-leave-active {
+  transition: opacity .05s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
 // custom scss
 $navbar-breakpoint: $tablet;
 
