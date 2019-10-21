@@ -3,6 +3,7 @@
     <div class="columns is-centered">
       <div class="column">
         <button @click="gameOn = !gameOn">{{gameOn ? 'Pause' : 'Start'}}</button>
+        <button @click="gameOver = !gameOver">{{gameOver ? 'Reset' : 'Game Over'}}</button>
       </div>
     </div>
 
@@ -11,7 +12,7 @@
         <Game
           v-if="ctx"
           :options="{ ...dimensions, ctx }"
-          :gameOn="gameOn"
+          :gameOn.sync="gameOn"
           :gameOver.sync="gameOver"
           :score.sync="gameScore"
         />
