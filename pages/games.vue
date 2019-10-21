@@ -1,9 +1,6 @@
 <template>
-  <section class="hero is-white is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container">
-        This is the games page
-      </div>
-    </div>
+  <section class="section">
+    this is the games container page
+    <nuxt-child></nuxt-child>
   </section>
 </template>

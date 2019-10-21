@@ -1,8 +1,16 @@
 <template>
-  <section class="hero is-white is-fullheight-with-navbar">
+  <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
-      <div class="container">
-        This is the landing page
+      <div class="container is-fluid">
+        
+        <div class="columns">
+          <section class="column">
+            <h1 class="title">Bio</h1>
+
+          </section>
+          <section class="column"></section>
+        </div>
+
       </div>
     </div>
   </section>
@@ -21,5 +29,8 @@ export default {
   background-image: url('~assets/img/river-and-tetons.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+.hero-body {
+  align-items: start !important;
 }
 </style>

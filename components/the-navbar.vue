@@ -31,10 +31,10 @@ export default {
           to: '/games',
           text: 'Games'
         },
-        {
-          to: '/doodads',
-          text: 'Doodads'
-        },
+        // {
+        //   to: '/doodads',
+        //   text: 'Doodads'
+        // },
       ]
     }
   }
