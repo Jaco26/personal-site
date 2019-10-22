@@ -6,11 +6,12 @@ export default class Snake {
   
   constructor({ row, col, isPolluter = false } = {}) {
     this.isPolluter = isPolluter
-    this.col = col
-    this.row = row
+    this.headCol = col
+    this.headRow = row
     this.body = [{ row, col }]
 
     this.bodyMap = {}
+    this.bodyMap[`${row},${col}`] = true
   }
 
   isSnake(rowIndex, colIndex) {
@@ -40,33 +41,25 @@ export default class Snake {
 
   updateBody() {
     this.bodyMap = {}
-    if (this.nSegmentsToPush > 0) {
-      // get a copy of the snake's current tail
-      const { row, col } = this.body[this.body.length - 1]
-      // register this position as being one that the snake occupies
-      this.bodyMap[`${row},${col}`] = true
-      // push it onto the snake
-      this.body.push({ row, col })
 
+    if (this.nSegmentsToPush > 0) {
+      const { row, col } = this.body[this.body.length - 1]
+      this.body.push({ row, col }) // this is the new head of the snake
       this.nSegmentsToPush -= 1
-    } else if (!this.isPolluter) {
-      for (let i = 0; i < this.body.length; i++) {
-        // use the garbage collector to drop the current first item in the snakes
-        // body and shift the rest of the elements toward the front of the body array
+    } else if (this.isPolluter === false) {
+      for (let i = 0; i < this.body.length - 1; i++) {
         const { row, col } = this.body[i + 1]
         this.body[i] = { row, col }
-        // register each new body position
-        this.bodyMap[`${row},${col}`] = true
       }
     }
+    this.headCol += this.dx
+    this.headRow += this.dy
     
-    // calculate the coordinates of the new tail
-    this.col += this.dx
-    this.row += this.dy
-    // register the new tail position
-    this.bodyMap[`${this.row},${this.col}`] = true
+    // set the headCol and headRow as the new head of the snake body
+    this.body[this.body.length - 1] = { col: this.headCol, row: this.headRow }
 
-    this.body.push({ col: this.col, row: this.row })
+    this.body.forEach(({ row, col }) => this.bodyMap[`${row},${col}`] = true)
+  
     this.changeDirectionLock = false
   }
 }

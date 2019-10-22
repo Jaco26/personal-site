@@ -1,7 +1,7 @@
 <template>
   <div>
     <canvas ref="gameCanvas" :height="height" :width="width"></canvas>
-    <slot v-bind="{ ctx }" />
+    <slot v-bind="{ hasCtx }" />
   </div>
 </template>
 
@@ -13,12 +13,26 @@ export default {
   },
   data() {
     return {
-      /** @type {CanvasRenderingContext2D} */
-      ctx: null,
+      // if you observed objects to provider, the provided properties will be reactive...
+      // this is necessary for child components to be able to use ctx
+      ctxProvider: {
+        /** @type {CanvasRenderingContext2D} */
+        ctx: null,
+      }
+    }
+  },
+  provide() {
+    return {
+      ctxProvider: this.ctxProvider
     }
   },
   mounted() {
-    this.ctx = this.$refs.gameCanvas.getContext('2d')
+    this.ctxProvider.ctx = this.$refs.gameCanvas.getContext('2d')
+  },
+  computed: {
+    hasCtx() {
+      return !!this.ctxProvider.ctx;
+    }
   }
 }
 </script>

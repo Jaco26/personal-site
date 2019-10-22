@@ -6,11 +6,14 @@ import Game from '@/components/games/snake/models/game.js'
 const game = new Game({ animationRate: 6 });
 
 export default {
+  inject: ['ctxProvider'],
   props: {
-    options: Object,
+    dimensions: Object,
+    controls: Object,
+    isPolluter: Boolean,
     gameOn: Boolean,
     gameOver: Boolean,
-    gameScore: Number,
+    score: Number,
   },
   watch: {
     gameOn(val) {
@@ -18,6 +21,11 @@ export default {
         game.run(() => {
           game.snake.updateBody()
           game.paintCells()
+          if (game.snakeAteFood()) {
+            game.emit('incrementScore')
+            game.generateFood()
+            game.snake.nSegmentsToPush += 3
+          }
         });
       } else {
         game.pause()
@@ -30,7 +38,7 @@ export default {
         this.$emit('update:gameOn', false)
       }
     },
-    'options.controls': {
+    controls: {
       deep: true,
       handler({ arrowLeft, arrowUp, arrowRight, arrowDown }) {
         if (arrowLeft) {
@@ -49,22 +57,23 @@ export default {
     }
   },
   mounted() {
+    const prefs = JSON.parse(localStorage.getItem('snakePrefs'))
     game.setup({
-      ctx: this.options.ctx,
-      dimensions: this.options.dimensions,
+      ctx: this.ctxProvider.ctx,
+      dimensions: this.dimensions,
       snake: {
         row: 4,
         col: 5,
-        isPolluter: true
+        isPolluter: this.isPolluter
       }
     });
   
     game.on('gameOver', () => this.$emit('update:gameOver', true))
-    game.on('incrementScore', () => this.$emit('update:score', this.gameScore + 1))
-    game.on('decrementScore', () => this.$emit('update:score', this.gameScore - 1))
+    game.on('incrementScore', () => this.$emit('update:score', this.score + 1))
+    game.on('decrementScore', () => this.$emit('update:score', this.score - 1))
   },
   render(h) {
-    console.log('hey we reneder')
+    console.log('hey we reneder', this.ctx)
   }
 }
 </script>

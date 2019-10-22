@@ -3,19 +3,12 @@
     <div class="hero-body">
       <div class="container">
         <b-modal :active.sync="active" :canCancel="['escape', 'x']">
-          <div class="card">
+          <div class="card is-narrow">
             <div class="card-content">
-              <div class="columns is-centered">
-                <div class="column">
-                  <button @click="gameState.gameOn = !gameState.gameOn">{{gameState.gameOn ? 'Pause' : 'Start'}}</button>
-                  <button @click="gameState.gameOver = !gameState.gameOver">{{gameState.gameOver ? 'Reset' : 'Game Over'}}</button>
-                </div>
-              </div>
               <component
                 :is="selectedGame"
                 :dimensions="dimensions"
                 :controls="controls"
-                :gameState="gameState"
               ></component>
             </div>
           </div>
@@ -44,16 +37,11 @@ export default {
       games: {
         snake: SnakeGame,
       },
-      gameState: {
-        gameOn: false,
-        gameOver: false,
-        gameScore: 0,
-      },
       dimensions: {
-        width: 900,
+        width: 600,
         height: 600,
         nRows: 40,
-        nCols: 60,
+        nCols: 40,
       },
       controls: {
         arrowLeft: false,

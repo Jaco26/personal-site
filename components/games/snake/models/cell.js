@@ -12,10 +12,13 @@ export default class Cell {
     switch (this.kind) {
       case 1: // default
         return '#112'
-      case 2: // active
+      case 2: // snake
         return 'limegreen'
+      // case 3: // slime (stuff the snake has been on)
+      //   return '#6c9e70'
       case 3: // food
         return '#eee'
     }
   }
 }
+

@@ -4,10 +4,9 @@
       <div class="container">
         This is the games index page
         <ul>
-          <li>List</li>
-          <li>The</li>
-          <li>Games</li>
-          <li>Here</li>
+          <li>
+            <nuxt-link to="/games/snake">Snake</nuxt-link>
+          </li>
         </ul>
       </div>
     </div>
