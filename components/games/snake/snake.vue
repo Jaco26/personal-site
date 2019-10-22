@@ -1,50 +1,49 @@
-<template>
-  <div>
-    <div class="columns is-centered">
-      <div class="column">
-        <button @click="gameOn = !gameOn">{{gameOn ? 'Pause' : 'Start'}}</button>
-        <button @click="gameOver = !gameOver">{{gameOver ? 'Reset' : 'Game Over'}}</button>
-      </div>
-    </div>
-    <snake-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ ctx }">
-      <Game
-        v-if="ctx"
-        :options="{ ...dimensions, ctx }"
-        :gameOn.sync="gameOn"
-        :gameOver.sync="gameOver"
-        :score.sync="gameScore"
-        :controls="controls"
-      />
-    </snake-canvas>
-  </div>
-</template> 
 
 <script>
-import SnakeCanvas from '@/components/games/snake/canvas'
-import Game from '@/components/games/snake/game'
+
+import Game from '@/components/games/snake/models/game.js'
+
+const game = new Game({ animationRate: 6 });
 
 export default {
   props: {
+    options: Object,
     controls: Object,
+    gameOn: Boolean,
+    gameOver: Boolean,
+    gameScore: Number,
   },
-  components: {
-    SnakeCanvas,
-    Game,
-  },
-  data() {
-    return {
-      gameOn: false,
-      gameOver: false,
-      gameScore: 0,
-      dimensions: {
-        width: 900,
-        height: 600,
-        nRows: 40,
-        nCols: 60,
-      },
+  watch: {
+    gameOn(val) {
+      if (val) {
+        game.run(() => {
+          game.cellMap.normalify(game.head)
+          game.head += 1
+          game.cellMap.snakeify(game.head)
+          game.paintCells()
+        });
+      } else {
+        game.pause()
+      }
+    },
+    gameOver(newVal, oldVal) {
+      if (newVal) {
+        game.pause()
+        game.paintGameOver()
+        this.$emit('update:gameOn', false)
+      }
     }
+
   },
-  
-  
+  mounted() {
+    game.setup(this.options);
+    
+    game.on('gameOver', () => this.$emit('update:gameOver', true))
+    game.on('incrementScore', () => this.$emit('update:score', this.gameScore + 1))
+    game.on('decrementScore', () => this.$emit('update:score', this.gameScore - 1))
+  },
+  render(h) {
+    console.log('hey we reneder')
+  }
 }
 </script>

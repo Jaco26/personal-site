@@ -4,6 +4,12 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
+  generate: {
+    routes: [
+      '/games/snake'
+    ]
+  },
+
   /*
   ** Headers of the page
   */
@@ -15,9 +21,9 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: 'Jacob Albright is a full stack web developer whose interests include' + 
-        'making 2D videogames for the web, coffee, photography and reading books that imagine' +
-        'a hopeful tomorrow'
+        content: 'Jacob Albright is a full stack web developer whose interests include ' + 
+        'making 2D videogames for the web, coffee, photography and reading books that imagine ' +
+        'a hopeful tomorrow.'
       }
     ],
     link: [

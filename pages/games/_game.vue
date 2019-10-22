@@ -5,7 +5,18 @@
         <b-modal :active.sync="active" :canCancel="['escape', 'x']">
           <div class="card">
             <div class="card-content">
-              <component :is="selectedGame" :controls="controls"></component>
+              <div class="columns is-centered">
+                <div class="column">
+                  <button @click="gameState.gameOn = !gameState.gameOn">{{gameState.gameOn ? 'Pause' : 'Start'}}</button>
+                  <button @click="gameState.gameOver = !gameState.gameOver">{{gameState.gameOver ? 'Reset' : 'Game Over'}}</button>
+                </div>
+              </div>
+              <component
+                :is="selectedGame"
+                :dimensions="dimensions"
+                :controls="controls"
+                :gameState="gameState"
+              ></component>
             </div>
           </div>
         </b-modal>
@@ -15,7 +26,7 @@
 </template>
 
 <script>
-import SnakeGame from '@/components/games/snake/snake'
+import SnakeGame from '@/components/games/snake'
 const keyCodeMap = {
   37: 'arrowLeft',
   38: 'arrowUp',
@@ -33,6 +44,17 @@ export default {
       games: {
         snake: SnakeGame,
       },
+      gameState: {
+        gameOn: false,
+        gameOver: false,
+        gameScore: 0,
+      },
+      dimensions: {
+        width: 900,
+        height: 600,
+        nRows: 40,
+        nCols: 60,
+      },
       controls: {
         arrowLeft: false,
         arrowUp: false,
@@ -45,7 +67,6 @@ export default {
       }
     }
   },
-  
   computed: {
     selectedGame() {
       return this.games[this.$route.params.game]
