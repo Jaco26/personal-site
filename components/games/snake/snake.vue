@@ -1,25 +1,22 @@
 <template>
-  <snake-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ ctx }">
+  <div>
     <div class="columns is-centered">
       <div class="column">
         <button @click="gameOn = !gameOn">{{gameOn ? 'Pause' : 'Start'}}</button>
         <button @click="gameOver = !gameOver">{{gameOver ? 'Reset' : 'Game Over'}}</button>
       </div>
     </div>
-
-    <div class="columns is-centered">
-      <div class="column">
-        <Game
-          v-if="ctx"
-          :options="{ ...dimensions, ctx }"
-          :gameOn.sync="gameOn"
-          :gameOver.sync="gameOver"
-          :score.sync="gameScore"
-        />
-      </div>
-    </div>
-    
-  </snake-canvas>
+    <snake-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ ctx }">
+      <Game
+        v-if="ctx"
+        :options="{ ...dimensions, ctx }"
+        :gameOn.sync="gameOn"
+        :gameOver.sync="gameOver"
+        :score.sync="gameScore"
+        :controls="controls"
+      />
+    </snake-canvas>
+  </div>
 </template> 
 
 <script>
@@ -27,6 +24,9 @@ import SnakeCanvas from '@/components/games/snake/canvas'
 import Game from '@/components/games/snake/game'
 
 export default {
+  props: {
+    controls: Object,
+  },
   components: {
     SnakeCanvas,
     Game,
@@ -44,5 +44,7 @@ export default {
       },
     }
   },
+  
+  
 }
 </script>

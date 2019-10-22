@@ -7,6 +7,7 @@ const game = new Game({ animationRate: 20 });
 export default {
   props: {
     options: Object,
+    controls: Object,
     gameOn: Boolean,
     gameOver: Boolean,
     score: Number,

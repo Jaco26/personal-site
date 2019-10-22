@@ -1,6 +1,5 @@
 <template>
-  <section class="section">
-    this is the games container page
+  <div>
     <nuxt-child></nuxt-child>
-  </section>
+  </div>
 </template>

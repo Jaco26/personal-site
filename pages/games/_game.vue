@@ -2,16 +2,13 @@
   <section class="hero is-white is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container">
-
-        <div class="has-text-centered">
-          This is the games display page
-        </div>
-
-        <div class="columns is-centered">
-          <div class="column is-narrow">
-            <component :is="selectedGame"></component>
+        <b-modal :active.sync="active" :canCancel="['escape', 'x']">
+          <div class="card">
+            <div class="card-content">
+              <component :is="selectedGame" :controls="controls"></component>
+            </div>
           </div>
-        </div>
+        </b-modal>
       </div>
     </div>
   </section>
@@ -19,16 +16,68 @@
 
 <script>
 import SnakeGame from '@/components/games/snake/snake'
+const keyCodeMap = {
+  37: 'arrowLeft',
+  38: 'arrowUp',
+  39: 'arrowRight',
+  40: 'arrowDown',
+  65: 'a',
+  87: 'w',
+  68: 'd',
+  83: 's',
+}
 export default {
   data() {
     return {
-      snake: SnakeGame,
+      active: false,
+      games: {
+        snake: SnakeGame,
+      },
+      controls: {
+        arrowLeft: false,
+        arrowUp: false,
+        arrowRight: false,
+        arrowDown: false,
+        a: false, // left
+        w: false, // up
+        d: false, // right
+        s: false, // down
+      }
     }
   },
+  
   computed: {
     selectedGame() {
-      return this[this.$route.params.game]
+      return this.games[this.$route.params.game]
     }
+  },
+  methods: {
+    handleKeyDown(e) {
+      this.controls[keyCodeMap[e.keyCode]] = true
+    },
+    handleKeyUp(e) {
+      this.controls[keyCodeMap[e.keyCode]] = false
+    }
+  },
+  watch: {
+    active(val) {
+      if (!val) {
+        this.$router.push('/games')
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('keydown', this.handleKeyDown)
+    document.addEventListener('keyup', this.handleKeyUp)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.handleKeyDown)
+    document.removeEventListener('keyup', this.handleKeyUp)
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.active = true;
+    })
   }
 }
 </script>
