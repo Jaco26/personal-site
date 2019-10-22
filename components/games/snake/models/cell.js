@@ -11,9 +11,9 @@ export default class Cell {
   get color() {
     switch (this.kind) {
       case 1: // default
-        return '#333'
+        return '#112'
       case 2: // active
-        return 'green'
+        return 'limegreen'
       case 3: // food
         return '#eee'
     }

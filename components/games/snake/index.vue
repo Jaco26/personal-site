@@ -2,8 +2,7 @@
   <game-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ ctx }">
     <Snake
       v-if="ctx"
-      :options="{ ...dimensions, ctx }"
-      :controls="controls"
+      :options="{ dimensions, ctx, controls}"
       v-bind.sync="gameState"
     />
   </game-canvas>

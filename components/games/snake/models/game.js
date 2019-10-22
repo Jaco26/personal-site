@@ -1,20 +1,35 @@
 import GameBase from '@/components/games/models/game-base'
 import CellMap from './cell-map'
 import Painter from './painter'
+import Snake from './snake'
 
 /**
- * @typedef Options
- * @property {CanvasRenderingContext2D} ctx
+ * @typedef SnakeArgs
+ * @property {Number} row
+ * @property {Number} col
+ * @property {Boolean} isPolluter
+ */
+
+/**
+ * @typedef Dimensions
  * @property {Number} nRows
  * @property {Number} nCols
  * @property {Number} width
  * @property {Number} height
  */
 
+/**
+ * @typedef SetupOptions
+ * @property {CanvasRenderingContext2D} ctx
+ * @property {SnakeArgs} snake
+ * @property {Dimensions} dimensions
+ 
+ */
+
 export default class Game extends GameBase {
 
-  head = 300
-
+  /** @type {Snake} */
+  snake = null
   /** @type {CellMap} */
   cellMap = null
   /** @type {Painter} */
@@ -24,15 +39,26 @@ export default class Game extends GameBase {
     super(animationRate)
   }
 
-   /** @param {Options} options */
-  setup({ ctx, ...dimensions }) {
+   /** @param {SetupOptions} options */
+  setup({ ctx, dimensions, snake }) {
     this.cellMap = new CellMap(dimensions);
     this.painter = new Painter(ctx);
+    this.snake = new Snake(snake);
     this.paintCells()
   }
 
   paintCells() {
-    this.cellMap.cells.forEach(cell => this.painter.paintCell(cell))
+    this.cellMap.cells.forEach((row, ri) => {
+      row.forEach((cell, ci) => {
+        if (this.snake.isSnake(ri, ci)) {
+          cell.kind = 2
+        } else {
+          cell.kind = 1
+        }
+        this.painter.paintCell(cell)
+      })
+    })
+
   }
 
   paintGameOver() {

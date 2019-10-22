@@ -8,7 +8,6 @@ const game = new Game({ animationRate: 6 });
 export default {
   props: {
     options: Object,
-    controls: Object,
     gameOn: Boolean,
     gameOver: Boolean,
     gameScore: Number,
@@ -17,9 +16,7 @@ export default {
     gameOn(val) {
       if (val) {
         game.run(() => {
-          game.cellMap.normalify(game.head)
-          game.head += 1
-          game.cellMap.snakeify(game.head)
+          game.snake.updateBody()
           game.paintCells()
         });
       } else {
@@ -32,12 +29,36 @@ export default {
         game.paintGameOver()
         this.$emit('update:gameOn', false)
       }
+    },
+    'options.controls': {
+      deep: true,
+      handler({ arrowLeft, arrowUp, arrowRight, arrowDown }) {
+        if (arrowLeft) {
+          game.snake.setDirection('arrowLeft')
+        }
+        if (arrowUp) {
+          game.snake.setDirection('arrowUp')
+        }
+        if (arrowRight) {
+          game.snake.setDirection('arrowRight')
+        }
+        if (arrowDown) {
+          game.snake.setDirection('arrowDown')
+        }
+      }
     }
-
   },
   mounted() {
-    game.setup(this.options);
-    
+    game.setup({
+      ctx: this.options.ctx,
+      dimensions: this.options.dimensions,
+      snake: {
+        row: 4,
+        col: 5,
+        isPolluter: true
+      }
+    });
+  
     game.on('gameOver', () => this.$emit('update:gameOver', true))
     game.on('incrementScore', () => this.$emit('update:score', this.gameScore + 1))
     game.on('decrementScore', () => this.$emit('update:score', this.gameScore - 1))

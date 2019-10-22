@@ -6,14 +6,16 @@ function createCells(nRows, nCols, width, height) {
   const cellHeigt = Math.floor(height / nRows)
   for (let row = 0; row < nRows; row++) {
     const cellY = cellHeigt * row;
+    const rowAccum = []
     for (let col = 0; col < nCols; col++) {
-      accum.push(new Cell({
+      rowAccum.push(new Cell({
         x: cellWidth * col,
         y: cellY,
         width: cellWidth,
         height: cellHeigt
       }))
     }
+    accum.push(rowAccum)
   }
   return accum;
 }
