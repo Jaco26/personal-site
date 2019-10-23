@@ -1,14 +1,17 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
+  <section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container is-fluid">
         
-        <div class="columns">
-          <section class="column">
-            <h1 class="title">Bio</h1>
-
-          </section>
-          <section class="column"></section>
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <p>
+              <nuxt-link class="title has-text-weight-light" to="/games">Games</nuxt-link> 
+            </p>
+            <p>
+              <nuxt-link class="title has-text-weight-light" to="/photos">Photos</nuxt-link> 
+            </p>
+          </div>
         </div>
 
       </div>
@@ -30,7 +33,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.hero-body {
-  align-items: start !important;
+p {
+  margin: 2rem
 }
 </style>

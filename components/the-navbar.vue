@@ -1,11 +1,11 @@
 <template>
-  <b-navbar transparent fixed-top class="is-light has-light-text">
+  <b-navbar transparent fixed-top>
     <template v-slot:brand>
       <b-navbar-item tag="nuxt-link" to="/">
-        <h1 class="subtitle is-2">Jacob Albright</h1>
+        <h1 class="subtitle is-3">Jacob Albright</h1>
       </b-navbar-item>
     </template>
-    <template v-slot:end>
+    <!-- <template v-slot:end>
       <b-navbar-item
         v-for="page in pageRoutes"
         :key="page.to"
@@ -14,12 +14,16 @@
        >
         {{page.text}}
        </b-navbar-item>
-    </template>
+    </template> -->
   </b-navbar>
 </template>
 
 <script>
+import FooterLink from '@/components/footer-link'
 export default {
+  components: {
+    FooterLink,
+  },
   data() {
     return {
       pageRoutes: [
@@ -31,10 +35,23 @@ export default {
           to: '/games',
           text: 'Games'
         },
-        // {
-        //   to: '/doodads',
-        //   text: 'Doodads'
-        // },
+      ],
+      contactLinks: [
+        {
+          href: 'mailto:jacob.albright23@gmail.com',
+          text: 'Email',
+          icon: 'email',
+        },
+        {
+          href: 'https://github.com/jaco26',
+          text: 'Github',
+          icon: 'github-box',
+        },
+        {
+          href: 'https://www.linkedin.com/in/jacob-albright-6b810815b/',
+          text: 'Linkedin',
+          icon: 'linkedin-box'
+        }
       ]
     }
   }

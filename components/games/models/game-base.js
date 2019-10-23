@@ -27,11 +27,11 @@ export default class GameBase {
     }     
   }
 
-  pause() {
-    this._running = false
+  stop() {
+    this._running = false;
     cancelAnimationFrame(this.animationFrameHandle)
-    this.emit('paused')
   }
+
 
   resume() {
     if (!this._running && this.cachedRunCallback) {

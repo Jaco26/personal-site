@@ -44,10 +44,6 @@ export default {
           to: '/games',
           text: 'Games'
         },
-        // {
-        //   to: '/doodads',
-        //   text: 'Doodads'
-        // },
       ]
     },
     socialLinks() {

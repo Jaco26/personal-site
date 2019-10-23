@@ -3,6 +3,8 @@ export default class Snake {
   nSegmentsToPush = 0
   dx = 1
   dy = 0
+
+  didCollideWithSelf = false
   
   constructor({ row, col, isPolluter = false } = {}) {
     this.isPolluter = isPolluter
@@ -54,9 +56,13 @@ export default class Snake {
     }
     this.headCol += this.dx
     this.headRow += this.dy
+
+    this.didCollideWithSelf = !!this.bodyMap[`${this.headRow},${this.headCol}`]
+
     
     // set the headCol and headRow as the new head of the snake body
     this.body[this.body.length - 1] = { col: this.headCol, row: this.headRow }
+
 
     this.body.forEach(({ row, col }) => this.bodyMap[`${row},${col}`] = true)
   

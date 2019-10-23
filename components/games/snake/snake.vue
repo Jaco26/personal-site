@@ -18,34 +18,40 @@ export default {
   watch: {
     gameOn(val) {
       if (val) {
-        game.run(() => {
-          game.snake.updateBody()
-          game.paintCells()
-          if (game.snakeAteFood()) {
-            game.emit('incrementScore')
-            game.generateFood()
-            game.snake.nSegmentsToPush += 3
-          }
-        });
+        if (game.cachedRunCallback) {
+          game.resume()
+        } else {
+          game.run(() => {
+            game.snake.updateBody()
+            if (game.gameIsOver()) {
+              game.stop();
+              game.paintGameOver();
+              this.$emit('update:gameOn', false)
+              this.$emit('update:gameOver', true)
+              return
+            }
+            if (game.snakeDidEatFood()) {
+              this.$emit('update:score', this.score + 1)
+              game.generateFood()
+              game.snake.nSegmentsToPush += 3
+            }
+            game.paintCells()
+          });
+        }
       } else {
-        game.pause()
-      }
-    },
-    gameOver(newVal, oldVal) {
-      if (newVal) {
-        game.pause()
-        game.paintGameOver()
-        this.$emit('update:gameOn', false)
+        game.stop()
       }
     },
     controls: {
       deep: true,
       handler({ arrowLeft, arrowUp, arrowRight, arrowDown, p, o }) {
         if (p) {
-          game.pause()
+          game.stop()
+          this.$emit('update:gameOn', false)
         }
         if (o) {
           game.resume()
+          this.$emit('update:gameOn', true)
         }
         if (arrowLeft) {
           game.snake.setDirection('arrowLeft')
@@ -75,7 +81,7 @@ export default {
     game.on('decrementScore', () => this.$emit('update:score', this.score - 1))
   },
   render(h) {
-    console.log('hey we reneder', this.ctx)
+    console.log('hey we reneder')
   }
 }
 </script>

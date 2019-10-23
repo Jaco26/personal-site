@@ -32,9 +32,11 @@ export default {
   display: block;
   margin: .4rem;
   color: #ccc;
+
 }
 .footer-link:hover {
   color: #fff;
+
 }
 .footer-link-icon {
   margin-right: .4rem;

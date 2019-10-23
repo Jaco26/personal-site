@@ -1,9 +1,9 @@
 @import '~bulma/sass/utilities/_all';
 
 // custom css
-.nuxt-link-exact-active {
-  text-decoration: underline;
-}
+// .nuxt-link-exact-active {
+//   text-decoration: underline;
+// }
 
 // router transition classes
 .page-enter-active, .page-leave-active {
@@ -15,6 +15,7 @@
 
 // custom scss
 $navbar-breakpoint: $tablet;
+$modal-background-background-color: $black;
 
 @import '~bulma';
 @import '~buefy/src/scss/buefy';

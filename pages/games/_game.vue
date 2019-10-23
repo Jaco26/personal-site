@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-white is-fullheight-with-navbar">
+  <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container">
         <b-modal :active.sync="active" :canCancel="['escape', 'x']">
@@ -40,10 +40,10 @@ export default {
         snake: SnakeGame,
       },
       dimensions: {
-        width: 600,
+        width: 900,
         height: 600,
         nRows: 40,
-        nCols: 40,
+        nCols: 60,
       },
       controls: {
         arrowLeft: false,

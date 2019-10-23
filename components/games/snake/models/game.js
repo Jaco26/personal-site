@@ -90,8 +90,17 @@ export default class Game extends GameBase {
     this.food.row = row
   }
 
-  snakeAteFood() {
+  snakeDidEatFood() {
     return this.snake.headRow === this.food.row && this.snake.headCol === this.food.col;
+  }
+
+  gameIsOver() {
+    const { headCol, headRow } = this.snake
+    return headCol < 0 ||
+      headCol >= this.nCols ||
+      headRow < 0 ||
+      headRow >= this.nRows ||
+      this.snake.didCollideWithSelf // if the snake eats itself
   }
 
   paintGameOver() {
