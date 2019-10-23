@@ -55,16 +55,17 @@ export default class Snake {
       }
     }
     this.headCol += this.dx
-    this.headRow += this.dy
-
-    this.didCollideWithSelf = !!this.bodyMap[`${this.headRow},${this.headCol}`]
-
+    this.headRow += this.dy    
     
     // set the headCol and headRow as the new head of the snake body
     this.body[this.body.length - 1] = { col: this.headCol, row: this.headRow }
 
-
-    this.body.forEach(({ row, col }) => this.bodyMap[`${row},${col}`] = true)
+    this.body.forEach(({ row, col }) => {
+      if (this.bodyMap[`${row},${col}`]) {
+        this.didCollideWithSelf = true
+      }
+      this.bodyMap[`${row},${col}`] = true
+    })
   
     this.changeDirectionLock = false
   }

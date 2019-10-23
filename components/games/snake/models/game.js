@@ -27,7 +27,7 @@ function randRange(min, max) {
  * @property {CanvasRenderingContext2D} ctx
  * @property {SnakeArgs} snake
  * @property {Dimensions} dimensions
- 
+ * @property {Number} animationRate
  */
 
 export default class Game extends GameBase {
@@ -47,17 +47,14 @@ export default class Game extends GameBase {
   /** @type {Painter} */
   painter = null
 
-  constructor({ animationRate = 0 } = {}) {
-    super(animationRate)
-  }
-
    /** @param {SetupOptions} options */
-  setup({ ctx, dimensions, snake }) {
+  setup({ ctx, animationRate, dimensions, snake }) {
     this.nRows = dimensions.nRows
     this.nCols = dimensions.nCols
     this.cellMap = new CellMap(dimensions);
     this.painter = new Painter(ctx);
     this.snake = new Snake(snake);
+    this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
   }

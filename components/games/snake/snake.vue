@@ -3,7 +3,7 @@
 
 import Game from '@/components/games/snake/models/game.js'
 
-const game = new Game({ animationRate: 6 });
+const game = new Game();
 
 export default {
   inject: ['ctxProvider'],
@@ -11,6 +11,10 @@ export default {
     dimensions: Object,
     controls: Object,
     snakeSetup: Object,
+    animationRate: {
+      type: Number,
+      default: 5,
+    },
     gameOn: Boolean,
     gameOver: Boolean,
     score: Number,
@@ -26,14 +30,14 @@ export default {
             if (game.gameIsOver()) {
               game.stop();
               game.paintGameOver();
-              this.$emit('update:gameOn', false)
-              this.$emit('update:gameOver', true)
+              this.update('gameOn', false)
+              this.update('gameOver', true)
               return
             }
             if (game.snakeDidEatFood()) {
-              this.$emit('update:score', this.score + 1)
+              this.update('score', this.score + 1)
               game.generateFood()
-              game.snake.nSegmentsToPush += 3
+              game.snake.nSegmentsToPush += 6
             }
             game.paintCells()
           });
@@ -44,14 +48,18 @@ export default {
     },
     controls: {
       deep: true,
-      handler({ arrowLeft, arrowUp, arrowRight, arrowDown, p, o }) {
+      handler({ arrowLeft, arrowUp, arrowRight, arrowDown, p, r }) {
         if (p) {
           game.stop()
-          this.$emit('update:gameOn', false)
+          this.update('gameOn', false)
         }
-        if (o) {
-          game.resume()
-          this.$emit('update:gameOn', true)
+        if (r) {
+          if (this.gameOver) {
+            this.reset()
+          } else {
+            game.resume()
+            this.update('gameOn', true)
+          }
         }
         if (arrowLeft) {
           game.snake.setDirection('arrowLeft')
@@ -66,19 +74,35 @@ export default {
           game.snake.setDirection('arrowDown')
         }
       }
-    }
+    },
+    'animationRate'(val) {
+      game.animationRate = val
+    },
+    'snakeSetup.isPolluter'(val) {
+      game.snake.isPolluter = val
+    },
   },
   mounted() {
-    game.setup({
-      ctx: this.ctxProvider.ctx,
-      dimensions: this.dimensions,
-      snake: this.snakeSetup,
-    });
-  
-    game.on('gameOver', () => this.$emit('update:gameOver', true))
-    game.on('paused', () => this.$emit('update:gameOn', false))
-    game.on('incrementScore', () => this.$emit('update:score', this.score + 1))
-    game.on('decrementScore', () => this.$emit('update:score', this.score - 1))
+    this.setup()
+  },
+  methods: {
+    update(key, val) {
+      this.$emit(`update:${key}`, val)
+    },
+    setup() {
+      game.setup({
+        ctx: this.ctxProvider.ctx,
+        dimensions: this.dimensions,
+        snake: this.snakeSetup,
+        animationRate: this.animationRate,
+      })
+    },
+    reset() {
+      this.setup()
+      this.update('gameOn', false)
+      this.update('gameOver', false)
+      this.update('score', 0)
+    },
   },
   render(h) {
     console.log('hey we reneder')
