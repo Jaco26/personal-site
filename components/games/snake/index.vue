@@ -12,7 +12,7 @@
         v-if="hasCtx"
         :dimensions="dimensions"
         :controls="controls"
-        :isPolluter="isPolluter"
+        :snakeSetup="snakeSetup"
         v-bind.sync="gameState"
       />
     </game-canvas>
@@ -38,8 +38,11 @@ export default {
         gameOver: false,
         score: 0,
       },
-      
-      isPolluter: true,
+      snakeSetup: {
+        isPolluter: true,
+        row: 20,
+        col: 20
+      },
     }
   },
 }

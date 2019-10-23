@@ -29,6 +29,8 @@ const keyCodeMap = {
   87: 'w',
   68: 'd',
   83: 's',
+  80: 'p', // pause
+  79: 'o', // resume
 }
 export default {
   data() {
@@ -52,6 +54,8 @@ export default {
         w: false, // up
         d: false, // right
         s: false, // down
+        p: false, // pause
+        o: false, // resume
       }
     }
   },

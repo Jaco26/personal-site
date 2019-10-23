@@ -10,7 +10,7 @@ export default {
   props: {
     dimensions: Object,
     controls: Object,
-    isPolluter: Boolean,
+    snakeSetup: Object,
     gameOn: Boolean,
     gameOver: Boolean,
     score: Number,
@@ -40,7 +40,13 @@ export default {
     },
     controls: {
       deep: true,
-      handler({ arrowLeft, arrowUp, arrowRight, arrowDown }) {
+      handler({ arrowLeft, arrowUp, arrowRight, arrowDown, p, o }) {
+        if (p) {
+          game.pause()
+        }
+        if (o) {
+          game.resume()
+        }
         if (arrowLeft) {
           game.snake.setDirection('arrowLeft')
         }
@@ -57,18 +63,14 @@ export default {
     }
   },
   mounted() {
-    const prefs = JSON.parse(localStorage.getItem('snakePrefs'))
     game.setup({
       ctx: this.ctxProvider.ctx,
       dimensions: this.dimensions,
-      snake: {
-        row: 4,
-        col: 5,
-        isPolluter: this.isPolluter
-      }
+      snake: this.snakeSetup,
     });
   
     game.on('gameOver', () => this.$emit('update:gameOver', true))
+    game.on('paused', () => this.$emit('update:gameOn', false))
     game.on('incrementScore', () => this.$emit('update:score', this.score + 1))
     game.on('decrementScore', () => this.$emit('update:score', this.score - 1))
   },

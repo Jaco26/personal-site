@@ -1,6 +1,8 @@
 export default class GameBase {
   listeners = {}
   animationFrameHandle = null
+  cachedRunCallback = null
+  _running = false
 
   constructor(animationRate = 0) {
     this.animationRate = animationRate
@@ -26,10 +28,20 @@ export default class GameBase {
   }
 
   pause() {
+    this._running = false
     cancelAnimationFrame(this.animationFrameHandle)
+    this.emit('paused')
+  }
+
+  resume() {
+    if (!this._running && this.cachedRunCallback) {
+      this.run(this.cachedRunCallback)
+    }
   }
 
   run(callback) {
+    this._running = true
+    this.cachedRunCallback = callback.bind(this)
     let mainLoop
     if (this.animationRate) {
       let _rateCounter = this.animationRate
