@@ -2,12 +2,12 @@
   <div>
     <TheNavbar />
     <nuxt />
-    <TheFooter />
+    <!-- <TheFooter /> -->
   </div>
 </template>
 
 <script>
-import TheNavbar from '@/components/the-navbar'
+import TheNavbar from '@/components/the-navbar-v2'
 import TheFooter from '@/components/the-footer'
 export default {
   components: {

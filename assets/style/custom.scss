@@ -1,11 +1,10 @@
 @import '~bulma/sass/utilities/_all';
 
 // custom css
-// .nuxt-link-exact-active {
-//   text-decoration: underline;
-// }
+.nuxt-link-exact-active {
+  color: #333 !important;
+}
 
-// router transition classes
 .page-enter-active, .page-leave-active {
   transition: opacity .05s;
 }

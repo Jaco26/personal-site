@@ -8,7 +8,7 @@ export default {
     text: {
       type: String,
       required: true,
-    }
+    },
   },
   render(h, ctx) {
     const { href, to, text, icon } = ctx.props
@@ -17,7 +17,7 @@ export default {
     const data = {
       attrs: href ? { href } : {},
       props: to ? { to } : {},
-      class: 'footer-link'
+      class: 'footer-link level',
     }
     const bIcon = icon ? h('b-icon', { props: { icon }, class: 'footer-link-icon' }) : null
     const textSlot = ctx.slots().text || text
@@ -29,14 +29,13 @@ export default {
 
 <style scoped>
 .footer-link {
-  display: block;
+  /* display: block; */
   margin: .4rem;
-  color: #ccc;
-
+  color: #555;
 }
 .footer-link:hover {
-  color: #fff;
-
+  /* color: #fff; */
+  color: #333
 }
 .footer-link-icon {
   margin-right: .4rem;

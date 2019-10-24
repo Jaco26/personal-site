@@ -1,9 +1,28 @@
 <template>
   <b-navbar transparent fixed-top>
     <template v-slot:brand>
-      <b-navbar-item tag="nuxt-link" to="/">
-        <h1 class="subtitle is-3">Jacob Albright</h1>
+      <!-- <b-navbar-item tag="nuxt-link" to="/"> -->
+      <b-navbar-item tag="div">
+        <!-- <h1 class="title is-4">Jacob Albright</h1> -->
+        <h1 class="title is-4">
+          <!-- /... -->
+          <template v-for="crumb in breadcrumbs">
+            <span :key="crumb.to">
+              
+              <span style="margin: 5px">
+                <nuxt-link :to="crumb.to || '/'">{{crumb.text || '/'}}</nuxt-link>
+              </span>
+              -
+            </span>
+          </template>
+          
+        </h1>
       </b-navbar-item>
+    </template>
+    <template v-slot:burger>
+      <div>
+        <!-- disable the burger -->
+      </div>
     </template>
     <!-- <template v-slot:end>
       <b-navbar-item
@@ -54,6 +73,6 @@ export default {
         }
       ]
     }
-  }
+  },
 }
 </script>

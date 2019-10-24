@@ -25,16 +25,4 @@ export default class CellMap {
   constructor({ nRows, nCols, width, height }) {
     this.cells = createCells(nRows, nCols, width, height)
   }
-  _setCellKind(idx, kind) {
-    this.cells[idx].kind = kind;
-  }
-  snakeify(idx) {
-    this._setCellKind(idx, 2)
-  }
-  normalify(idx) {
-    this._setCellKind(idx, 1)
-  }
-  foodify(idx) {
-    this._setCellKind(idx, 3)
-  }
 }

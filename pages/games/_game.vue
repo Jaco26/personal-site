@@ -1,18 +1,16 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
+<section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
-      <div class="container">
-        <b-modal :active.sync="active" :canCancel="['escape', 'x']">
-          <div class="card is-narrow">
-            <div class="card-content">
-              <component
-                :is="selectedGame"
-                :dimensions="dimensions"
-                :controls="controls"
-              ></component>
-            </div>
+      <div class="container is-fluid">
+        <div class="columns is-centered">
+          <div class="column is-narrow">
+            <component
+              :is="selectedGame"
+              :dimensions="dimensions"
+              :controls="controls"
+            ></component>
           </div>
-        </b-modal>
+        </div>
       </div>
     </div>
   </section>
@@ -34,6 +32,22 @@ const keyCodeMap = {
   82: 'r', // resume
 }
 export default {
+  middleware(ctx) {
+    ctx.store.commit('SET_BREADCRUMBS', [
+      {
+        to: '/',
+        text: 'Jacob',
+      },
+      {
+        to: '/games',
+        text: 'Games',
+      },
+      {
+        to: `/games/${ctx.params.game}`,
+        text: ctx.params.game[0].toUpperCase() + ctx.params.game.slice(1).toLowerCase(),
+      }
+    ])
+  },
   data() {
     return {
       active: false,
@@ -64,7 +78,7 @@ export default {
   computed: {
     selectedGame() {
       return this.games[this.$route.params.game]
-    }
+    },
   },
   methods: {
     handleKeyDown(e) {
@@ -88,11 +102,15 @@ export default {
   beforeDestroy() {
     document.removeEventListener('keydown', this.handleKeyDown)
     document.removeEventListener('keyup', this.handleKeyUp)
+    document.querySelector('html').style.overflow = 'auto'
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.active = true;
+      window.scrollTo(0, 0)
+      document.querySelector('html').style.overflow = 'hidden'
     })
   }
 }
 </script>
+
