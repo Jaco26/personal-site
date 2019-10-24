@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TheNavbar from '@/components/the-navbar-v2'
+import TheNavbar from '@/components/the-navbar'
 import TheFooter from '@/components/the-footer'
 export default {
   components: {

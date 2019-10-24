@@ -2,12 +2,16 @@
   <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container is-fluid">
-        This is the games index page
+        
         <ul>
-          <li>
+          <li class="subtitle is-4 has-text-centered">
             <nuxt-link to="/games/snake">Snake</nuxt-link>
           </li>
+          <li class="has-text-centered">
+            ... more on the way
+          </li>
         </ul>
+        
       </div>
     </div>
   </section>

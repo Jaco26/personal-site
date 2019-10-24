@@ -29,7 +29,6 @@ export default {
 
 <style scoped>
 .footer-link {
-  /* display: block; */
   margin: .4rem;
   color: #555;
 }

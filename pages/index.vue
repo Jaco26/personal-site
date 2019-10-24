@@ -5,10 +5,10 @@
 
         <div class="columns is-centered">
           <div class="column is-half has-text-centered">
-            <p class="title has-text-weight-light">
+            <p class="subtitle is-4 has-text-weight-light">
               <nuxt-link to="/games">Games</nuxt-link>
             </p>
-            <p class="title has-text-weight-light">
+            <p class="subtitle is-4 has-text-weight-light">
               <nuxt-link to="/photos">Photos</nuxt-link> 
             </p>
           </div>
