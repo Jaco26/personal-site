@@ -1,22 +1,22 @@
 <template>
-  <ul>
+  <b-navbar-item tag="div">
     <template v-for="(crumb, i) in $store.state.breadcrumbs">
-      <li :key="i" class="subtitle is-5 has-text-weight-light">
-        <div class="level">
-          <!-- TODO: conditional .has-white-text is kinda a hack...should probably make better -->
-          <span class="is-size-7" :class="{ 'has-text-white': i === 0 }">/</span>
-          <nuxt-link class="breadcrumb-link" :to="crumb.to">{{crumb.text}}</nuxt-link>
-        </div>
-      </li>
+      <div :key="i" class="hihi">
+        <span v-if="i > 0" class="is-size-7">/</span>
+        <nuxt-link class="breadcrumb-link" :to="crumb.to">{{crumb.text}}</nuxt-link>
+      </div>
     </template>
-  </ul>
+  </b-navbar-item>
 </template>
 
 <style scoped>
-li {
-  display: inline-flex;
-}
 .breadcrumb-link {
-  margin: .4rem;
+  margin: .6rem;
+  font-size: 1.3rem
+}
+.hihi {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
 }
 </style>

@@ -50,7 +50,6 @@ export default {
   },
   data() {
     return {
-      active: false,
       games: {
         snake: SnakeGame,
       },
@@ -86,13 +85,6 @@ export default {
     },
     handleKeyUp(e) {
       this.controls[keyCodeMap[e.keyCode]] = false
-    }
-  },
-  watch: {
-    active(val) {
-      if (!val) {
-        this.$router.push('/games')
-      }
     }
   },
   mounted() {

@@ -1,27 +1,28 @@
 <template>
   <b-navbar transparent fixed-top>
-    <template v-slot:brand>
-      <b-navbar-item tag="div">
-        <TheBreadcrumbs />
-      </b-navbar-item>
+   <template v-slot:brand>
+      <TheBreadcrumbs />
     </template>
-
-    <!-- <template v-slot:end>
-      <FooterLink
-        v-for="link in contactLinks"
-        :key="link.text"
-        v-bind="link"
-      />
-    </template> -->
+    <template v-slot:end>
+      <b-navbar-dropdown class="contact-dropdown" hoverable right arrowless>
+        <template v-slot:label>
+          <span>Contact</span>
+        </template>
+        <template v-for="link in contactLinks">
+          <b-navbar-item :key="link.text" :href="link.href" class="contact-link">
+            <b-icon :icon="link.icon"></b-icon>
+            <span>{{link.text}}</span>
+          </b-navbar-item>
+        </template>
+      </b-navbar-dropdown>
+    </template>
   </b-navbar>
 </template>
 
 <script>
-import FooterLink from '@/components/footer-link'
 import TheBreadcrumbs from '@/components/the-breadcrumbs'
 export default {
   components: {
-    FooterLink,
     TheBreadcrumbs,
   },
   data() {
@@ -47,3 +48,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.contact-dropdown {
+  margin: 0 8px;
+}
+.contact-link {
+  color: #555;
+}
+.contact-link:hover {
+  color: #222;
+}
+.contact-link > span {
+  margin: 0 .2rem;
+}
+</style>

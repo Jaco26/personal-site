@@ -4,7 +4,7 @@
       <div class="container is-fluid">
         
         <ul>
-          <li class="subtitle is-4 has-text-centered">
+          <li class="subtitle is-4 has-text-centered has-text-weight-light">
             <nuxt-link to="/games/snake">Snake</nuxt-link>
           </li>
           <li class="has-text-centered">
