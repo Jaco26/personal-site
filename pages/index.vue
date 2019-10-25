@@ -2,16 +2,20 @@
   <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container is-fluid">
+        <div class="columns">
 
-        <ul>
-          <li class="subtitle is-4 has-text-centered has-text-weight-light">
-            <nuxt-link to="/games">Games</nuxt-link>
-          </li>
-           <li class="subtitle is-4 has-text-centered has-text-weight-light">
-            <nuxt-link to="/photos">Photos</nuxt-link> 
-          </li>
-        </ul>
-
+          <div class="column">
+            <ul>
+              <li class="subtitle is-4 has-text-centered has-text-weight-light">
+                <nuxt-link to="/games">Games</nuxt-link>
+              </li>
+              <li class="subtitle is-4 has-text-centered has-text-weight-light">
+                <nuxt-link to="/photos">Photos</nuxt-link> 
+              </li>
+            </ul>
+          </div>
+          
+        </div>
       </div>
     </div>
   </section>
