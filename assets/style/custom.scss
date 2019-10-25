@@ -27,7 +27,7 @@ $navbar-breakpoint: $tablet;
 $modal-background-background-color: $black;
 
 $velvet: #1a3a42;
-// $velvet-invert: findColorInvert($velvet);
+$velvet-invert: findColorInvert($velvet);
 
 $colors: (
   "white": ($white, $black),
@@ -40,7 +40,7 @@ $colors: (
   "warning": ($warning, $warning-invert),
   "danger": ($danger, $danger-invert),
   // "twitter": ($twitter, $twitter-invert),
-  "velvet": ($velvet, #eee)
+  "velvet": ($velvet, $velvet-invert)
 );
 
 @import '~bulma';

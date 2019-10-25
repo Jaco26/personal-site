@@ -1,5 +1,5 @@
 <template>
-  <b-navbar transparent fixed-top>
+  <b-navbar transparent fixed-top class="is-velvet">
    <template v-slot:brand>
       <TheBreadcrumbs />
     </template>
