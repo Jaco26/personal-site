@@ -4,7 +4,7 @@
       <TheBreadcrumbs />
     </template>
     <template v-slot:end>
-      <b-navbar-dropdown class="contact-dropdown" hoverable right arrowless>
+      <b-navbar-dropdown class="contact-dropdown" hoverable right >
         <template v-slot:label>
           <span>Contact</span>
         </template>
