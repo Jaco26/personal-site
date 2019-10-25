@@ -9,10 +9,15 @@
   </b-navbar-item>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/style/custom.scss';
 .breadcrumb-link {
   margin: .6rem;
-  font-size: 1.3rem
+  font-size: 1.3rem;
+  color: $grey-lighter;
+}
+.breadcrumb-link:hover {
+  color: $light;
 }
 .hihi {
   display: flex;

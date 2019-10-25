@@ -1,33 +1,19 @@
 @import '~bulma/sass/utilities/_all';
 
-// custom css
-a {
-  color: #aaa !important
-}
-a:hover {
-  color: #eee !important
-}
-.nuxt-link {
-  color: #eee !important;
-}
-.nuxt-link-exact-active {
-  color: pink !important;
-  // color: #333 !important;
-}
-
-.page-enter-active, .page-leave-active {
-  transition: opacity .05s;
-}
-.page-enter, .page-leave-to {
-  opacity: 0;
-}
-
 // custom scss
 $navbar-breakpoint: $tablet;
 $modal-background-background-color: $black;
 
+$pink: pink;
+$pink-invert: findColorInvert($pink);
+
+$powderblue: hsl(212, 81%, 35%);
+$powderblue-invert: hsl(194, 82%, 35%);
+
+
 $velvet: #1a3a42;
 $velvet-invert: findColorInvert($velvet);
+
 
 $colors: (
   "white": ($white, $black),
@@ -39,10 +25,30 @@ $colors: (
   "success": ($success, $success-invert),
   "warning": ($warning, $warning-invert),
   "danger": ($danger, $danger-invert),
-  // "twitter": ($twitter, $twitter-invert),
-  "velvet": ($velvet, $velvet-invert)
+  "velvet": ($velvet, $velvet-invert),
+  "powderblue": ($powderblue, $powderblue-invert),
 );
 
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
+
+// custom css
+a {
+  color: $powderblue;
+}
+a:hover {
+  // color: $link-hover;
+  color: $powderblue-invert;
+}
+
+.nuxt-link-exact-active {
+  color: $pink !important;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .05s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
