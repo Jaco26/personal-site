@@ -5,7 +5,18 @@
 
         <div class="columns">
           <div class="column">
+            <h1 class="title">Bla bla bla</h1>
+            <h3 class="subtitle">Jacob's thoughts on games</h3>
             <div class="content">
+              <p>
+                Games reflect our world back to us because we put our world into them. 
+                Our basic assumptions about human nature, human history, human present, and human future are all 
+                embedded in them. The story of humanity as told by by the most visible cultural artifacts is one, 
+                ultimately, of competition. Likewise, most games (being cultural artifacts) can be described as 
+                involving competition in some central way. What interests me is: who is competing and against what? 
+                What is the win condition? Is it domination and is the thing to be dominated another player or 
+                game AI or team or ‘nature’ (do we include ‘time’) itself?
+              </p>
               <p>
                 As part of some team building exercise imposed on my fifth (or fourth…who can remember) grade class, 
                 I along with everyone in the class was paired with another kid and were instructed to play a game with 

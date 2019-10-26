@@ -29,6 +29,12 @@ $colors: (
   "powderblue": ($powderblue, $powderblue-invert),
 );
 
+$card-background-color: transparent;
+$card-shadow: 0;
+$card-header-shadow: 0;
+$card-header-padding: .5rem;
+$card-content-padding: .5rem;
+
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
@@ -36,13 +42,13 @@ $colors: (
 // custom css
 body {
   background-color: $light;
+  // height: 100%;
   min-height: 100vh;
 }
 a {
   color: $powderblue;
 }
 a:hover {
-  // color: $link-hover;
   color: $powderblue-invert;
 }
 
@@ -55,4 +61,14 @@ a:hover {
 }
 .page-enter, .page-leave-to {
   opacity: 0;
+}
+
+.tile.is-child {
+  padding: .8rem;
+  margin: .8rem !important;
+  background-color: transparent;
+}
+
+.box {
+  border-radius: 0;
 }

@@ -1,50 +1,76 @@
 <template>
-  <section class="section">
-    <h1 class="title">Welcome</h1>
-    <h3 class="subtitle">I'm so glad you're here</h3>
+  <!-- <section class="section"> -->
+
+    <!-- <h1 class="title">Welcome</h1>
+    <h3 class="subtitle">I'm so glad you're here</h3> -->
+
+    <section class="hero is-fullheight-with-navbar" style="is-fullheight">
 
 
-
-    <div class="columns">
-      <div class="column">
-        <p>
-          I've been told that it is important for a professional web developer to have a personal website to showcase 
-          basic competency as a web programmer through display of past projects in a way that pleases the eye. Likewise,
-          just as it is important to prove to online concert ticket vendors that one is not a robot, it is important when
-          selling ones creative capacity, it is important demonstrate that you have at least a few interests and hobbies.
-          So, with that as the aim, I present to you two areas in which I enjoy exerting effort:
-        </p>
+      <div class="hero-body">
+        <div class="container is-fluid">
+          <!-- <div class="welcome has-background-dark">
+            <div>
+              <h1 class="title">Welcome</h1>
+              <h3 class="subtitle">I'm so glad you're here</h3>
+            </div>
+            
+          </div> -->
+          <div class="columns">
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <div class="subtitle is-4 has-text-weight-light">
+                    <nuxt-link to="/games">Games</nuxt-link>
+                  </div>
+                  <p class="content">
+                     <pre>
+                       {{breakpoint}}
+                       </pre> 
+                    Have fun with some classic arcade games I've implemented with my own spin using HTML Canvas and Javascript.
+                  </p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="subtitle is-4 has-text-weight-light">
+                    <nuxt-link to="/photos">Photos</nuxt-link>
+                  </div>
+                  <p>
+                    There isn't anything here yet...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    <!-- </section> -->
 
-    <div class="columns">
-      <article class="column">
-        <div class="subtitle is-4 has-text-weight-light">
-          <nuxt-link to="/games">Games</nuxt-link>
+    <!-- <div class="columns">
+      <div class="column">
+        <div class="columns">
+          <div class="column">
+            <div class="subtitle is-4 has-text-weight-light">
+              <nuxt-link to="/games">Games</nuxt-link>
+            </div>
+            <p>
+              Have fun with some classic arcade games I've implemented with my own spin using HTML Canvas and Javascript.
+            </p>
+          </div>
         </div>
-        <p>
-          Games reflect our world back to us because we put our world into them. 
-          Our basic assumptions about human nature, human history, human present, and human future are all 
-          embedded in them. The story of humanity as told by by the most visible cultural artifacts is one, 
-          ultimately, of competition. Likewise, most games (being cultural artifacts) can be described as 
-          involving competition in some central way. What interests me is: who is competing and against what? 
-          What is the win condition? Is it domination and is the thing to be dominated another person or 
-          sentient character or team or ‘nature’ (do we include ‘time’) itself?
-        </p>
-      </article>
-
-
-
-      <article class="column">
-        <div class="subtitle is-4 has-text-weight-light">
-          <nuxt-link to="/photos">Photos</nuxt-link>
+        <div class="columns">
+          <div class="column">
+            <div class="subtitle is-4 has-text-weight-light">
+              <nuxt-link to="/photos">Photos</nuxt-link>
+            </div>
+            <p>
+              There isn't anything here yet...
+            </p>
+          </div>
         </div>
-        <p>
-          There isn't anything here yet...
-        </p>
-      </article>
-    </div>
-
+      </div>
+    </div> -->
 
   </section>
 </template>
@@ -59,11 +85,13 @@ export default {
       }
     ])
   },
+  inject: ['breakpoint']
 }
 </script>
 
 <style scoped>
-article {
-  margin: 1rem 0 !important;
+.welcome {
+  display: flex;
+  height: 100%;
 }
 </style>
