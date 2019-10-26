@@ -30,11 +30,17 @@ export default {
 
       },
       breakpoint: {
-        isMobile: null,
+        isMobile: false,
         isTablet: null,
         isDesktop: null,
         isWidescreen: null,
         isFullhd: null,
+        aboveMobile: null,
+        aboveTablet: null,
+        aboveDesktop: null,
+        belowDesktop: null,
+        belowWidescreen: null,
+        belowFullhd: null,
       },
     }
   },
@@ -50,9 +56,11 @@ export default {
       })
     }
   },
-  mounted() {
-    this.onResize()
-    window.addEventListener('resize', this.onResize)
+  created() {
+    if (process.client) {
+      this.onResize()
+      window.addEventListener('resize', this.onResize)
+    }
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
