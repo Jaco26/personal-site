@@ -3,7 +3,7 @@
     <h1 class="title has-text-weight-light">Jacob's thoughts on games</h1>
 
     <div>
-      <span class="subtitle">TL;DR</span> 
+      <span class="subtitle">TLDR;</span> 
       <p>More games should feature non-domination win conditions</p>
     </div>
 

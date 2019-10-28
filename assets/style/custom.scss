@@ -15,6 +15,15 @@ $velvet: #1a3a42;
 $velvet-invert: findColorInvert($velvet);
 
 
+// kuler complementary colors with $velvet base
+$primary: #1A3A42;
+$secondary: #297B8F;
+$secondary-invert: findColorInvert($secondary);
+$accent: #D67C29;
+$accent-invert: findColorInvert($accent);
+
+
+
 $colors: (
   "white": ($white, $black),
   "black": ($black, $white),
@@ -27,6 +36,8 @@ $colors: (
   "danger": ($danger, $danger-invert),
   "velvet": ($velvet, $velvet-invert),
   "powderblue": ($powderblue, $powderblue-invert),
+  "secondary": ($secondary, $secondary-invert),
+  "accent": ($accent, $accent-invert),
 );
 
 $card-background-color: transparent;
@@ -42,7 +53,7 @@ $card-content-padding: .5rem;
 // custom css
 body {
   background-color: $light;
-  // height: 100%;
+  color: $velvet;
   min-height: 100vh;
 }
 a {
