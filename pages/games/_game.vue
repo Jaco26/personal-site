@@ -18,6 +18,7 @@
 
 <script>
 import SnakeGame from '@/components/games/snake'
+import PongGame from '@/components/games/pong'
 const keyCodeMap = {
   37: 'arrowLeft',
   38: 'arrowUp',
@@ -51,6 +52,7 @@ export default {
     return {
       games: {
         snake: SnakeGame,
+        pong: PongGame,
       },
       dimensions: {
         width: 900,

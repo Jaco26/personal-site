@@ -1,4 +1,4 @@
-import GameBase from '@/components/games/models/game-base'
+import GameBase from '@/components/games/game-base'
 import CellMap from './cell-map'
 import Painter from './painter'
 import Snake from './snake'
