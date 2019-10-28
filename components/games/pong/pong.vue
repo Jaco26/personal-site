@@ -23,6 +23,7 @@ export default {
             const ballHitLeftPaddle = game.physics.checkBallPaddle(game.ball, game.leftPaddle)
             const ballHitRightPaddle = game.physics.checkBallPaddle(game.ball, game.rightPaddle)
             game.physics.checkBallFloorCiel(game.ball)
+            game.physics.checkPaddlesFloorCiel([game.leftPaddle, game.rightPaddle])
             game.leftPaddle.updatePosition()
             game.rightPaddle.updatePosition()
             game.ball.updatePosition()
@@ -33,6 +34,11 @@ export default {
               game.painter.text({ text: 'GAME OVER ! ! !' })
             } else if (ballHitLeftPaddle || ballHitRightPaddle) {
               this.update('score', this.score + 1)
+              if (this.score > 0 && this.score % 5 === 0) {
+                game.ball.dx > 0
+                  ? game.ball.dx += 1
+                  : game.ball.dx -= 1
+              }
             }
           })
         }

@@ -22,9 +22,11 @@
             <GamesArticle />
           </div>
           <div class="column">
-
             <div class="subtitle is-4 has-text-centered has-text-weight-light">
               <nuxt-link to="/games/snake">Snake</nuxt-link>
+            </div>
+            <div class="subtitle is-4 has-text-centered has-text-weight-light">
+              <nuxt-link to="/games/pong">Pong</nuxt-link>
             </div>
             <div class="has-text-centered">
               ... more on the way

@@ -2,6 +2,7 @@
 <template>
   <div>
     <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
+    {{gameState.score}}
     <game-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ hasCtx }">
       <Pong
         v-if="hasCtx"
