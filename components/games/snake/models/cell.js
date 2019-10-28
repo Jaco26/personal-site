@@ -13,11 +13,14 @@ export default class Cell {
       case 1: // default
         return '#112'
       case 2: // snake
-        return 'limegreen'
+        return {
+          strokeStyle: 'limegreen',
+          fillStyle: '#80a0f033',
+        } 
       // case 3: // slime (stuff the snake has been on)
       //   return '#6c9e70'
       case 3: // food
-        return '#eee'
+        return '#eeeeee33'
     }
   }
 }

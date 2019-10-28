@@ -103,7 +103,7 @@ export default class Game extends GameBase {
   paintGameOver() {
     const ctx = this.painter.ctx;
     ctx.fillStyle = 'orange'
-    ctx.font = '20px Arial'
+    ctx.font = '30px Arial'
     ctx.fillText('GAME OVER ! ! !', ctx.canvas.width / 2 - 30, 60)
   }
 }

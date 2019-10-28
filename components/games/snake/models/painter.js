@@ -6,8 +6,15 @@ export default class Painter {
   paintCell(cell) {
     this.ctx.beginPath();
     this.ctx.rect(cell.x, cell.y, cell.width, cell.height);
-    this.ctx.fillStyle = cell.color
-    this.ctx.fill();
+    if (typeof cell.color === 'string') {
+      this.ctx.fillStyle = cell.color
+      this.ctx.fill()
+    } else {
+      this.ctx.fillStyle = cell.color.fillStyle
+      this.ctx.strokeStyle = cell.color.strokeStyle
+      this.ctx.stroke()
+      this.ctx.fill()
+    }
     this.ctx.closePath();
   }
 }

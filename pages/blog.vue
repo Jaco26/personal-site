@@ -5,3 +5,20 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  middleware(ctx) {
+    ctx.store.commit('SET_BREADCRUMBS', [
+      {
+        to: '/',
+        text: 'Jacob',
+      },
+      {
+        to: '/blog',
+        text: '"Blog"',
+      }
+    ])
+  }
+}
+</script>
