@@ -11,16 +11,25 @@ export default class Cell {
   get color() {
     switch (this.kind) {
       case 1: // default
-        return '#112'
+        // return '#112'
+        return '#abcd'
       case 2: // snake
+        // return {
+        //   strokeStyle: 'limegreen',
+        //   fillStyle: '#80a0f033',
+        // } 
         return {
-          strokeStyle: 'limegreen',
-          fillStyle: '#80a0f033',
-        } 
+          strokeStyle: 'lime',
+          fillStyle: '#a29'
+        }
       // case 3: // slime (stuff the snake has been on)
       //   return '#6c9e70'
       case 3: // food
-        return '#eeeeee33'
+        // return '#eeeeee33'
+        return {
+          fillStyle: '#17b',
+          strokeStyle: '#333',
+        }
     }
   }
 }

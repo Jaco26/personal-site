@@ -2,38 +2,22 @@
   <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container is-fluid">
-
-        <div v-if="breakpoint.isMobile" class="columns">
-          <div class="column">
-            <div class="subtitle is-4 has-text-centered has-text-weight-light">
-              <nuxt-link to="/games/snake">Snake</nuxt-link>
-            </div>
-            <div class="has-text-centered">
-              ... more on the way
-            </div>
-          </div>
-          <div class="column">
-            <GamesArticle />
-          </div>
-        </div>
-
-        <div v-else class="columns">
-          <div class="column">
-            <GamesArticle />
-          </div>
-          <div class="column">
-            <div class="subtitle is-4 has-text-centered has-text-weight-light">
-              <nuxt-link to="/games/snake">Snake</nuxt-link>
-            </div>
-            <div class="subtitle is-4 has-text-centered has-text-weight-light">
-              <nuxt-link to="/games/pong">Pong</nuxt-link>
-            </div>
-            <div class="has-text-centered">
-              ... more on the way
-            </div>
-          </div>
-        </div>
-
+        <j-row centered>
+          <j-col size="two-fifths">
+            <ul>
+              <li>
+                <j-blurb-link to="/games/snake" label="Snake">
+                  How long can you balance the snake's insatiable hunger? How long can you grow before you become just too long?
+                </j-blurb-link>
+              </li>
+              <li>
+                <j-blurb-link to="/games/pong" label="Pong">
+                  Grab a friend or move both paddles yourself to play this co-op version of Pong
+                </j-blurb-link>
+              </li>
+            </ul>
+          </j-col>
+        </j-row>
       </div>
     </div>
   </section>

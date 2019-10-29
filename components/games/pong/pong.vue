@@ -19,7 +19,6 @@ export default {
           game.resume()
         } else { // START
           game.run(() => {
-            game.paint()
             const ballHitLeftPaddle = game.physics.checkBallPaddle(game.ball, game.leftPaddle)
             const ballHitRightPaddle = game.physics.checkBallPaddle(game.ball, game.rightPaddle)
             game.physics.checkBallFloorCiel(game.ball)
@@ -40,6 +39,7 @@ export default {
                   : game.ball.dx -= 1
               }
             }
+            game.paint()
           })
         }
       } else { // STOP

@@ -1,5 +1,6 @@
 <template>
-  <footer class="footer has-background-grey-lighter">
+  <!-- <footer class="footer has-background-grey-lighter"> -->
+  <footer class="footer has-background-velvet">
     <div class="container">
       <j-row>
         <j-col>
@@ -12,6 +13,7 @@
             </div>
           </template>
         </j-col>
+        <j-col></j-col>
         <j-col>
           <h3 class="subtitle is-4">Contact</h3>
           <template v-for="link in contactLinks">
@@ -71,13 +73,18 @@ export default {
 <style scoped>
 a {
   display: inline-flex;
-  color: #555;
+  /* color: #555; */
+  color: #ccc;
   margin: 0 0 1rem 0;
 }
 a:hover {
-  color: #222
+  /* color: #222 */
+  color: #eee
 }
 a > span {
   margin-right: .4rem;
+}
+h3 {
+  color: #ddd;
 }
 </style>

@@ -69,6 +69,7 @@ export default class Game extends GameBase {
   }
 
   paintCells() {
+    this.painter.ctx.clearRect(0, 0, this.painter.ctx.canvas.width, this.painter.ctx.canvas.height)
     this.cellMap.cells.forEach((row, ri) => {
       row.forEach((cell, ci) => {
         cell.kind = this.getCellKind(ri, ci);
