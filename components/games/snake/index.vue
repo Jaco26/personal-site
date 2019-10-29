@@ -5,14 +5,14 @@
         <b-button @click="onGameStateControlClick">
           {{gameStateControlText}}
         </b-button>
-        <b-button @click="gameSetup.animationRate -= 1">
+        <b-button :disabled="!animationRate.canIncrease" @click="adjustAnimationRate(-1)">
           + speed
         </b-button>
-        <b-button @click="gameSetup.animationRate += 1">
+        <b-button :disabled="!animationRate.canDecrease" @click="adjustAnimationRate(1)">
           - speed
         </b-button>
         <span>
-          {{gameSetup.animationRate}}
+          {{snakeSpeed}}
         </span>
       </div>
       <div class="column is-narrow">
@@ -29,7 +29,7 @@
         :dimensions="dimensions"
         :controls="controls"
         :snakeSetup="gameSetup.snake"
-        :animationRate="gameSetup.animationRate"
+        :animationRate="animationRate.value"
         v-bind.sync="gameState"
       />
     </game-canvas>
@@ -61,11 +61,40 @@ export default {
           row: 20,
           col: 20
         },
-        animationRate: 6,
-      }
+      },
+      animationRateProxy: {
+        value: 5,
+        min: 2, // fastest
+        max: 8, // slowest
+      },
     }
   },
   computed: {
+    animationRate() {
+      return {
+        value: this.animationRateProxy.value,
+        canIncrease: this.animationRateProxy.value > this.animationRateProxy.min,
+        canDecrease: this.animationRateProxy.value < this.animationRateProxy.max
+      }
+    },
+    snakeSpeed() {
+      switch (this.animationRate.value) {
+        case 8:
+          return 1
+        case 7:
+          return 2
+        case 6:
+          return 3
+        case 5:
+          return 4
+        case 4:
+          return 5
+        case 3:
+          return 6
+        case 2:
+          return 7
+      }
+    },
     gameStateControlText() {
       if (this.gameState.gameOn) {
         return 'Pause'
@@ -77,6 +106,17 @@ export default {
     },
   },
   methods: {
+    adjustAnimationRate(val) {
+      const current = this.animationRateProxy.value
+      if (current + val <= this.animationRateProxy.max && current + val >= this.animationRateProxy.min) {
+        this.animationRateProxy.value += val
+      }
+    },
+    decrementSnakeSpeed() {
+      if (this.gameSetup.animationRate < 8) {
+        this.gameSetup.animationRate += 1
+      }
+    },
     onGameStateControlClick() {
       this.gameState.gameOver
         ? this.$refs.snake.reset()

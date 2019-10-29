@@ -14,10 +14,6 @@
 .breadcrumb-link {
   margin: .6rem;
   font-size: 1.3rem;
-  color: $grey-lighter;
-}
-.breadcrumb-link:hover {
-  color: $light;
 }
 .hihi {
   display: flex;

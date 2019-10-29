@@ -1,20 +1,7 @@
 <template>
-  <b-navbar transparent fixed-top class="is-velvet">
+  <b-navbar :mobile-burger="false" transparent fixed-top class="is-light">
    <template v-slot:brand>
       <TheBreadcrumbs />
-    </template>
-    <template v-slot:end>
-      <b-navbar-dropdown class="contact-dropdown" hoverable right >
-        <template v-slot:label>
-          <span>Contact</span>
-        </template>
-        <template v-for="link in contactLinks">
-          <b-navbar-item :key="link.text" :href="link.href" class="contact-link">
-            <b-icon :icon="link.icon"></b-icon>
-            <span>{{link.text}}</span>
-          </b-navbar-item>
-        </template>
-      </b-navbar-dropdown>
     </template>
   </b-navbar>
 </template>

@@ -4,7 +4,10 @@
 export default {
   functional: true,
   props: {
-    size: String,
+    size: {
+      type: String,
+      default: '',
+    },
   },
   render(h, ctx) {
     const { size } = ctx.props

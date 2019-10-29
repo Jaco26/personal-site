@@ -4,10 +4,11 @@
 $navbar-breakpoint: $tablet;
 $modal-background-background-color: $black;
 
-$pink: pink;
-$pink-invert: findColorInvert($pink);
+$bluegreen: rgb(25, 160, 153);
+$bluegreen-invert: findColorInvert($bluegreen);
 
-$powderblue: hsl(212, 81%, 35%);
+// $powderblue: hsl(212, 81%, 35%);
+$powderblue: hsl(212, 81%, 49%);
 $powderblue-invert: hsl(194, 82%, 35%);
 
 
@@ -38,6 +39,7 @@ $colors: (
   "powderblue": ($powderblue, $powderblue-invert),
   "secondary": ($secondary, $secondary-invert),
   "accent": ($accent, $accent-invert),
+  "bluegreen": ($bluegreen, $bluegreen-invert)
 );
 
 $card-background-color: transparent;
@@ -56,15 +58,11 @@ body {
   color: $velvet;
   min-height: 100vh;
 }
-a {
-  color: $powderblue;
-}
-a:hover {
-  color: $powderblue-invert;
-}
 
 .nuxt-link-exact-active {
-  color: $pink !important;
+  color: $bluegreen;
+  // color: $powderblue-invert;
+  font-weight: 400;
 }
 
 .page-enter-active, .page-leave-active {

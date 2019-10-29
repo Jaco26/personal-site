@@ -1,8 +1,14 @@
 
 <template>
   <div>
-    <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
-    {{gameState.score}}
+    <j-row vCentered>
+      <j-col>
+        <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
+      </j-col>
+      <j-col size="narrow">
+        <span>Score: {{gameState.score}}</span>
+      </j-col>
+    </j-row>
     <game-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ hasCtx }">
       <Pong
         v-if="hasCtx"
