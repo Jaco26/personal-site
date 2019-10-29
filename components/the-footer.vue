@@ -1,29 +1,38 @@
 <template>
-  <!-- <footer class="footer has-background-grey-lighter"> -->
   <footer class="footer has-background-velvet">
     <div class="container">
       <j-row>
+        
         <j-col>
           <h3 class="subtitle is-4">Pages</h3>
           <template v-for="link in pageLinks">
             <div :key="link.to">
-              <nuxt-link :to="link.to">
+              <nuxt-link class="footer-link" :to="link.to">
                 <span>{{link.text}}</span> 
               </nuxt-link>
             </div>
           </template>
         </j-col>
-        <j-col></j-col>
+        
         <j-col>
           <h3 class="subtitle is-4">Contact</h3>
           <template v-for="link in contactLinks">
             <div :key="link.href">
-              <a :href="link.href">
+              <a class="footer-link" :href="link.href">
                 <b-icon :icon="link.icon"></b-icon>
                 <span class=""> {{link.text}} </span>
               </a>
             </div>
           </template>
+        </j-col>
+        <j-col>
+          <div>
+            This site is built with <a style="margin: 0" href="https://nuxtjs.org/"> Nuxt.js</a> and <a style="margin: 0" href="https://buefy.org/">Buefy</a> and is written and maintained by Jacob Albright.
+          </div>
+          <br>
+          <div>
+            © {{currentYear}} Jacob Albright. All Rights Reserved.
+          </div>
         </j-col>
       </j-row>
     </div>
@@ -44,8 +53,8 @@ export default {
           text: 'Photos',
         },
         {
-          to: '/blog',
-          text: 'Blog'
+          to: '/thoughts',
+          text: 'Thoughts'
         },
       ],
       contactLinks: [
@@ -66,6 +75,11 @@ export default {
         },
       ]
     }
+  },
+  computed: {
+    currentYear() {
+      return new Date().toDateString().slice(-4)
+    }
   }
 }
 </script>
@@ -73,18 +87,27 @@ export default {
 <style scoped>
 a {
   display: inline-flex;
-  /* color: #555; */
   color: #ccc;
   margin: 0 0 1rem 0;
 }
 a:hover {
-  /* color: #222 */
-  color: #eee
+  color: #fff
 }
 a > span {
   margin-right: .4rem;
 }
-h3 {
+h3, div {
   color: #ddd;
+}
+.copywrite {
+  display: flex;
+  flex-direction: column;
+  min-height: 100% ;
+  /* justify-content: space-between; */
+}
+.copywrite > div {
+  /* justify-self: center; */
+  justify-content: flex-end;
+  flex: 1;
 }
 </style>

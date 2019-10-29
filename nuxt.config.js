@@ -6,7 +6,9 @@ module.exports = {
 
   generate: {
     routes: [
-      '/games/snake'
+      '/games/snake',
+      '/games/pong',
+      '/thoughts/on-games'
     ]
   },
 

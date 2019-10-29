@@ -6,7 +6,7 @@
           <j-col size="two-fifths">
             <ul>
               <li>
-                <j-blurb-link to="/blog/thoughts-on-games" label="Jacob Shares His Thoughts On Games">
+                <j-blurb-link blurbIsLink to="/thoughts/on-games" label="Jacob Shares His Thoughts On Games">
                   <span class="subtitle is-5">because he really likes to play them</span> 
                 </j-blurb-link>
               </li>
@@ -27,8 +27,8 @@ export default {
         text: 'Jacob',
       },
       {
-        to: '/blog',
-        text: 'Blog',
+        to: '/thoughts',
+        text: 'Thoughts',
       }
     ])
   }

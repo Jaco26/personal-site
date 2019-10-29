@@ -1,7 +1,9 @@
 <template functional>
   <div>
     <div class="subtitle is-4 has-text-weight-light is-marginless">
-      <nuxt-link :to="props.to">{{props.label}}</nuxt-link>
+      <nuxt-link :to="props.to">
+        {{props.label}}
+      </nuxt-link>
     </div>
     <div class="blurb-link">
       <slot />

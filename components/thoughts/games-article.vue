@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title has-text-weight-light">Jacob Shares His Thoughts On Games</h1>
-    <h3 class="subtitle">'cause he really likes to play them</h3>
+    <h3 class="subtitle">because he really likes to play them</h3>
 
     <!-- <br> -->
     

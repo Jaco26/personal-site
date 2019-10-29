@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import GamesArticle from '@/components/blog/games-article'
+import GamesArticle from '@/components/thoughts/games-article'
 export default {
   middleware(ctx) {
     const articleName = ctx.params.article
@@ -30,11 +30,11 @@ export default {
         text: 'Jacob',
       },
       {
-        to: '/blog',
-        text: 'Blog',
+        to: '/thoughts',
+        text: 'Thoughts',
       },
       {
-        to: `/blog/${ctx.params.article}`,
+        to: `/thoughts/${ctx.params.article}`,
         text: articleName
       }
     ])
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       posts: {
-        'thoughts-on-games': GamesArticle
+        'on-games': GamesArticle
       }
     }
   }

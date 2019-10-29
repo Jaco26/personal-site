@@ -16,7 +16,7 @@
                 </j-blurb-link>
               </li>
               <li>
-                <j-blurb-link to="/blog" label="Blog">
+                <j-blurb-link to="/thoughts" label="Thoughts">
                   This is where I write my thoughts about things.
                 </j-blurb-link>
               </li>
