@@ -45,7 +45,7 @@ export default {
         },
         {
           to: '/blog',
-          text: '"Blog"'
+          text: 'Blog'
         },
       ],
       contactLinks: [

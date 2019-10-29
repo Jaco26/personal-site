@@ -1,13 +1,9 @@
 <template>
   <div>
-    <h1 class="title has-text-weight-light">Jacob's thoughts on games</h1>
+    <h1 class="title has-text-weight-light">Jacob Shares His Thoughts On Games</h1>
+    <h3 class="subtitle">'cause he really likes to play them</h3>
 
-    <div>
-      <span class="subtitle">TLDR;</span> 
-      <p>More games should feature non-domination win conditions</p>
-    </div>
-
-    <br>
+    <!-- <br> -->
     
     <div class="content">
       <p>

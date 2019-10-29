@@ -6,13 +6,8 @@
           <j-col size="two-fifths">
             <ul>
               <li>
-                <j-blurb-link to="/games/snake" label="Snake">
-                  How long can you balance the snake's insatiable hunger? How long can you grow before you become just too long?
-                </j-blurb-link>
-              </li>
-              <li>
-                <j-blurb-link to="/games/pong" label="Pong">
-                  Grab a friend or move both paddles yourself to play this co-op version of Pong
+                <j-blurb-link to="/blog/thoughts-on-games" label="Jacob Shares His Thoughts On Games">
+                  <span class="subtitle is-5">because he really likes to play them</span> 
                 </j-blurb-link>
               </li>
             </ul>
@@ -29,13 +24,13 @@ export default {
     ctx.store.commit('SET_BREADCRUMBS', [
       {
         to: '/',
-        text: 'Jacob'
+        text: 'Jacob',
       },
       {
-        to: '/games',
-        text: 'Games'
-      },
+        to: '/blog',
+        text: 'Blog',
+      }
     ])
-  },
+  }
 }
 </script>
