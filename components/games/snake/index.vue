@@ -31,6 +31,7 @@
         :snakeSetup="gameSetup.snake"
         :animationRate="animationRate.value"
         v-bind.sync="gameState"
+        @reset="reset"
       />
     </game-canvas>
   </div>
@@ -117,9 +118,15 @@ export default {
         this.gameSetup.animationRate += 1
       }
     },
+    reset() {
+      this.$refs.snake.setup()
+      this.gameState.gameOn = false;
+      this.gameState.gameOver = false;
+      this.gameState.score = 0
+    },
     onGameStateControlClick() {
       this.gameState.gameOver
-        ? this.$refs.snake.reset()
+        ? this.reset()
         : this.gameState.gameOn = !this.gameState.gameOn
     }
   }

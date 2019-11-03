@@ -5,7 +5,8 @@
         <div class="columns is-centered">
           <div class="column is-narrow">
             <component
-              :is="selectedGame"
+              :is="selectedGame.component"
+              :ref="selectedGame.name"
               :dimensions="dimensions"
               :controls="controls"
             ></component>
@@ -76,7 +77,10 @@ export default {
   },
   computed: {
     selectedGame() {
-      return this.games[this.$route.params.game]
+      return {
+        component: this.games[this.$route.params.game],
+        name: this.$route.params.game,
+      } 
     },
   },
   methods: {
@@ -88,20 +92,17 @@ export default {
     }
   },
   mounted() {
+    window.scrollTo(0, 0)
+    document.querySelector('html').style.overflow = 'hidden'
     document.addEventListener('keydown', this.handleKeyDown)
     document.addEventListener('keyup', this.handleKeyUp)
   },
-  beforeDestroy() {
+  beforeRouteLeave(to, from, next) {
     document.removeEventListener('keydown', this.handleKeyDown)
     document.removeEventListener('keyup', this.handleKeyUp)
     document.querySelector('html').style.overflow = 'auto'
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.active = true;
-      window.scrollTo(0, 0)
-      document.querySelector('html').style.overflow = 'hidden'
-    })
+    this.$refs[this.selectedGame.name].reset()
+    next()
   }
 }
 </script>

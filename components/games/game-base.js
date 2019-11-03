@@ -23,7 +23,9 @@ export default class GameBase {
 
   run(callback) {
     this._running = true
-    this.cachedRunCallback = callback.bind(this)
+    if (!this.cachedRunCallback) {
+      this.cachedRunCallback = callback.bind(this)
+    }
     let mainLoop
     if (this.animationRate) {
       let _rateCounter = this.animationRate

@@ -33,6 +33,12 @@ export default {
     controls: Object,
     dimensions: Object,
   },
+  mounted() {
+    console.log('just mounted pong')
+  },
+  beforeDestroy() {
+    console.log('about to destroy pong')
+  },
   data() {
     return {
       gameState: {
@@ -54,6 +60,12 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.$refs.pong.setup()
+      this.gameState.gameOn = false;
+      this.gameState.gameOver = false;
+      this.gameState.score = 0
+    },
     onGameStateControlClick() {
       this.gameState.gameOver
         ? this.$refs.pong.reset()

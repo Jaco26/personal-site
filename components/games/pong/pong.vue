@@ -1,7 +1,7 @@
 <script>
 import Game from '@/components/games/pong/models/game.js'
 
-const game = new Game()
+let game;
 
 export default {
   inject: ['ctxProvider'],
@@ -55,7 +55,7 @@ export default {
         }
         if (r) {
           if (this.gameOver) {
-            this.reset()
+            this.$emit('reset')
           } else {
             game.resume()
             this.update('gameOn', true)
@@ -81,6 +81,7 @@ export default {
     }
   },
   mounted() {
+    game = new Game()
     this.setup()
   },
   methods: {
@@ -94,12 +95,6 @@ export default {
         height: this.dimensions.height
       })
     },
-    reset() {
-      this.setup()
-      this.update('gameOn', false)
-      this.update('gameOver', false)
-      this.update('score', 0)
-    }
   },
   render() { }
 }

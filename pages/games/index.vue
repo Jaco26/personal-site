@@ -12,7 +12,7 @@
               </li>
               <li>
                 <j-blurb-link to="/games/pong" label="Pong">
-                  Grab a friend or move both paddles yourself to play this co-op version of Pong
+                  Grab a friend or move both paddles yourself to play this co-op version of Pong.
                 </j-blurb-link>
               </li>
             </ul>
