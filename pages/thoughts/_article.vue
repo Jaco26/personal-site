@@ -1,17 +1,12 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
-    <div class="hero-body ">
-      <div class="container is-fluid">
-        <div class="">
-          <j-row>
-            <j-col>
-              <component :is="posts[$route.params.article]"></component>
-            </j-col>
-          </j-row>
-        </div>  
-      </div>
+  <section class="section" style="min-height: calc(100vh - 52px) !important">
+    <div class="container is-fluid">
+      <j-row>
+        <j-col>
+           <component :is="posts[$route.params.article]"></component>
+        </j-col>
+      </j-row>
     </div>
-    
   </section>
 </template>
 
