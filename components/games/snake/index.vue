@@ -70,6 +70,12 @@ export default {
       },
     }
   },
+  mounted() {
+    this.loadSettings()
+  },
+  beforeDestroy() {
+    this.saveSettings()
+  },
   computed: {
     animationRate() {
       return {
@@ -107,6 +113,15 @@ export default {
     },
   },
   methods: {
+    loadSettings() {
+
+    },
+    saveSettings() {
+      const namespace = 'snake'
+      localStorage.setItem(namespace, JSON.stringify({
+        
+      }))
+    },
     adjustAnimationRate(val) {
       const current = this.animationRateProxy.value
       if (current + val <= this.animationRateProxy.max && current + val >= this.animationRateProxy.min) {

@@ -16,6 +16,7 @@
         :dimensions="dimensions"
         :controls="controls"
         v-bind.sync="gameState"
+        @reset="reset"
       />
     </game-canvas>
   </div>
