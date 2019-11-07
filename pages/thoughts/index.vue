@@ -6,9 +6,7 @@
           <j-col size="two-fifths">
             <ul>
               <li>
-                <j-blurb-link blurbIsLink to="/thoughts/on-games" label="Jacob Shares His Thoughts On Games">
-                  <span class="subtitle is-5">because he really likes to play them</span> 
-                </j-blurb-link>
+                Okay, I don't have any writing I want to share right now but look at <nuxt-link to="/games">these games!</nuxt-link>
               </li>
             </ul>
           </j-col>
