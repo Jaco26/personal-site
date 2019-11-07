@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
+  <!-- <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container is-fluid">
         <div class="columns is-centered">
@@ -13,6 +13,16 @@
           </div>
         </div>
       </div>
+    </div>
+  </section> -->
+  <section class="section" style="min-height: calc(100vh - 3.25rem)">
+    <div class="container is-fluid">
+      <component
+        :is="selectedGame.component"
+        :ref="selectedGame.name"
+        :dimensions="dimensions"
+        :controls="controls"
+      ></component>
     </div>
   </section>
 </template>

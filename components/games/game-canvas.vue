@@ -39,6 +39,6 @@ export default {
 
 <style scoped>
 canvas {
-  border: 1px outset;
+  /* border: 1px outset; */
 }
 </style>

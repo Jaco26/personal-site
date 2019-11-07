@@ -78,8 +78,15 @@ export default {
     'animationRate'(val) {
       game.animationRate = val
     },
-    'snakeSetup.isPolluter'(val) {
-      game.snake.isPolluter = val
+    'snakeSetup.gameMode'(val) {
+      switch (val) {
+        case 'classic':
+          game.snake.isPolluter = false
+          break
+        case 'polluter':
+          game.snake.isPolluter = true
+          break
+      }
     },
   },
   mounted() {
