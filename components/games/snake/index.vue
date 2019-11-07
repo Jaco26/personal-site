@@ -7,7 +7,7 @@
           <j-tile style="flex: 0; margin-bottom: 1rem;">
             <j-tile is-parent style="padding: 0">
               <j-tile is-child >
-                <b-button @click="onGameStateControlClick">
+                <b-button :type="gameState.gameOver ? 'is-danger' : gameState.gameOn ? 'is-warning' : 'is-success'" @click="onGameStateControlClick">
                   {{gameStateControlText}}
                 </b-button>
               </j-tile>
@@ -164,14 +164,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.snake-controls-panel {
-  padding-right: 2rem;
-  margin-right: 1rem;
-  min-width: 300px;
-}
-.control-group {
-  margin-bottom: 3rem;
-}
-</style>

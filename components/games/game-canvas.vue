@@ -37,8 +37,3 @@ export default {
 }
 </script>
 
-<style scoped>
-canvas {
-  /* border: 1px outset; */
-}
-</style>
