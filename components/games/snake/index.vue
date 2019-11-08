@@ -42,13 +42,13 @@
           </div>
         </div>
 
-        <div v-else class="columns level" style="margin: 0">
+        <!-- <div v-else class="columns level" style="margin: 0">
           <div class="column ctrl-col">
             <b-button @click="onGameStateControlClick">
               {{gameStateControlText}}
             </b-button>
           </div>
-        </div>
+        </div> -->
 
         <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
           <Snake
@@ -64,6 +64,23 @@
             @reset="reset"
           />
         </game-canvas>
+
+        <div v-if="breakpoint.isMobile">
+          <div class="column is-narrow-mobile ctrl-col">
+            <b-button @click="onGameStateControlClick">
+              {{gameStateControlText}}
+            </b-button>
+            <b-button @click="showSettings = true">Settings</b-button>
+          </div>
+
+          <TheMobileSettingsModal
+            :showSettings.sync="showSettings"
+            :gameMode.sync="gameMode"
+            :snakeSpeed.sync="snakeSpeed"
+            :showScore.sync="showScore"
+          />
+          
+        </div>
       </div>
     </div>
   </div>
@@ -72,6 +89,7 @@
 <script>
 import GameCanvas from '@/components/games/game-canvas'
 import Snake from '@/components/games/snake/snake'
+import TheMobileSettingsModal from '@/components/games/snake/the-mobile-settings-modal'
 
 const STORAGE_NAMESPACE = 'snake'
 
@@ -83,9 +101,11 @@ export default {
   components: {
     GameCanvas,
     Snake,
+    TheMobileSettingsModal,
   },
   data() {
     return {
+      showSettings: false,
       snakeSpeed: {
         value: 4,
         min: 1,

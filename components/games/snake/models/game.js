@@ -122,7 +122,7 @@ export default class Game extends GameBase {
       text: this.score,
       fillStyle: 'black',
       font: '20px Arial',
-      x: this.width - 30,
+      x: this.width - 25,
       y: 30,
     })
   }
@@ -131,8 +131,8 @@ export default class Game extends GameBase {
     this.painter.paintText({
       text: 'GAME OVER ! ! !',
       fillStyle: 'red',
-      font: '30px Arial',
-      x: this.width / 2 - 70,
+      font: '25px Arial',
+      x: this.width / 2 - 80,
       y: 60
     })
   }
