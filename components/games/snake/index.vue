@@ -66,21 +66,40 @@
         </game-canvas>
 
         <div v-if="breakpoint.isMobile">
-          <div class="column is-narrow-mobile ctrl-col">
-            <b-button @click="onGameStateControlClick">
-              {{gameStateControlText}}
-            </b-button>
-            <b-button @click="showSettings = true">Settings</b-button>
+          <div class="columns is-flex-mobile is-marginless">
+            <div class="column ctrl-col">
+              <b-button @click="onGameStateControlClick">
+                {{gameStateControlText}}
+              </b-button>
+            </div>
+
+            <div class="column is-narrow-mobile ctrl-col-end">
+              <b-button @click="showSettings = true">Settings</b-button>
+            </div>
+
+            <TheMobileSettingsModal
+              :showSettings.sync="showSettings"
+              :gameMode.sync="gameMode"
+              :snakeSpeed.sync="snakeSpeed"
+              :showScore.sync="showScore"
+            />
           </div>
 
-          <TheMobileSettingsModal
-            :showSettings.sync="showSettings"
-            :gameMode.sync="gameMode"
-            :snakeSpeed.sync="snakeSpeed"
-            :showScore.sync="showScore"
-          />
-          
+          <div class="columns is-marginless is-centered is-flex-mobile">
+            <div class="column is-narrow-mobile is-marginless is-paddingless">
+              <b-button @mousedown.native="$emit('mobileControlDown', 'up')" @mouseup.native="$emit('mobileControlUp', 'up')"><b-icon icon="menu-up"></b-icon></b-button>
+            </div>
+          </div>
+          <div class="columns is-marginless is-centered is-flex-mobile">
+            <div class="column is-marginless is-paddingless is-narrow-mobile">
+              <b-button @mousedown.native="$emit('mobileControlDown', 'left')" @mouseup.native="$emit('mobileControlUp', 'left')"><b-icon icon="menu-left"></b-icon></b-button>
+              <b-button @mousedown.native="$emit('mobileControlDown', 'down')" @mouseup.native="$emit('mobileControlUp', 'down')"><b-icon icon="menu-down"></b-icon></b-button>
+              <b-button @mousedown.native="$emit('mobileControlDown', 'right')" @mouseup.native="$emit('mobileControlUp', 'right')"><b-icon icon="menu-right"></b-icon></b-button>
+            </div>
+          </div>
+
         </div>
+        
       </div>
     </div>
   </div>

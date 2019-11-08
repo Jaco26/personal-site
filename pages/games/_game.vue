@@ -6,6 +6,8 @@
           :is="selectedGame.component"
           :ref="selectedGame.name"
           :controls="controls"
+          @mobileControlDown="onMobileControlDown"
+          @mobileControlUp="onMobileControlUp"
         ></component>
       </div>
     </div>
@@ -78,6 +80,28 @@ export default {
     },
     handleKeyUp(e) {
       this.controls[keyCodeMap[e.keyCode]] = false
+    },
+    onMobileControlDown(val) {
+      if (val === 'left') {
+        this.controls.arrowLeft = true
+      } else if (val === 'up') {
+        this.controls.arrowUp = true
+      } else if (val === 'right') {
+        this.controls.arrowRight = true
+      } else if (val === 'down') {
+        this.controls.arrowDown = true
+      }
+    },
+    onMobileControlUp(val) {
+      if (val === 'left') {
+        this.controls.arrowLeft = false
+      } else if (val === 'up') {
+        this.controls.arrowUp = false
+      } else if (val === 'right') {
+        this.controls.arrowRight = false
+      } else if (val === 'down') {
+        this.controls.arrowDown = false
+      }
     }
   },
   mounted() {
