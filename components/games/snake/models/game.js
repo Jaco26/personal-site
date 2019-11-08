@@ -59,6 +59,13 @@ export default class Game extends GameBase {
     this.paintCells()
   }
 
+  resize(width, height, nRows, nCols) {
+    this.nRows = nRows
+    this.nCols = nCols
+    this.cellMap = new CellMap({ nRows, nCols, width, height })
+    this.paintCells()
+  }
+
   getCellKind(row, col) {
     if (this.snake.bodyMap[`${row},${col}`]) {
       return 2
@@ -103,8 +110,8 @@ export default class Game extends GameBase {
 
   paintGameOver() {
     const ctx = this.painter.ctx;
-    ctx.fillStyle = 'orange'
+    ctx.fillStyle = 'red'
     ctx.font = '30px Arial'
-    ctx.fillText('GAME OVER ! ! !', ctx.canvas.width / 2 - 30, 60)
+    ctx.fillText('GAME OVER ! ! !', ctx.canvas.width / 2 - 70, 60)
   }
 }

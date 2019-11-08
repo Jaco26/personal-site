@@ -1,30 +1,34 @@
 <template>
-  <!-- <section class="hero is-fullheight-with-navbar">
+  <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
-      <div class="container is-fluid">
-        <div class="columns is-centered">
-          <div class="column is-narrow">
+      <!-- <div class="container is-fluid"> -->
+        <!-- <div class="columns is-centered">
+          <div class="column is-narrow"> -->
             <component
               :is="selectedGame.component"
               :ref="selectedGame.name"
-              :dimensions="dimensions"
               :controls="controls"
             ></component>
-          </div>
-        </div>
-      </div>
+          <!-- </div>
+        </div> -->
+      <!-- </div> -->
     </div>
-  </section> -->
-  <section class="section" style="min-height: calc(100vh - 3.25rem)">
-    <div class="container is-fluid">
-      <component
+  </section>
+  <!-- <section class="section" style="min-height: calc(100vh - 3.25rem)">
+    <div class="container is-fluid"> -->
+      <!-- <component
         :is="selectedGame.component"
         :ref="selectedGame.name"
         :dimensions="dimensions"
         :controls="controls"
-      ></component>
-    </div>
-  </section>
+      ></component> -->
+      <!-- <component
+        :is="selectedGame.component"
+        :ref="selectedGame.name"
+        :controls="controls"
+      ></component> -->
+    <!-- </div>
+  </section> -->
 </template>
 
 <script>
@@ -64,12 +68,6 @@ export default {
       games: {
         snake: SnakeGame,
         pong: PongGame,
-      },
-      dimensions: {
-        width: 900,
-        height: 600,
-        nRows: 40,
-        nCols: 60,
       },
       controls: {
         arrowLeft: false,
@@ -117,3 +115,13 @@ export default {
 }
 </script>
 
+<style scoped>
+.hero.is-fullheight-with-navbar .hero-body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.hero-body {
+  padding: 0 1.5rem;
+}
+</style>

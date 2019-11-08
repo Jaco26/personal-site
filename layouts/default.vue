@@ -16,6 +16,10 @@ export default {
   },
   data() {
     return {
+      windowSize: {
+        width: 0,
+        height: 0,
+      },
       rules: {
         isMobile: w => w < 769,
         isTablet: w => w >= 769 && w < 1024,
@@ -50,10 +54,14 @@ export default {
   provide() {
     return {
       breakpoint: this.breakpoint,
+      windowSize: this.windowSize,
     }
   },
   methods: {
     onResize() {
+      this.windowSize.width = window.innerWidth
+      this.windowSize.height = window.innerHeight
+
       Object.keys(this.rules).forEach(key => {
         this.breakpoint[key] = this.rules[key](window.innerWidth)
       })

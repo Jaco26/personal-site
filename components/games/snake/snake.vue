@@ -2,19 +2,17 @@
 <script>
 
 import Game from '@/components/games/snake/models/game.js'
+import CellMap from './models/cell-map';
 
 let game;
 
 export default {
-  inject: ['ctxProvider'],
+  inject: ['ctxProvider', 'windowSize'],
   props: {
     dimensions: Object,
     controls: Object,
     snakeSetup: Object,
-    animationRate: {
-      type: Number,
-      default: 5,
-    },
+    animationRate: Number,
     gameOn: Boolean,
     gameOver: Boolean,
     score: Number,
@@ -88,6 +86,14 @@ export default {
           break
       }
     },
+    dimensions: {
+      deep: true,
+      handler(newVal, oldVal) {
+        if (newVal.width !== oldVal.width || newVal.height !== oldVal.height) {
+          game.resize(newVal.width, newVal.height, newVal.nRows, newVal.nCols)
+        }
+      }
+    }
   },
   mounted() {
     // IMPORTANT: Always instantiate new Game on mounted. Otherwise, the game
@@ -99,7 +105,7 @@ export default {
     // script containing the code for Snake.vue loaded, NOT when the component mounted. So,
     // when I tried to emit update events from inside the game.run callback, the component variables
     // stored in the callbacks lexical memory/scope or whatever no longer existed.
-    game = new Game() 
+    game = new Game()
     this.setup()
   },
   methods: {
