@@ -17,4 +17,10 @@ export default class Painter {
     }
     this.ctx.closePath();
   }
+
+  paintText({ text, font, fillStyle, x, y }) {
+    this.ctx.fillStyle = fillStyle
+    this.ctx.font = font
+    this.ctx.fillText(text, x, y)
+  }
 }

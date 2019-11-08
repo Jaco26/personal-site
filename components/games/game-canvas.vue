@@ -1,7 +1,7 @@
 <template>
   <div>
     <canvas ref="gameCanvas" :height="dimensions.height" :width="dimensions.width"></canvas>
-    <slot v-bind="{ hasCtx, dimensions, snakeSetup }" />
+    <slot v-bind="{ hasCtx, dimensions, snakeOptions }" />
   </div>
 </template>
 
@@ -38,15 +38,11 @@ export default {
       if (this.breakpoint.isMobile) {
         rv.width = 390
         rv.height = 260
-        // rv.nCols = 30
-        // rv.nRows = 20
         rv.nCols = 42
         rv.nRows = 28
       } else if (this.breakpoint.isTablet) {
-        rv.width = 600
-        rv.height = 400
-        // rv.nCols = 42
-        // rv.nRows = 28
+        rv.width = 720
+        rv.height = 480
         rv.nCols = 60
         rv.nRows = 40
       } else {
@@ -57,7 +53,7 @@ export default {
       }
       return rv
     },
-    snakeSetup() {
+    snakeOptions() {
       const startPosition = {
         col: 0,
         row: 0,

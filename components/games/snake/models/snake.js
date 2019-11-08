@@ -6,8 +6,8 @@ export default class Snake {
 
   didCollideWithSelf = false
   
-  constructor({ row, col, isPolluter = false } = {}) {
-    this.isPolluter = isPolluter
+  constructor({ row, col, gameMode } = {}) {
+    this.gameMode = gameMode
     this.headCol = col
     this.headRow = row
     this.body = [{ row, col }]
@@ -26,6 +26,7 @@ export default class Snake {
       if (this.dx !== -dx) this.dx = dx 
       if (this.dy !== -dy) this.dy = dy
       // lock in a direction being set until the next call to this.updateBody
+      // this only has a noticiable effect when the snake is moving slowly
       this.changeDirectionLock = true
     }
 
@@ -43,12 +44,13 @@ export default class Snake {
 
   updateBody() {
     this.bodyMap = {}
+    console.log(this.gameMode)
 
     if (this.nSegmentsToPush > 0) {
       const { row, col } = this.body[this.body.length - 1]
       this.body.push({ row, col }) // this is the new head of the snake
       this.nSegmentsToPush -= 1
-    } else if (this.isPolluter === false) {
+    } else if (this.gameMode === 'classic') {
       for (let i = 0; i < this.body.length - 1; i++) {
         const { row, col } = this.body[i + 1]
         this.body[i] = { row, col }

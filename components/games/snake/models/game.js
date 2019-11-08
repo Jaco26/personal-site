@@ -32,11 +32,15 @@ function randRange(min, max) {
 
 export default class Game extends GameBase {
 
+  score = 0
+
   food = {
     row: null,
     col: null,
   }
 
+  width = 0
+  height = 0
   nRows = null
   nCols = null
 
@@ -48,18 +52,23 @@ export default class Game extends GameBase {
   painter = null
 
    /** @param {SetupOptions} options */
-  setup({ ctx, animationRate, dimensions, snake }) {
+  setup({ ctx, animationRate, dimensions, snakeOptions, gameMode }) {
+    this.score = 0
+    this.width = dimensions.width
+    this.height = dimensions.height
     this.nRows = dimensions.nRows
     this.nCols = dimensions.nCols
     this.cellMap = new CellMap(dimensions);
     this.painter = new Painter(ctx);
-    this.snake = new Snake(snake);
+    this.snake = new Snake({ ...snakeOptions, gameMode });
     this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
   }
 
   resize(width, height, nRows, nCols) {
+    this.width = width
+    this.height = height
     this.nRows = nRows
     this.nCols = nCols
     this.cellMap = new CellMap({ nRows, nCols, width, height })
@@ -108,10 +117,23 @@ export default class Game extends GameBase {
       this.snake.didCollideWithSelf // if the snake eats itself
   }
 
+  paintScore() {
+    this.painter.paintText({
+      text: this.score,
+      fillStyle: 'black',
+      font: '20px Arial',
+      x: this.width - 30,
+      y: 30,
+    })
+  }
+
   paintGameOver() {
-    const ctx = this.painter.ctx;
-    ctx.fillStyle = 'red'
-    ctx.font = '30px Arial'
-    ctx.fillText('GAME OVER ! ! !', ctx.canvas.width / 2 - 70, 60)
+    this.painter.paintText({
+      text: 'GAME OVER ! ! !',
+      fillStyle: 'red',
+      font: '30px Arial',
+      x: this.width / 2 - 70,
+      y: 60
+    })
   }
 }

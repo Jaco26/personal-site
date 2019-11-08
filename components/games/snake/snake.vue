@@ -11,7 +11,9 @@ export default {
   props: {
     dimensions: Object,
     controls: Object,
-    snakeSetup: Object,
+    snakeOptions: Object,
+    gameMode: String,
+    showScore: Boolean,
     animationRate: Number,
     gameOn: Boolean,
     gameOver: Boolean,
@@ -34,10 +36,15 @@ export default {
             }
             if (game.snakeDidEatFood()) {
               this.update('score', this.score + 1)
+              game.score += 1
               game.generateFood()
               game.snake.nSegmentsToPush += 6
+              
             }
             game.paintCells()
+            if (this.showScore) {
+              game.paintScore()
+            }
           });
         }
       } else {
@@ -73,18 +80,11 @@ export default {
         }
       }
     },
-    'animationRate'(val) {
+    animationRate(val) {
       game.animationRate = val
     },
-    'snakeSetup.gameMode'(val) {
-      switch (val) {
-        case 'classic':
-          game.snake.isPolluter = false
-          break
-        case 'polluter':
-          game.snake.isPolluter = true
-          break
-      }
+    gameMode(val) {
+      game.snake.gameMode = val
     },
     dimensions: {
       deep: true,
@@ -116,8 +116,9 @@ export default {
       game.setup({
         ctx: this.ctxProvider.ctx,
         dimensions: this.dimensions,
-        snake: this.snakeSetup,
+        snakeOptions: this.snakeOptions,
         animationRate: this.animationRate,
+        gameMode: this.gameMode,
       })
     },
   },
