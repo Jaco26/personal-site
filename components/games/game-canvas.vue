@@ -36,12 +36,10 @@ export default {
         nRows: 0
       }
       if (this.breakpoint.isMobile) {
-        // rv.width = 390
-        // rv.height = 260
-        rv.width = 280
-        rv.height = 420
-        rv.nCols = 28
-        rv.nRows = 42
+        rv.width = 288
+        rv.height = 360
+        rv.nCols = 32
+        rv.nRows = 40
       } else if (this.breakpoint.isTablet) {
         rv.width = 720
         rv.height = 480

@@ -31,7 +31,7 @@
             :min="snakeSpeed.min" 
             :max="snakeSpeed.max" 
             :value="snakeSpeed.value"
-            @input="$emit('update:snakeSpeed.value', $event)"
+            @input="$emit('update:snakeSpeed', $event)"
           >
             <b-slider-tick v-for="n in [1,2,3,4,5,6,7]" :key="n" :value="n">{{n}}</b-slider-tick>
           </b-slider>
