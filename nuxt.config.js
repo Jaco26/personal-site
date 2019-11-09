@@ -77,6 +77,6 @@ module.exports = {
   },
 
   router: {
-    base: process.env.BUILD_ENV === 'personal-site' ? '/personal-site/' : '/'
+    // base: process.env.DEPLOY_ENV === 'gh-pages' ? '/personal-site/' : '/'
   }
 }

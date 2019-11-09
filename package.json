@@ -10,7 +10,7 @@
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
-    "generate-personal-site": "BUILD_ENV=personal-site nuxt generate",
+    "generateL:gh-pages": "DEPLOY_ENV=gh-pages nuxt generate",
     "test": "jest"
   },
   "dependencies": {
