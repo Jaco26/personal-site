@@ -23,8 +23,7 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content: 'Jacob Albright is a full stack web developer with a focus on frontend javascript frameworks like ' + 
-        'Nuxt.js, Vue.js, and React.js. His interests include making 2D videogames with a cooperative bent for the web, ' + 
-        'coffee, photography and reading books that imagine a hopeful tomorrow :)'
+        'Nuxt.js, Vue.js, and React.js. His interests include making 2D videogames with a cooperative bent for the web.'
       }
     ],
     link: [
@@ -75,5 +74,9 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+
+  router: {
+    base: '/personal-site/'
   }
 }
