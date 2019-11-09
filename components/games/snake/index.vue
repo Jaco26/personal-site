@@ -2,7 +2,8 @@
   <div>
     <div class="columns is-centered is-flex-mobile">
       <div class="column is-narrow is-narrow is-narrow-mobile">
-        <div v-if="breakpoint.aboveMobile" class="columns level" style="margin: 0">
+        <div class="columns level is-hidden-mobile" style="margin: 0">
+        <!-- <div v-if="breakpoint.aboveMobile" class="columns level" style="margin: 0"> -->
           <div class="column ctrl-col">
             <b-button @click="onGameStateControlClick">
               {{gameStateControlText}}
@@ -57,13 +58,13 @@
           />
         </game-canvas>
 
-        <div v-if="breakpoint.isMobile">
+        <div class="is-hidden-tablet">
           <div class="columns is-flex-mobile is-marginless">
             <div class="column ctrl-col">
               <b-button class="is-block-mobile" @click="onGameStateControlClick">
                 {{gameStateControlText}}
               </b-button>
-              <b-button @click="showSettings = true">Settings</b-button>
+              <b-button @click="onShowTouchSettings">Settings</b-button>
             </div>
 
             <div class="column is-narrow-mobile ctrl-col-end">
@@ -219,6 +220,10 @@ export default {
         ? this.reset()
         : this.gameState.gameOn = !this.gameState.gameOn
     },
+    onShowTouchSettings() {
+      this.showSettings = true;
+      this.gameState.gameOn = false
+    }
   }
 }
 </script>

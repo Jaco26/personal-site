@@ -44,7 +44,6 @@ export default class Snake {
 
   updateBody() {
     this.bodyMap = {}
-    console.log(this.gameMode)
 
     if (this.nSegmentsToPush > 0) {
       const { row, col } = this.body[this.body.length - 1]
