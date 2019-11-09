@@ -42,14 +42,6 @@
           </div>
         </div>
 
-        <!-- <div v-else class="columns level" style="margin: 0">
-          <div class="column ctrl-col">
-            <b-button @click="onGameStateControlClick">
-              {{gameStateControlText}}
-            </b-button>
-          </div>
-        </div> -->
-
         <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
           <Snake
             v-if="hasCtx"

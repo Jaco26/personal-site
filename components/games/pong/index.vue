@@ -1,24 +1,31 @@
 
 <template>
   <div>
-    <j-row vCentered>
-      <j-col>
-        <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
-      </j-col>
-      <j-col size="narrow">
-        <span>Score: {{gameState.score}}</span>
-      </j-col>
-    </j-row>
-    <game-canvas :width="dimensions.width" :height="dimensions.height" v-slot="{ hasCtx }">
-      <Pong
-        v-if="hasCtx"
-        ref="pong"
-        :dimensions="dimensions"
-        :controls="controls"
-        v-bind.sync="gameState"
-        @reset="reset"
-      />
-    </game-canvas>
+    <div class="columns is-centered is-vcentered">
+      <div class="is-hidden-desktop column is-narrow">
+        Sorry, my version of Pong doesn't work on your phone/tablet yet. You can play it on a laptop or desktop though!
+      </div>
+      <div class="is-hidden-touch column is-narrow">
+        <div class="columns level">
+          <div class="column">
+            <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
+          </div>
+          <div class="column is-narrow">
+              <span>Score: {{gameState.score}}</span>
+          </div>
+        </div>
+        <game-canvas v-slot="{ hasCtx, dimensions }">
+          <Pong
+            v-if="hasCtx"
+            ref="pong"
+            :dimensions="dimensions"
+            :controls="controls"
+            v-bind.sync="gameState"
+            @reset="reset"
+          />
+        </game-canvas>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,13 +33,13 @@
 import GameCanvas from '@/components/games/game-canvas'
 import Pong from '@/components/games/pong/pong'
 export default {
+  inject: ['breakpoint'],
   components: {
     GameCanvas,
     Pong,
   },
   props: {
     controls: Object,
-    dimensions: Object,
   },
   mounted() {
     console.log('just mounted pong')
