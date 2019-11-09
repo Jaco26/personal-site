@@ -77,6 +77,6 @@ module.exports = {
   },
 
   router: {
-    base: '/personal-site/'
+    base: process.env.BUILD_ENV === 'personal-site' ? '/personal-site/' : '/'
   }
 }
