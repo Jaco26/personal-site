@@ -156,6 +156,11 @@ export default {
     }
   },
   mounted() {
+    if (this.breakpoint.isMobile) {
+      // This loads snake with a default speed of 2 when localStorage is not 
+      // available (like on my phone)
+      this.snakeSpeed.value = 2
+    }
     this.loadSettings()
     window.addEventListener('beforeunload', this.saveSettings)
   },
