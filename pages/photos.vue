@@ -18,7 +18,7 @@ export default {
     ctx.store.commit('SET_BREADCRUMBS', [
       {
         to: '/',
-        text: 'Jacob'
+        text: 'Home'
       },
       {
         to: '/photos',

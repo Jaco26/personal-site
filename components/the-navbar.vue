@@ -1,9 +1,30 @@
 <template>
-  <b-navbar :mobile-burger="false" transparent fixed-top class="is-light">
-   <template v-slot:brand>
-      <TheBreadcrumbs />
-    </template>
-  </b-navbar>
+  <div class="navbar dense">
+    <nav>
+      <div class="navbar-title">
+        <nuxt-link to="/">jacobsalright</nuxt-link>
+      </div>
+      <ul class="navbar-links">
+        <li v-for="(crumb, i) in $store.state.breadcrumbs.slice().reverse()" :key="i" class="navbar-link">
+          <span class="navbar-link__seperator" v-if="i > 0">&leftarrow;</span>
+          <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- <div class="navbar-wrapper dense">
+    <nav class="navbar dense">
+      <div class="navbar-title">
+        <nuxt-link to="/">jacobsalright</nuxt-link>
+      </div>
+      <ul class="navbar-links">
+        <li v-for="(crumb, i) in $store.state.breadcrumbs.slice().reverse()" :key="i" class="navbar-link">
+          <span class="navbar-link__seperator" v-if="i > 0">&rightarrow;</span>
+          <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
 </template>
 
 <script>

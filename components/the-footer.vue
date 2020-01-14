@@ -1,5 +1,8 @@
 <template>
-  <footer class="footer has-background-velvet">
+  <footer>
+    This is the new footer
+  </footer>
+  <!-- <footer class="footer has-background-velvet">
     <div class="container">
       <j-row>
         
@@ -36,7 +39,7 @@
         </j-col>
       </j-row>
     </div>
-  </footer>
+  </footer> -->
 </template>
 
 <script>
@@ -83,31 +86,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-a {
-  display: inline-flex;
-  color: #ccc;
-  margin: 0 0 1rem 0;
-}
-a:hover {
-  color: #fff
-}
-a > span {
-  margin-right: .4rem;
-}
-h3, div {
-  color: #ddd;
-}
-.copywrite {
-  display: flex;
-  flex-direction: column;
-  min-height: 100% ;
-  /* justify-content: space-between; */
-}
-.copywrite > div {
-  /* justify-self: center; */
-  justify-content: flex-end;
-  flex: 1;
-}
-</style>

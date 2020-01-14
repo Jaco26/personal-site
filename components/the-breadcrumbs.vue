@@ -9,15 +9,3 @@
   </b-navbar-item>
 </template>
 
-<style lang="scss" scoped>
-@import '@/assets/style/custom.scss';
-.breadcrumb-link {
-  margin: .6rem;
-  font-size: 1.3rem;
-}
-.hihi {
-  display: flex;
-  align-items: center;
-  font-weight: 300;
-}
-</style>
