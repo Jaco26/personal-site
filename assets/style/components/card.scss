@@ -1,0 +1,24 @@
+@import '../variables.scss';
+
+.card {
+  display: block;
+  height: 100%;
+  position: relative;
+  box-shadow: 1px 1px 2px #aaa;
+  border-radius: 2px;
+  padding: 1rem;
+
+  > .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1rem;
+  }
+
+  > .card-text {
+    padding: .5rem 1rem 1rem;
+  }
+
+  > .card-actions {
+    padding: .25rem 1rem;
+  }
+}

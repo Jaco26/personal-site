@@ -1,45 +1,20 @@
 <template>
-  <footer>
-    This is the new footer
-  </footer>
-  <!-- <footer class="footer has-background-velvet">
+  <footer class="footer">
     <div class="container">
-      <j-row>
-        
-        <j-col>
-          <h3 class="subtitle is-4">Pages</h3>
-          <template v-for="link in pageLinks">
-            <div :key="link.to">
-              <nuxt-link class="footer-link" :to="link.to">
-                <span>{{link.text}}</span> 
-              </nuxt-link>
-            </div>
-          </template>
-        </j-col>
-        
-        <j-col>
-          <h3 class="subtitle is-4">Contact</h3>
-          <template v-for="link in contactLinks">
-            <div :key="link.href">
-              <a class="footer-link" :href="link.href">
-                <b-icon :icon="link.icon"></b-icon>
-                <span class=""> {{link.text}} </span>
-              </a>
-            </div>
-          </template>
-        </j-col>
-        <j-col>
-          <div>
-            This site is built with <a style="margin: 0" href="https://nuxtjs.org/"> Nuxt.js</a> and <a style="margin: 0" href="https://buefy.org/">Buefy</a> and is written and maintained by Jacob Albright.
-          </div>
-          <br>
-          <div>
-            © {{currentYear}} Jacob Albright. All Rights Reserved.
-          </div>
-        </j-col>
-      </j-row>
+      <div class="row">
+        <div class="col text-center">
+          <span v-for="link in contactLinks" :key="link.href" class="mx-4">
+            <a :href="link.href" class="text-light text-underline">{{link.text}}</a>
+          </span>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col text-center">
+           © {{currentYear}} Jacob Albright. All Rights Reserved
+        </div>
+      </div>
     </div>
-  </footer> -->
+  </footer>
 </template>
 
 <script>

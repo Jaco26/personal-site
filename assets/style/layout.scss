@@ -1,0 +1,90 @@
+@import './variables.scss';
+
+.container {
+  padding: 0 1rem;
+
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+    height: 100%;
+
+    &.wrap {
+      flex-wrap: wrap;
+    }
+    &.column {
+      flex-direction: column;
+    }
+    &.column-reverse {
+      flex-direction: column-reverse;
+    }
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+    
+    
+    &.justify-center {
+      justify-content: center;
+    }
+    &.justify-start {
+      justify-content: flex-start;
+    }
+    &.justify-end {
+      justify-content: flex-end;
+    }
+    &.justify-between {
+      justify-content: space-between;
+    }
+    &.justify-around {
+      justify-content: space-around;
+    }
+    &.justify-evenly {
+      justify-content: space-evenly;
+    }
+    &.align-center {
+      align-items: center;
+    }
+    &.align-start {
+      align-items: flex-start;
+    }
+    &.align-end {
+      align-items: flex-end;
+    }
+    &.align-stretch {
+      align-items: stretch;
+    }
+    
+    
+    .col {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+      padding: .5rem;
+
+      $size: 1;
+      $n-cols: 12;
+      @while $size < $n-cols + 1 {
+        &.col-#{$size} {
+          flex: 0 1 percentage($size / $n-cols);
+          width: percentage($size / $n-cols);
+        }
+        $size: $size + 1;
+      }
+  
+      @each $breakpoint, $px in $breakpoints {
+        @media print, screen and (min-width: $px) {
+          $size: 1;
+          $n-cols: 12;
+          @while $size < $n-cols + 1 {
+            &.#{$breakpoint}-#{$size} {
+              flex: 0 1 percentage($size / $n-cols);
+              width: percentage($size / $n-cols);
+            }
+            $size: $size + 1;
+          }
+        }
+      }
+    }
+  }
+}

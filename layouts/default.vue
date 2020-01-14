@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="app">
     <TheNavbar />
-    <main class="main-content">
+    <main class="container fullheight-with-dense-navbar">
       <nuxt />
     </main>
     <TheFooter />
@@ -80,3 +80,12 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+
+.app {
+  position: absolute;
+  height: 100%;
+}
+</style>

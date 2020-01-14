@@ -1,20 +1,22 @@
+@import './variables.scss';
+
 .d-flex {
   display: flex;
   flex-wrap: nowrap;
-
-  &.wrap {
-    flex-wrap: wrap;
-  }
-  &.column {
-    flex-direction: column;
-  }
-  &.column-reverse {
-    flex-direction: column-reverse;
-  }
-  &.reverse {
-    flex-direction: row-reverse;
-  }
 }
+.wrap {
+  flex-wrap: wrap;
+}
+.column {
+  flex-direction: column;
+}
+.column-reverse {
+  flex-direction: column-reverse;
+}
+.reverse {
+  flex-direction: row-reverse;
+}
+
 
 .justify-center {
   justify-content: center;
@@ -115,8 +117,28 @@ $increments: (
 .text-right {
   text-align: right;
 }
+.text-justify {
+  text-align: justify;
+}
 
-.shrink {
-  justify-self: center;
-  align-self: center;
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-light {
+  color: $light;
+}
+.text-dark {
+  color: $dark;
+}
+
+
+.fullheight {
+  height: 100%;
+}
+.fullheight-with-navbar {
+  height: calc(100% - #{$navbar-height});
+}
+.fullheight-with-dense-navbar {
+  height: calc(100% - #{$navbar-dense-height});
 }

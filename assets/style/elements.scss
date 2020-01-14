@@ -17,10 +17,19 @@ body {
 
 a {
   text-decoration: none;
+  // font-size: 18px;
   color: $link;
 
   &.nuxt-link-active,
   &.nuxt-link-exact-active {
     color: $link-active;
   } 
+}
+
+// apply this class to the outermost element in layout components
+// to enable easily setting page heights
+.app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }

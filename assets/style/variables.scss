@@ -10,6 +10,14 @@ $blue: #06389c;
 $purple: #97069c;
 $teal: #4ab;
 
+// Breakpoint
+$breakpoints: (
+  'mobile': 0,
+  'tablet': 576px,
+  'desktop': 768px,
+  'tv': 992px,
+);
+
 // Navbar
 $navbar-height: 5rem;
 $navbar-dense-height: 3rem;
