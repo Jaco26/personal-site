@@ -1,17 +1,18 @@
 <template>
   <div class="row wrap justify-center align-center">
     <div class="col tablet-10 desktop-8 tv-6">
-      <nuxt-link class="card flat pa-0 mb-4 text-dark" to="/games/snake">
+      <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/games/snake">
         <div class="card-title text-purple pb-0">
           Snake
         </div>
-        <div class="card-text">
+        <div class="card-text ">
           <p class="mt-0">
             How long can you balance the snake's insatiable hunger? How long can you grow before you become just too long?
           </p>
         </div>
       </nuxt-link>
-      <nuxt-link class="card flat pa-0 text-dark" to="/games/pong">
+
+      <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/games/pong">
         <div class="card-title text-purple pb-0">
           Pong
         </div>

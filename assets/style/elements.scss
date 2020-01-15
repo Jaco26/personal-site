@@ -25,19 +25,12 @@ a {
 
   &.nuxt-link-active,
   &.nuxt-link-exact-active {
+    font-weight: bold;
     color: $link-active;
   }
 
   &.card:hover {
     border: 1px solid $teal;
-    border-collapse: separate;
   }
 }
 
-// apply this class to the outermost element in layout components
-// to enable easily setting page heights
-.app {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}

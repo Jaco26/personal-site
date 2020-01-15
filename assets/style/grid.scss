@@ -8,6 +8,10 @@
   display: flex;
   flex-direction: column;
 
+  &.flex-row {
+    flex-direction: row;
+  }
+
   &.fullheight {
     min-height: 100%;
   }
@@ -21,24 +25,28 @@
   .row {
     flex: 1;
     display: flex;
-    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: row nowrap;
     margin-left: -.5rem;
     margin-right: -.5rem;
     height: 100%;
-
+  
     &.wrap {
       flex-wrap: wrap;
     }
-    &.column {
+    &.flex-row {
+      flex-direction: row;
+    }
+    &.flex-column {
       flex-direction: column;
     }
-    &.column-reverse {
+    &.flex-column-reverse {
       flex-direction: column-reverse;
     }
-    &.reverse {
+    &.flex-reverse {
       flex-direction: row-reverse;
     }
-    
     
     &.justify-center {
       justify-content: center;
