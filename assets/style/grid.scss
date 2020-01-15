@@ -2,8 +2,24 @@
 
 .container {
   padding: 0 1rem;
+  // The following link expplains why .container has been given `display: flex`
+  // and `flex-direction: column` and .row has been given `flex: 1` 
+  // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height?noredirect=1
+  display: flex;
+  flex-direction: column;
+
+  &.fullheight {
+    min-height: 100%;
+  }
+  &.fullheight-with-navbar {
+    min-height: calc(100% - #{$navbar-height});
+  }
+  &.fullheight-with-dense-navbar {
+    min-height: calc(100% - #{$navbar-dense-height});
+  }
 
   .row {
+    flex: 1;
     display: flex;
     flex-wrap: nowrap;
     margin-left: -.5rem;

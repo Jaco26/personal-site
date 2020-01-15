@@ -3,12 +3,24 @@
 // Colors
 $dark: #343434;
 $light: #fefefe;
+$light-darker: #ededed;
 $link: #3273dc;
 $link-active: #19a099;
-$primary: #1a3a42;
+
+
+
 $blue: #06389c;
 $purple: #97069c;
 $teal: #4ab;
+
+// $primary: #1a3a42;
+$primary: $blue;
+$primary-lighter: $blue;
+$primary-darker: $blue;
+
+$secondary: $purple;
+$secondary-lighter: $purple;
+$secondary-darker: $purple;
 
 // Breakpoint
 $breakpoints: (

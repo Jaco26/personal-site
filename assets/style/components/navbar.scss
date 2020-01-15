@@ -3,8 +3,6 @@
 .navbar {
   position: relative;
   z-index: 1;
-  top: 0;
-  left: 0;
   height: $navbar-height;
 
   &.dense {
@@ -27,8 +25,8 @@
     margin: 0;
     height: $navbar-height;
     width: 100%;
-    // border-bottom: 1px solid $purple;
-    box-shadow: 4px 1px 2px $purple;
+    border-bottom: 1px dashed $purple;
+    // box-shadow: 0 1px 4px $purple;
   
     color: $dark;
 

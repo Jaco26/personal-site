@@ -6,7 +6,17 @@
   position: relative;
   box-shadow: 1px 1px 2px #aaa;
   border-radius: 2px;
+  border: 1px solid transparent;
   padding: 1rem;
+
+  &.flat {
+    box-shadow: none;
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
 
   > .card-title {
     font-size: 1.25rem;

@@ -10,7 +10,7 @@
       </div>
       <div class="row pt-4">
         <div class="col text-center">
-           © {{currentYear}} Jacob Albright. All Rights Reserved
+          © {{currentYear}} Jacob Albright. All Rights Reserved
         </div>
       </div>
     </div>

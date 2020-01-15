@@ -83,9 +83,9 @@ export default {
 
 
 <style scoped>
-
 .app {
-  position: absolute;
-  height: 100%;
+  /* position: fixed;
+  overflow: scroll; */
+  min-height: 100%;
 }
 </style>

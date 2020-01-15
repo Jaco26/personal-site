@@ -1,7 +1,7 @@
 <template>
   <div class="row wrap justify-center align-center">
     <div class="col tablet-10 desktop-8 tv-6" >
-      <article class="card">
+      <article class="card flat">
         <div class="card-title">
           Check out what I got
         </div>

@@ -6,8 +6,12 @@
   box-sizing: border-box;
 }
 
-body, html {
-  height: 100%;
+html {
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -17,13 +21,17 @@ body {
 
 a {
   text-decoration: none;
-  // font-size: 18px;
   color: $link;
 
   &.nuxt-link-active,
   &.nuxt-link-exact-active {
     color: $link-active;
-  } 
+  }
+
+  &.card:hover {
+    border: 1px solid $teal;
+    border-collapse: separate;
+  }
 }
 
 // apply this class to the outermost element in layout components
