@@ -32,5 +32,17 @@ a {
   &.card:hover {
     border: 1px solid $teal;
   }
+
+  &.card {
+    &.hov-purple:hover {
+      border: 1px solid #f707ff;
+    }
+    &.hov-orange:hover {
+      border: 1px solid $orange;
+    }
+    &.hov-green:hover {
+      border: 1px solid limegreen;
+    }
+  }
 }
 

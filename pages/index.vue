@@ -3,7 +3,7 @@
     <j-col class="bg-light--darker d-flex align-center mobile-12 tablet-7">
       <article class="card flat">
         <div class="card-text text-justified">
-          <p class="mt-0">
+          <p>
             Jacob went to school at Augsburg University in Minneapolis, MN and graduated with a B.A. in Sociology.
             He worked for a little over a year at a food co-op, voted to join a union representing food and 
             commercial workers and, dizzy from existential vertigo after the neo-nazi rally in Charlottesville, quit
@@ -39,7 +39,7 @@
           HTML Canvas and Javascript.
         </div>
       </nuxt-link>
-      <nuxt-link class="card flat pa-0 mb-4 text-light" to="/photos">
+      <nuxt-link class="card hov-orange flat pa-0 mb-4 text-light" to="/photos">
         <div class="card-title text-light text-underlined pb-0">
           Photos
         </div>
@@ -47,12 +47,20 @@
           There isn't anything here yet ...
         </div>
       </nuxt-link>
-      <nuxt-link class="card flat pa-0 mb-4 text-light" to="/thoughts">
+      <nuxt-link class="card hov-purple flat pa-0 mb-4 text-light" to="/thoughts">
         <div class="card-title text-light text-underlined pb-0">
           Thoughts
         </div>
         <div class="card-text">
           This is where I write my thoughts about things.
+        </div>
+      </nuxt-link>
+      <nuxt-link class="card hov-green flat pa-0 mb-4 text-light" to="/projects">
+        <div class="card-title text-light text-underlined pb-0">
+          Projects
+        </div>
+        <div class="card-text">
+          Take a look at some projects I've worked on.
         </div>
       </nuxt-link>
     </j-col>
