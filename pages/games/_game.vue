@@ -1,17 +1,15 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container is-fluid">
-        <component
-          :is="selectedGame.component"
-          :ref="selectedGame.name"
-          :controls="controls"
-          @mobileControlDown="onMobileControlDown"
-          @mobileControlUp="onMobileControlUp"
-        ></component>
-      </div>
-    </div>
-  </section>
+  <j-row class="justify-center align-center">
+    <j-col class="mobile-12 tablet-10">
+      <component
+        :is="selectedGame.component"
+        :ref="selectedGame.name"
+        :controls="controls"
+        @mobileControlDown="onMobileControlDown"
+        @mobileControlUp="onMobileControlUp"
+      ></component>
+    </j-col>
+  </j-row>
 </template>
 
 <script>

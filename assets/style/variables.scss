@@ -27,12 +27,28 @@ $secondary-lighter: $purple;
 $secondary-darker: $purple;
 
 // Breakpoint
+// from bulma
 $breakpoints: (
   'mobile': 0,
-  'tablet': 576px,
-  'desktop': 768px,
-  'tv': 992px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1216px,
 );
+
+// // from bootstrap
+// $breakpoints: (
+//   'mobile': 0,
+//   'tablet': 576px,
+//   'desktop': 768px,
+//   'tv': 992px,
+// );
+// // from vuetify
+// $breakpoints: (
+//   'mobile': 0,
+//   'tablet': 600px,
+//   'desktop': 960px,
+//   'tv': 1264px,
+// );
 
 // Navbar
 $navbar-height: 5rem;

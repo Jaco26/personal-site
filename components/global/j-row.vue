@@ -13,13 +13,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.row {
-  position: relative;
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  margin: 0 -.5rem;
-}
-</style>

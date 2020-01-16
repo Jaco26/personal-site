@@ -4,7 +4,7 @@
       <j-row>
         <j-col class="text-center">
           <span v-for="link in contactLinks" :key="link.href" class="mx-4">
-            <a :href="link.href" class="text-light text-underline">{{link.text}}</a>
+            <a :href="link.href" class="text-light text-underlined">{{link.text}}</a>
           </span>
         </j-col>
       </j-row>
@@ -47,7 +47,7 @@ export default {
           icon: 'linkedin-box'
         },
         {
-          href: 'mailto:jacob.albright23@gmail.com',
+          href: 'mailto:jacob.albright23@gmail.com?subject=I was looking at your website',
           text: 'Email',
           icon: 'email',
         },

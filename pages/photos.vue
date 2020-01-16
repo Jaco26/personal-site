@@ -1,21 +1,7 @@
 <template>
-  <j-row class="wrap">
-    <j-col>
-      <j-container class="flex fullheight pa-0">
-        <j-row>
-          <j-col class="d-flex justify-center align-center">
-            Hi
-          </j-col>
-          <j-col>
-            Hello
-          </j-col>
-        </j-row>
-        <j-row>
-          <j-col>
-            Hi
-          </j-col>
-        </j-row>
-      </j-container>
+  <j-row>
+    <j-col class="d-flex justify-center align-center">
+      Darn! None yet ...
     </j-col>
   </j-row>
 </template>

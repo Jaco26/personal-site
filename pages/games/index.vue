@@ -1,6 +1,6 @@
 <template>
-  <div class="row wrap justify-center align-center">
-    <div class="col tablet-10 desktop-8 tv-6">
+  <j-row class="align-center justify-center">
+    <j-col class="mobile-6">
       <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/games/snake">
         <div class="card-title text-purple pb-0">
           Snake
@@ -11,7 +11,6 @@
           </p>
         </div>
       </nuxt-link>
-
       <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/games/pong">
         <div class="card-title text-purple pb-0">
           Pong
@@ -22,8 +21,8 @@
           </p>
         </div>
       </nuxt-link>
-    </div>
-  </div>
+    </j-col>
+  </j-row>
 </template>
 
 <script>
@@ -40,10 +39,5 @@ export default {
       },
     ])
   },
-  methods: {
-    doIT() {
-      console.log('doing it')
-    }
-  }
 }
 </script>
