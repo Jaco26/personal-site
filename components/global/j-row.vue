@@ -1,22 +1,10 @@
 <script>
 export default {
   functional: true,
-  props: {
-    centered: Boolean,
-    vCentered: Boolean,
-    multiline: Boolean,
-  },
   render(h, ctx) {
-    const { centered, vCentered, multiline } = ctx.props
-
-    let classes = 'columns'
-    if (centered) classes += ' is-centered'
-    if (vCentered) classes += ' is-vcentered'
-    if (multiline) classes += ' is-multiline'
-
     return h('div', 
       {
-        class: classes
+        class: `row ${ctx.data.staticClass || ''}`
       },
       [
         ctx.slots().default
@@ -25,3 +13,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.row {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  margin: 0 -.5rem;
+}
+</style>

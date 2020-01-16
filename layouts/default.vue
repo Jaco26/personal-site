@@ -1,7 +1,7 @@
 <template>
   <app-wrap>
     <TheNavbar />
-    <main class="container fullheight-with-dense-navbar">
+    <main class="container flex fullheight-with-dense-navbar">
       <nuxt />
     </main>
     <TheFooter />

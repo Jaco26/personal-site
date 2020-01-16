@@ -1,19 +1,19 @@
 <template>
   <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
+    <j-container>
+      <j-row>
+        <j-col class="text-center">
           <span v-for="link in contactLinks" :key="link.href" class="mx-4">
             <a :href="link.href" class="text-light text-underline">{{link.text}}</a>
           </span>
-        </div>
-      </div>
-      <div class="row pt-4">
-        <div class="col text-center">
+        </j-col>
+      </j-row>
+      <j-row class="pt-4">
+        <j-col class="text-light text-center">
           © {{currentYear}} Jacob Albright. All Rights Reserved
-        </div>
-      </div>
-    </div>
+        </j-col>
+      </j-row>
+    </j-container>
   </footer>
 </template>
 

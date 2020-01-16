@@ -1,18 +1,15 @@
 <template>
-  <div class="row wrap justify-center">
-    <div class="col mobile-12 tablet-12 desktop-6" style="height: 100%">
-      <article class="card flat mb-4 my-4 pa-0 ">
-        <div class="card-title">
-          But who <span style="margin-right: .25rem"><em>is</em></span> Jacob?
-        </div>
+  <j-row>
+    <j-col class="bg-light--darker">
+      <article class="card flat">
         <div class="card-text">
-          Jacob is a sociology major turned programmer.
+          Hello this is the card text
         </div>
-      </article> 
-    </div>
-    <div class="col desktop-6">
-      <nuxt-link class="card outlined pa-0 my-4 text-dark" to="/games">
-        <div class="card-title text-purple pb-0">
+      </article>
+    </j-col>
+    <j-col class="bg-dark--darker d-flex px-4 flex-column justify-center">
+      <nuxt-link class="card flat pa-0 my-4 text-light" to="/games">
+        <div class="card-title text-light text-underline pb-0">
           Games
         </div>
         <div class="card-text">
@@ -20,26 +17,24 @@
           HTML Canvas and Javascript.
         </div>
       </nuxt-link>
-
-      <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/photos">
-        <div class="card-title text-purple pb-0">
+      <nuxt-link class="card flat pa-0 mb-4 text-light" to="/photos">
+        <div class="card-title text-light text-underline pb-0">
           Photos
         </div>
         <div class="card-text">
           There isn't anything here yet ...
         </div>
       </nuxt-link>
-
-      <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/thoughts">
-        <div class="card-title text-purple pb-0">
+      <nuxt-link class="card flat pa-0 mb-4 text-light" to="/thoughts">
+        <div class="card-title text-light text-underline pb-0">
           Thoughts
         </div>
         <div class="card-text">
           This is where I write my thoughts about things.
         </div>
       </nuxt-link>
-    </div>
-  </div>
+    </j-col>
+  </j-row>
 </template>
 
 <script>

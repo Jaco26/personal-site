@@ -1,15 +1,23 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container is-fluid">
-
-        <div class="has-text-centered">
-          ... coming soon
-        </div>
-        
-      </div>
-    </div>
-  </section>
+  <j-row class="wrap">
+    <j-col>
+      <j-container class="flex fullheight pa-0">
+        <j-row>
+          <j-col class="d-flex justify-center align-center">
+            Hi
+          </j-col>
+          <j-col>
+            Hello
+          </j-col>
+        </j-row>
+        <j-row>
+          <j-col>
+            Hi
+          </j-col>
+        </j-row>
+      </j-container>
+    </j-col>
+  </j-row>
 </template>
 
 <script>
@@ -28,3 +36,4 @@ export default {
   },
 }
 </script>
+
