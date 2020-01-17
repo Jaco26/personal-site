@@ -79,6 +79,7 @@
 <script>
 export default {
   inject: ['breakpoint'],
+  scrollToTop: true,
   middleware(ctx) {
     ctx.store.commit('SET_BREADCRUMBS', [
       {

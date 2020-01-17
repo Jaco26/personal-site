@@ -11,7 +11,7 @@
             <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
           </li>
         </ul>
-        <TheMobileNavMenu v-else />
+        <TheMobileNavMenu v-else  />
       </nav>
     </div>
   </client-only>

@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  scrollToTop: true,
   middleware(ctx) {
     ctx.store.commit('SET_BREADCRUMBS', [
       {

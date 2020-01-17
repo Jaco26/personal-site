@@ -18,5 +18,6 @@ export default {
     TheNavbar,
     TheFooter,
   },
+  scrollToTop: true,
 }
 </script>
