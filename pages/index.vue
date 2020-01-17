@@ -4,11 +4,11 @@
       <article class="card flat">
         <div class="card-text" :class="{ 'text-justified': 0 }">
           <p>
-            Jacob went to school at Augsburg University in Minneapolis, MN and graduated with a B.A. in Sociology.
-            He worked for a little over a year in a grocery store deli kitchen moving food from big boxes into many
-            smaller boxes. Feeling a desire to do something that engaged more of himself and inspired by Propublica's 
-            <a href="https://projects.propublica.org/facebook-ads/">Facebook Ad Collector</a> and other news apps, he
-            quit to attend a full stack software development program at a coding bootcamp downtown.
+            Jacob went to school at Augsburg University in Minneapolis, MN and graduated with a B.A. in Sociology. He worked
+            for a little over a year in a grocery store deli kitchen moving food from big boxes into many smaller boxes. Feeling
+            a desire to do something that engaged more of himself and inspired by news apps from Propublica like the 
+            <a href="https://projects.propublica.org/facebook-ads/">Facebook Ad Collector</a>, he left to attend a full stack 
+            software development program at a coding bootcamp downtown.
           </p>
           <p>
             There he learned that, after more than a half century of countless hours of work and sweeping infrastructure 
@@ -17,10 +17,10 @@
             applications; most written for their own sake, and some – like this website – with the idea that others would look.
           </p>
           <p>
-            He often has three or four or five ideas at once for projects he'd like to work on. One he has <em>mostly</em> working
-            is a simple compiler written in Rust that evaluates arithmetic expressions input as a list of characters. Others have 
-            included jaunts into data collection and analysis with Python and Pandas. Most are web applications. Some involve
-            servers and databases. Others just run in the web browser, like the games included here.
+            He often has three or four or five project ideas at once. One he has <em>mostly</em> working is more or less a compiler
+            written in Rust that evaluates arithmetic expressions input as a list of characters and implements proper order of
+            operations. Others have included jaunts into data collection and analysis with Python and Pandas. Most are web 
+            applications. Some involve servers and databases. Others just run in the web browser, like the games included here.
           </p>
           <p>
             Curiosity is at the foundation of all of Jacob's work. He thinks that there is little else more satisfying than 

@@ -10,7 +10,7 @@
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
-    "generateL:gh-pages": "rm -rf docs/; nuxt generate; mv ./dist ./docs; echo 'www.jacobalbright.com' > docs/CNAME;",
+    "generate:gh-pages": "rm -rf docs/; nuxt generate; mv ./dist ./docs; echo 'www.jacobalbright.com' > docs/CNAME;",
     "test": "jest"
   },
   "dependencies": {
