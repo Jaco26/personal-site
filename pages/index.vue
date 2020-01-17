@@ -13,7 +13,7 @@
           <p>
             There he learned that, after more than a half century of countless hours of work and sweeping infrastructure 
             built by innumerable programmers, software development actually often requires a much less specialized skillset
-            than he had imagined and requires only curisoty and practice. Since, he has delighted in assembling various
+            than he had imagined and takes only curisoty, practice and patience. Since, he has delighted in assembling various
             applications; most written for their own sake, and some – like this website – with the idea that others would look.
           </p>
           <p>
@@ -30,7 +30,7 @@
         </div>
       </article>
     </j-col>
-    <j-col class="bg-dark--darker px-4 d-flex flex-column justify-center">
+    <j-col v-if="breakpoint.aboveMobile" class="bg-dark--darker px-4 d-flex flex-column justify-center">
       <nuxt-link class="card flat pa-0 my-4 text-light" to="/games">
         <div class="card-title text-light text-underlined pb-0">
           Games
@@ -78,6 +78,7 @@
 
 <script>
 export default {
+  inject: ['breakpoint'],
   middleware(ctx) {
     ctx.store.commit('SET_BREADCRUMBS', [
       {
