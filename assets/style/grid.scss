@@ -31,7 +31,6 @@
     .col {
       flex-basis: 0;
       flex-grow: 1;
-      // flex: 0 0 100%;
       max-width: 100%;
       position: relative;
       width: 100%;
@@ -45,8 +44,8 @@
             &.#{$breakpoint}-#{$current-col} {
               position: relative;
               width: 100%;
-              padding-right: 15px;
-              padding-left: 15px;
+              padding-right: .5rem;
+              padding-left: .5rem;
               flex: 0 0 percentage($current-col / $num-cols);
               max-width: percentage($current-col / $num-cols);
             }
@@ -57,121 +56,3 @@
     }
   }
 }
-
-
-
-
-
-// // // OLD STUFF // // //
-// .container {
-//   padding: 0 1rem;
-//   // The following link expplains why .container has been given `display: flex`
-//   // and `flex-direction: column` and .row has been given `flex: 1` 
-//   // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height?noredirect=1
-//   display: flex;
-//   flex-direction: column;
-
-//   &.flex-row {
-//     flex-direction: row;
-//   }
-
-//   &.fullheight {
-//     min-height: 100%;
-//   }
-//   &.fullheight-with-navbar {
-//     min-height: calc(100% - #{$navbar-height});
-//   }
-//   &.fullheight-with-dense-navbar {
-//     min-height: calc(100% - #{$navbar-dense-height});
-//   }
-
-//   .row {
-//     flex: 1;
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-//     flex-flow: row nowrap;
-//     margin-left: -.5rem;
-//     margin-right: -.5rem;
-//     height: 100%;
-  
-//     &.wrap {
-//       flex-wrap: wrap;
-//     }
-//     &.flex-row {
-//       flex-direction: row;
-//     }
-//     &.flex-column {
-//       flex-direction: column;
-//     }
-//     &.flex-column-reverse {
-//       flex-direction: column-reverse;
-//     }
-//     &.flex-reverse {
-//       flex-direction: row-reverse;
-//     }
-    
-//     &.justify-center {
-//       justify-content: center;
-//     }
-//     &.justify-start {
-//       justify-content: flex-start;
-//     }
-//     &.justify-end {
-//       justify-content: flex-end;
-//     }
-//     &.justify-between {
-//       justify-content: space-between;
-//     }
-//     &.justify-around {
-//       justify-content: space-around;
-//     }
-//     &.justify-evenly {
-//       justify-content: space-evenly;
-//     }
-//     &.align-center {
-//       align-items: center;
-//     }
-//     &.align-start {
-//       align-items: flex-start;
-//     }
-//     &.align-end {
-//       align-items: flex-end;
-//     }
-//     &.align-stretch {
-//       align-items: stretch;
-//     }
-    
-    
-//     .col {
-//       flex-basis: 0;
-//       flex-grow: 1;
-//       max-width: 100%;
-//       padding: .5rem;
-
-//       $size: 1;
-//       $n-cols: 12;
-//       @while $size < $n-cols + 1 {
-//         &.col-#{$size} {
-//           flex: 0 1 percentage($size / $n-cols);
-//           width: percentage($size / $n-cols);
-//         }
-//         $size: $size + 1;
-//       }
-  
-//       @each $breakpoint, $px in $breakpoints {
-//         @media print, screen and (min-width: $px) {
-//           $size: 1;
-//           $n-cols: 12;
-//           @while $size < $n-cols + 1 {
-//             &.#{$breakpoint}-#{$size} {
-//               flex: 0 1 percentage($size / $n-cols);
-//               width: percentage($size / $n-cols);
-//             }
-//             $size: $size + 1;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }

@@ -84,3 +84,5 @@ typings/
 sw.*
 
 */img/*
+
+/dist/

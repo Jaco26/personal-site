@@ -2,16 +2,18 @@
   <client-only>
     <div class="navbar dense">
       <nav>
-        <div class="navbar-title">
-          <nuxt-link to="/">jacobsalright</nuxt-link>
+        <div class="d-flex align-center">
+          <div class="navbar-title">
+            <nuxt-link to="/">jacobsalright</nuxt-link>
+          </div>
+          <ul class="breadcrumbs list">
+            <li v-for="(crumb, i) in $store.state.breadcrumbs.slice(1)" :key="i">
+              <span class="breadcrumbs-seperator">-</span>
+              <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
+            </li>
+          </ul>
         </div>
-        <ul v-if="breakpoint.aboveMobile" class="navbar-links">
-          <li v-for="(crumb, i) in $store.state.breadcrumbs.slice().reverse()" :key="i" class="navbar-link">
-            <span class="navbar-link__seperator" v-if="i > 0">&leftarrow;</span>
-            <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
-          </li>
-        </ul>
-        <TheMobileNavMenu v-else  />
+        <TheMobileNavMenu v-if="breakpoint.isMobile" />
       </nav>
     </div>
   </client-only>
