@@ -1,7 +1,7 @@
 <template>
   <j-row class="align-center justify-center">
-    <j-col class="mobile-6">
-      <nuxt-link class="card outlined pa-0 mb-4 text-dark" to="/games/snake">
+    <j-col class="mobile-12 tablet-10 desktop-8 widescreen-6">
+      <nuxt-link class="card outlined pa-0 my-4 text-dark" to="/games/snake">
         <div class="card-title text-purple pb-0">
           Snake
         </div>

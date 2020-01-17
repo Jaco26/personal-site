@@ -17,6 +17,12 @@ html {
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+p {
+  line-height: 1.3;
+  letter-spacing: 1px;
 }
 
 a {
@@ -45,4 +51,3 @@ a {
     }
   }
 }
-
