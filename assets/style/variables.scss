@@ -1,0 +1,40 @@
+
+
+// Colors
+$dark: #343434;
+$dark-darker: #232323;
+$dark-lighter: #454545;
+$light: #fefefe;
+$light-darker: #ededed;
+
+$blue: #06389c;
+$purple: #97069c;
+$teal: #4ab;
+$orange: #f9910a;
+$orange-lighter: #ffa939;
+
+$link: #3273dc;
+$link-active: #19a099;
+
+
+// $primary: #1a3a42;
+$primary: $blue;
+$primary-lighter: $blue;
+$primary-darker: $blue;
+
+$secondary: $purple;
+$secondary-lighter: $purple;
+$secondary-darker: $purple;
+
+// Breakpoint
+$breakpoints: (
+  'mobile': 0,
+  'tablet': 600px,
+  'laptop': 960px,
+  'desktop': 1264px,
+  'huge': 1904px,
+);
+
+// Navbar
+$navbar-height: 5rem;
+$navbar-dense-height: 3rem;

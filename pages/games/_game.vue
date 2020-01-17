@@ -1,17 +1,39 @@
 <template>
-  <section class="hero is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container is-fluid">
-        <component
-          :is="selectedGame.component"
-          :ref="selectedGame.name"
-          :controls="controls"
-          @mobileControlDown="onMobileControlDown"
-          @mobileControlUp="onMobileControlUp"
-        ></component>
-      </div>
-    </div>
-  </section>
+  <j-row class="justify-center align-center">
+
+    <article class="modal" v-if="showModal">
+      <j-container class="fullheight flex">
+        <j-row>
+          <j-col class="d-flex justify-center align-center">
+            <section class="modal-content">
+              <div class="card">
+                <div class="card-title">
+                  I'm working on site renovations so the game controls look pretty ugly right now.
+                </div>
+                <div class="card-title">
+                  Hit the "r" to start/resume a game and "p" to pause
+                </div>
+                <div class="card-actions text-right">
+                  <button class="btn primary" @click="showModal = false">Ok</button>
+                </div>
+              </div>
+            </section>
+          </j-col>
+        </j-row>
+      </j-container>
+    </article>
+    
+    <j-col class="mobile-12 tablet-10">
+      
+      <component
+        :is="selectedGame.component"
+        :ref="selectedGame.name"
+        :controls="controls"
+        @mobileControlDown="onMobileControlDown"
+        @mobileControlUp="onMobileControlUp"
+      ></component>
+    </j-col>
+  </j-row>
 </template>
 
 <script>
@@ -34,7 +56,7 @@ export default {
     ctx.store.commit('SET_BREADCRUMBS', [
       {
         to: '/',
-        text: 'Jacob',
+        text: 'Home',
       },
       {
         to: '/games',
@@ -48,6 +70,7 @@ export default {
   },
   data() {
     return {
+      showModal: true,
       games: {
         snake: SnakeGame,
         pong: PongGame,
@@ -121,10 +144,19 @@ export default {
 </script>
 
 <style scoped>
-.hero-body {
-  padding: 0 ;
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000a;
+  z-index: 3;
 }
-.columns {
-   margin: 0
+.modal-content {
+  position: relative;
+  top: -20%;
+  z-index: 4;
+  background: white;
 }
 </style>

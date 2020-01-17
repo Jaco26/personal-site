@@ -1,41 +1,19 @@
 <template>
-  <footer class="footer has-background-velvet">
-    <div class="container">
+  <footer class="footer">
+    <j-container>
       <j-row>
-        
-        <j-col>
-          <h3 class="subtitle is-4">Pages</h3>
-          <template v-for="link in pageLinks">
-            <div :key="link.to">
-              <nuxt-link class="footer-link" :to="link.to">
-                <span>{{link.text}}</span> 
-              </nuxt-link>
-            </div>
-          </template>
-        </j-col>
-        
-        <j-col>
-          <h3 class="subtitle is-4">Contact</h3>
-          <template v-for="link in contactLinks">
-            <div :key="link.href">
-              <a class="footer-link" :href="link.href">
-                <b-icon :icon="link.icon"></b-icon>
-                <span class=""> {{link.text}} </span>
-              </a>
-            </div>
-          </template>
-        </j-col>
-        <j-col>
-          <div>
-            This site is built with <a style="margin: 0" href="https://nuxtjs.org/"> Nuxt.js</a> and <a style="margin: 0" href="https://buefy.org/">Buefy</a> and is written and maintained by Jacob Albright.
-          </div>
-          <br>
-          <div>
-            © {{currentYear}} Jacob Albright. All Rights Reserved.
-          </div>
+        <j-col class="text-center">
+          <span v-for="link in contactLinks" :key="link.href" class="mx-4">
+            <a :href="link.href" class="text-light text-underlined">{{link.text}}</a>
+          </span>
         </j-col>
       </j-row>
-    </div>
+      <j-row class="pt-4">
+        <j-col class="text-light text-center">
+          © {{currentYear}} Jacob Albright. All Rights Reserved
+        </j-col>
+      </j-row>
+    </j-container>
   </footer>
 </template>
 
@@ -69,7 +47,7 @@ export default {
           icon: 'linkedin-box'
         },
         {
-          href: 'mailto:jacob.albright23@gmail.com',
+          href: 'mailto:jacob.albright23@gmail.com?subject=I was looking at your website',
           text: 'Email',
           icon: 'email',
         },
@@ -83,31 +61,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-a {
-  display: inline-flex;
-  color: #ccc;
-  margin: 0 0 1rem 0;
-}
-a:hover {
-  color: #fff
-}
-a > span {
-  margin-right: .4rem;
-}
-h3, div {
-  color: #ddd;
-}
-.copywrite {
-  display: flex;
-  flex-direction: column;
-  min-height: 100% ;
-  /* justify-content: space-between; */
-}
-.copywrite > div {
-  /* justify-self: center; */
-  justify-content: flex-end;
-  flex: 1;
-}
-</style>

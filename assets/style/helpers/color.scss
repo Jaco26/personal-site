@@ -1,0 +1,57 @@
+@import '../variables.scss';
+
+.bg-light {
+  background-color: $light;
+}
+.bg-light--darker {
+  background-color: $light-darker;
+}
+.bg-dark {
+  background-color: $dark;
+}
+.bg-dark--darker {
+  background-color: $dark-darker;
+}
+.bg-dark--lighter {
+  background-color: $dark-lighter;
+}
+.bg-blue {
+  background-color: $blue;
+}
+.bg-purple {
+  background-color: $purple;
+}
+.bg-teal {
+  background-color: $teal;
+}
+.bg-orange {
+  background-color: $orange-lighter;
+}
+
+.text-light {
+  color: $light;
+}
+.text-light--darker {
+  color: $light-darker;
+}
+.text-dark {
+  color: $dark;
+}
+.text-dark--darker {
+  color: $dark-darker;
+}
+.text-dark--lighter {
+  color: $dark-lighter;
+}
+.text-blue {
+  color: $blue;
+}
+.text-purple {
+  color: $purple;
+}
+.text-teal {
+  color: $teal;
+}
+.text-orange {
+  color: $orange;
+}

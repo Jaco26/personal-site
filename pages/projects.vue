@@ -1,7 +1,13 @@
 <template>
   <j-row>
     <j-col class="d-flex justify-center align-center">
-      Darn! Nothing yet ...
+      <span class="mr-1">
+        This is like my
+      </span>
+      <nuxt-link to="/photos">photos</nuxt-link>
+      <span class="ml-1">
+        page.
+      </span> 
     </j-col>
   </j-row>
 </template>
@@ -16,8 +22,8 @@ export default {
         text: 'Home'
       },
       {
-        to: '/photos',
-        text: 'Photos'
+        to: '/projects',
+        text: 'Projects'
       },
     ])
   },

@@ -1,0 +1,40 @@
+@import '../variables.scss';
+
+.card {
+  display: block;
+  // height: 100%;
+  box-shadow: 1px 1px 2px #aaa;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding: 1rem;
+
+  &.flat {
+    box-shadow: none;
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  > .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1rem;
+  }
+
+  > .card-text {
+    padding: .5rem 1rem 1rem;
+  }
+
+  > .card-actions {
+    padding: .25rem 1rem;
+  }
+}
+
+
+@media print, screen and (max-width: map-get($breakpoints, 'tablet')) {
+  .card {
+    padding: .5rem
+  }
+}

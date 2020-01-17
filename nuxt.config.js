@@ -40,14 +40,15 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/style/custom.scss',
+    '@/assets/style/main.scss',
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/buefy'
+    '@/plugins/global-components',
+    // '@/plugins/buefy'
   ],
 
   /*

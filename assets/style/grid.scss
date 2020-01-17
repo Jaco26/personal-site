@@ -1,0 +1,58 @@
+@import './variables.scss';
+
+
+.container {
+  display: block;
+  width: 100%;
+  padding: 0 .5rem;
+
+  &.flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.fullheight {
+    min-height: 100%;
+  }
+  &.fullheight-with-navbar {
+    min-height: calc(100% - #{$navbar-height});
+  }
+  &.fullheight-with-dense-navbar {
+    min-height: calc(100% - #{$navbar-dense-height});
+  }
+
+  .row {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    margin: 0 -.5rem;
+
+    .col {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+      position: relative;
+      width: 100%;
+      padding: 0 .5rem;
+
+      @each $breakpoint, $px in $breakpoints {
+        @media print, screen and (min-width: $px) {
+          $num-cols: 12;
+          $current-col: 1;
+          @while $current-col <= $num-cols {
+            &.#{$breakpoint}-#{$current-col} {
+              position: relative;
+              width: 100%;
+              padding-right: .5rem;
+              padding-left: .5rem;
+              flex: 0 0 percentage($current-col / $num-cols);
+              max-width: percentage($current-col / $num-cols);
+            }
+            $current-col: $current-col + 1;
+          }
+        }
+      }
+    }
+  }
+}

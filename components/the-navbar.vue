@@ -1,52 +1,30 @@
 <template>
-  <b-navbar :mobile-burger="false" transparent fixed-top class="is-light">
-   <template v-slot:brand>
-      <TheBreadcrumbs />
-    </template>
-  </b-navbar>
+  <client-only>
+    <div class="navbar dense">
+      <nav>
+        <div class="d-flex align-center">
+          <div class="navbar-title">
+            <nuxt-link to="/">jacobsalright</nuxt-link>
+          </div>
+          <ul class="breadcrumbs list">
+            <li v-for="(crumb, i) in $store.state.breadcrumbs.slice(1)" :key="i">
+              <span class="breadcrumbs-seperator">-</span>
+              <nuxt-link exact :to="crumb.to">{{crumb.text}}</nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <TheMobileNavMenu v-if="breakpoint.isMobile" />
+      </nav>
+    </div>
+  </client-only>
 </template>
 
 <script>
-import TheBreadcrumbs from '@/components/the-breadcrumbs'
+import TheMobileNavMenu from '@/components/the-mobile-nav-menu'
 export default {
+  inject: ['breakpoint'],
   components: {
-    TheBreadcrumbs,
-  },
-  data() {
-    return {
-      contactLinks: [
-        {
-          href: 'mailto:jacob.albright23@gmail.com',
-          text: 'Email',
-          icon: 'email',
-        },
-        {
-          href: 'https://github.com/jaco26',
-          text: 'Github',
-          icon: 'github-box',
-        },
-        {
-          href: 'https://www.linkedin.com/in/jacob-albright-6b810815b/',
-          text: 'Linkedin',
-          icon: 'linkedin-box'
-        }
-      ]
-    }
+    TheMobileNavMenu,
   }
 }
 </script>
-
-<style scoped>
-.contact-dropdown {
-  margin: 0 8px;
-}
-.contact-link {
-  color: #555;
-}
-.contact-link:hover {
-  color: #222;
-}
-.contact-link > span {
-  margin: 0 .2rem;
-}
-</style>
