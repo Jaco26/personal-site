@@ -10,7 +10,7 @@
       ></component>
     </j-col>
 
-    <article class="modal" v-if="showModal">
+    <!-- <article class="modal" v-if="showModal">
       <j-container class="fullheight flex">
         <j-row>
           <j-col class="d-flex justify-center align-center">
@@ -30,7 +30,7 @@
           </j-col>
         </j-row>
       </j-container>
-    </article>
+    </article> -->
   </j-row>
 </template>
 
@@ -135,7 +135,8 @@ export default {
     document.removeEventListener('keydown', this.handleKeyDown)
     document.removeEventListener('keyup', this.handleKeyUp)
     document.querySelector('html').style.overflow = 'auto'
-    this.$refs[this.selectedGame.name].reset()
+    // TODO: turn the reset back on
+    // this.$refs[this.selectedGame.name].reset()
     next()
   }
 }
