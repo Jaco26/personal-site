@@ -1,0 +1,7 @@
+@mixin elevation($level) {
+  @if $level > 0 {
+    box-shadow: 1px 1px $level #aaa;
+  } @else {
+    box-shadow: none;
+  }
+}

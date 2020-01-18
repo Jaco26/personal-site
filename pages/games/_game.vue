@@ -1,5 +1,14 @@
 <template>
-  <j-row class="justify-center align-center">
+  <j-row>
+    <j-col class="d-flex">
+      <component
+        :is="selectedGame.component"
+        :ref="selectedGame.name"
+        :controls="controls"
+        @mobileControlDown="onMobileControlDown"
+        @mobileControlUp="onMobileControlUp"
+      ></component>
+    </j-col>
 
     <article class="modal" v-if="showModal">
       <j-container class="fullheight flex">
@@ -22,17 +31,6 @@
         </j-row>
       </j-container>
     </article>
-    
-    <j-col class="mobile-12 tablet-10">
-      
-      <component
-        :is="selectedGame.component"
-        :ref="selectedGame.name"
-        :controls="controls"
-        @mobileControlDown="onMobileControlDown"
-        @mobileControlUp="onMobileControlUp"
-      ></component>
-    </j-col>
   </j-row>
 </template>
 
