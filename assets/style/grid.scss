@@ -36,8 +36,8 @@
       width: 100%;
       padding: 0 .5rem;
 
-      @each $breakpoint, $px in $breakpoints {
-        @media print, screen and (min-width: $px) {
+      @each $breakpoint, $sizes in $breakpoints {
+        @media print, screen and (min-width: map-get($sizes, 'min')) {
           $num-cols: 12;
           $current-col: 1;
           @while $current-col <= $num-cols {
