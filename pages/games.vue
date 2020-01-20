@@ -5,5 +5,10 @@
 <script>
 export default {
   scrollToTop: true,
+  layout(ctx) {
+    if (ctx.params.game) {
+      return 'game'
+    }
+  },
 }
 </script>

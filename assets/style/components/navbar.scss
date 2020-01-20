@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../_variables.scss';
 
 .navbar {
   position: relative;
@@ -56,8 +56,8 @@
   
   }
 
-  @media print, screen and (max-width: map-get($breakpoints, 'tablet')) {
-      
+  $tablet: map-get($breakpoints, 'tablet');
+  @media print, screen and (max-width: map-get($tablet, 'min')) {
     nav {
       padding: 0;
       padding-right: .5rem;

@@ -1,4 +1,6 @@
-@import '../variables.scss';
+@import '../_variables.scss';
+
+
 
 .card {
   display: block;
@@ -33,7 +35,9 @@
 }
 
 
-@media print, screen and (max-width: map-get($breakpoints, 'tablet')) {
+$tablet: map-get($breakpoints, 'tablet');
+
+@media print, screen and (max-width: map-get($tablet, 'min')) {
   .card {
     padding: .5rem
   }

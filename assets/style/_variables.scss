@@ -1,4 +1,8 @@
 
+// Font Sizes
+$title: 1.25rem;
+$normal: 1rem;
+$caption: .75rem;
 
 // Colors
 $dark: #343434;
@@ -13,11 +17,19 @@ $teal: #4ab;
 $orange: #f9910a;
 $orange-lighter: #ffa939;
 
+$green: #18ab18;
+$green-lighter: #18ab18;
+$green-darker: #18ab18;
+
+
+$red: #d92f2f;
+$red-lighter: #d92f2f;
+$red-darker: #d92f2f;
+
+
 $link: #3273dc;
 $link-active: #19a099;
 
-
-// $primary: #1a3a42;
 $primary: $blue;
 $primary-lighter: $blue;
 $primary-darker: $blue;
@@ -28,11 +40,11 @@ $secondary-darker: $purple;
 
 // Breakpoint
 $breakpoints: (
-  'mobile': 0,
-  'tablet': 600px,
-  'laptop': 960px,
-  'desktop': 1264px,
-  'huge': 1904px,
+  'mobile': ('min': 0, 'max': 599px),
+  'tablet': ('min': 600px, 'max': 959px),
+  'laptop': ('min': 960px, 'max': 1263px),
+  'desktop': ('min': 1264px, 'max': 1903px),
+  'huge': ('min': 1904px),
 );
 
 // Navbar

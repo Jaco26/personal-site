@@ -52,7 +52,7 @@ export default class Game extends GameBase {
   painter = null
 
    /** @param {SetupOptions} options */
-  setup({ ctx, animationRate, dimensions, snakeOptions, gameMode }) {
+  setup({ ctx, animationRate, dimensions, snakeOptions, gameMode, paintScore }) {
     this.score = 0
     this.width = dimensions.width
     this.height = dimensions.height
@@ -64,6 +64,9 @@ export default class Game extends GameBase {
     this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
+    if (paintScore) {
+      this.paintScore()
+    }
   }
 
   resize(width, height, nRows, nCols) {

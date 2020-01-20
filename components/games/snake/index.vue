@@ -1,130 +1,130 @@
 <template>
-  <div>
-    <div class="columns is-centered is-flex-mobile">
-      <div class="column is-narrow is-narrow is-narrow-mobile">
-        <div class="columns level is-hidden-mobile" style="margin: 0">
-          <div class="column ctrl-col">
-            <b-button @click="onGameStateControlClick">
+  <j-row class="justify-center">
+    <j-col class="d-flex flex-column align-center ">
+      <section class="toolbar dense flat hidden-mobile">
+        <div class="toolbar-actions">
+          <j-col class="shrink px-0">
+            <button class="btn small" :class="gameStateClass" @click="onGameStateControlClick">
               {{gameStateControlText}}
-            </b-button>
-          </div>
-
-          <div class="column ctrl-col">
-            <!-- This is a spacer and it prevents other elements from shifting
-            when gameStateControlText changes length -->
-          </div>
-
-          <div class="column ctrl-col">
-            <b-field class="is-marginless" label="Game Mode"></b-field>
-            <b-select
-              expanded 
-              ref="gameModeSelect" 
-              size="is-small" 
-              placeholder="Select a game mode"
-              v-model="gameMode"
-              @change.native="$event => $event.target.blur()"
-            >
-              <option value="classic">Classic</option>
-              <option value="polluter">Polluter</option>
-            </b-select>
-          </div>
-
-          <div class="column ctrl-col">
-            <b-field class="is-marginless" label="Snake Speed"></b-field>
-            <b-slider :min="snakeSpeed.min" :max="snakeSpeed.max" v-model="snakeSpeed.value">
-              <b-slider-tick v-for="n in [1,2,3,4,5,6,7]" :key="n" :value="n">{{n}}</b-slider-tick>
-            </b-slider>
-          </div>
-
-          <div class="column is-narrow ctrl-col-end">
-            <b-field class="is-marginless" label="Show Score"></b-field>
-            <b-switch style="margin-top: .2rem" :rounded="false" v-model="showScore"></b-switch>
-          </div>
-        </div>
-
-        <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
-          <Snake
-            v-if="hasCtx"
-            ref="snake"
-            :dimensions="dimensions"
-            :controls="controls"
-            :gameMode="gameMode"
-            :showScore="showScore"
-            :snakeOptions="snakeOptions"
-            :animationRate="animationRate"
-            v-bind.sync="gameState"
-            @reset="reset"
-          />
-        </game-canvas>
-
-        <div class="is-hidden-tablet">
-          <div class="columns is-flex-mobile is-marginless">
-            <div class="column ctrl-col">
-              <b-button class="is-block-mobile" @touchstart.native="onGameStateControlClick">
-                {{gameStateControlText}}
-              </b-button>
-              <b-button @touchstart.native="onShowTouchSettings">Settings</b-button>
+            </button>
+          </j-col>
+          <j-col class="d-flex justify-end align-center px-0">
+            <div class="px-2">
+              <j-checkbox id="show-score-checkbox" label="Show Score" v-model="showScore"></j-checkbox>
             </div>
-
-            <div class="column is-narrow-mobile ctrl-col-end">
-              <div class="columns is-marginless is-centered is-flex-mobile">
-                <div class="column is-narrow-mobile is-marginless is-paddingless">
-                  <b-button
-                    size="is-large"
-                    @touchstart.native="$emit('mobileControlDown', 'up')"
-                    @touchend.native="$emit('mobileControlUp', 'up')"
-                  >
-                    <b-icon icon="menu-up"></b-icon>
-                  </b-button>
-                </div>
-              </div>
-              <div class="columns is-marginless is-centered is-flex-mobile">
-                <div class="column is-marginless is-paddingless is-narrow-mobile">
-                  <b-button
-                    size="is-large"
-                    @touchstart.native="$emit('mobileControlDown', 'left')"
-                    @touchend.native="$emit('mobileControlUp', 'left')"
-                  >
-                    <b-icon icon="menu-left"></b-icon>
-                  </b-button>
-                  <b-button
-                    size="is-large"
-                    @touchstart.native="$emit('mobileControlDown', 'down')"
-                    @touchend.native="$emit('mobileControlUp', 'down')"
-                  >
-                    <b-icon icon="menu-down"></b-icon>
-                  </b-button>
-                  <b-button
-                    size="is-large"
-                    @touchstart.native="$emit('mobileControlDown', 'right')"
-                    @touchend.native="$emit('mobileControlUp', 'right')"
-                  >
-                    <b-icon icon="menu-right"></b-icon>
-                  </b-button>
-                </div>
-              </div>
+            <div class="px-2">
+              <j-slider
+                blur
+                ref="slider"
+                id="speed-slider"
+                :label="`Speed: ${snakeSpeed.value}`"
+                step="1"
+                tickmarks
+                :min="snakeSpeed.min"
+                :max="snakeSpeed.max"
+                v-model="snakeSpeed.value"
+              ></j-slider>
             </div>
-          </div>
-
-          <TheMobileSettingsModal
-            :showSettings.sync="showSettings"
-            :gameMode.sync="gameMode"
-            :showScore.sync="showScore"
-            :snakeSpeed="snakeSpeed"
-            @update:snakeSpeed="snakeSpeed.value = $event"
-          />
-
+            <div class="pl-2">
+              <j-select
+                blur
+                label="Game Mode"
+                v-model="gameMode"
+                :options="['classic', 'polluter']"
+              >
+                <template v-slot:option="{ value }">
+                  {{value[0].toUpperCase() + value.slice(1)}}
+                </template>
+              </j-select>
+            </div>
+          </j-col>
         </div>
-        
+      </section>
+
+      <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
+        <Snake
+          v-if="hasCtx"
+          ref="snake"
+          :dimensions="dimensions"
+          :controls="controls"
+          :gameMode="gameMode"
+          :showScore="showScore"
+          :snakeOptions="snakeOptions"
+          :animationRate="animationRate"
+          v-bind.sync="gameState"
+          @reset="reset"
+        />
+      </game-canvas>
+
+
+      <div id="mobile-controls" class="hidden-above-mobile">
+        <div class="d-flex justify-between">
+          <div class="shrink d-flex flex-column">
+            <button class="btn small mb-4" :class="gameStateClass" @touchstart="onGameStateControlClick">
+              {{gameStateControlText}}
+            </button>
+             <button class="btn small" @touchstart="showSettings = true; gameState.gameOn = false">
+              Settings
+            </button>
+          </div>
+          <j-col>
+            <j-row>
+              <j-col class="d-flex flex-column align-center">
+                <button
+                  class="btn large square"
+                  @touchstart="$emit('mobileControlDown', 'up')"
+                  @touchend="$emit('mobileControlUp', 'up')"
+                >
+                  &uparrow;
+                </button>
+              </j-col>
+
+            </j-row>
+            <j-row>
+              <j-col>
+                <button
+                  class="btn large square"
+                  @touchstart="$emit('mobileControlDown', 'left')"
+                  @touchend="$emit('mobileControlUp', 'left')"
+                >
+                  &leftarrow;
+                </button>
+                <button
+                  class="btn large square"
+                  @touchstart="$emit('mobileControlDown', 'down')"
+                  @touchend="$emit('mobileControlUp', 'down')"
+                >
+                  &downarrow;
+                </button>
+                <button
+                  class="btn large square"
+                  @touchstart="$emit('mobileControlDown', 'right')"
+                  @touchend="$emit('mobileControlUp', 'right')"
+                >
+                  &rightarrow;
+                </button>
+              </j-col>
+            </j-row>
+          </j-col>
+        </div>
       </div>
-    </div>
-  </div>
+
+      <MobileSettings
+        :gameMode.sync="gameMode"
+        :showScore.sync="showScore"
+        :snakeSpeed="snakeSpeed"
+        @update:snakeSpeed="snakeSpeed.value = $event"
+        v-model="showSettings"
+      /> 
+
+    </j-col>
+  </j-row>
 </template>
 
 <script>
 import GameCanvas from '@/components/games/game-canvas'
 import Snake from '@/components/games/snake/snake'
-import TheMobileSettingsModal from '@/components/games/snake/the-mobile-settings-modal'
+import MobileSettings from '@/components/games/snake/mobile-settings'
 
 const STORAGE_NAMESPACE = 'snake'
 
@@ -136,11 +136,11 @@ export default {
   components: {
     GameCanvas,
     Snake,
-    TheMobileSettingsModal,
+    MobileSettings,
   },
   data() {
     return {
-      showSettings: false,
+      showSettings: false, // mobile settings menu
       snakeSpeed: {
         value: 4,
         min: 1,
@@ -157,8 +157,6 @@ export default {
   },
   mounted() {
     if (this.breakpoint.isMobile) {
-      // This loads snake with a default speed of 2 when localStorage is not 
-      // available (like on my phone)
       this.snakeSpeed.value = 2
     }
     this.loadSettings()
@@ -170,20 +168,13 @@ export default {
   computed: {
     animationRate() {
       switch (this.snakeSpeed.value) {
-        case 1:
-          return 8
-        case 2:
-          return 7
-        case 3:
-          return 6
-        case 4:
-          return 5
-        case 5:
-          return 4
-        case 6:
-          return 3
-        case 7:
-          return 2
+        case 1: return 8;
+        case 2: return 7;
+        case 3: return 6;
+        case 4: return 5;
+        case 5: return 4;
+        case 6: return 3;
+        case 7: return 2;
       }
     },
     gameStateControlText() {
@@ -195,6 +186,15 @@ export default {
         return 'Start'
       }
     },
+    gameStateClass() {
+      if (this.gameState.gameOn) {
+        return 'light'
+      } else if (this.gameState.gameOver) {
+        return 'error'
+      } else {
+        return 'success'
+      }
+    }
   },
   methods: {
     loadSettings() {
@@ -228,27 +228,47 @@ export default {
       this.showSettings = true;
       this.gameState.gameOn = false
     }
-  }
+  },
 }
 </script>
 
-<style scoped>
-.ctrl-col {
-  padding-left: 0;
-  padding-top: 0;
-  padding-bottom: .2rem;
-  padding-right: 2rem;
-  /* margin-right: 1rem; */
+<style lang="scss">
+@import 'assets/style/_variables.scss';
+@import 'assets/style/tools/mixins.scss';
+.toolbar {
+  margin: 0;
+  height: $navbar-height;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  @include elevation(2px);
+  
+
+  &.dense {
+    height: $navbar-dense-height;
+  }
+
+  &.flat {
+    box-shadow: none;
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding-right: 1rem;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
-.ctrl-col-end {
-  padding: 0;
-  /* padding-left: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 0 !important; */
-}
-.b-slider {
-  margin-bottom: 1.2rem;
-  margin-top: .3rem;
-}
+
 </style>

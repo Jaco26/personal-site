@@ -51,6 +51,12 @@ export default {
         game.stop()
       }
     },
+    showScore(val ){
+      if (val) 
+        game.paintScore()
+      else 
+        game.paintCells()
+    },
     controls: {
       deep: true,
       handler({ arrowLeft, arrowUp, arrowRight, arrowDown, p, r }) {
@@ -119,6 +125,7 @@ export default {
         snakeOptions: this.snakeOptions,
         animationRate: this.animationRate,
         gameMode: this.gameMode,
+        paintScore: this.showScore,
       })
     },
   },

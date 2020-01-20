@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'assets/style/variables.scss';
+@import 'assets/style/_variables.scss';
 
 
 a {
@@ -101,6 +101,7 @@ a {
 
 .menu {
   position: absolute;
+  // z-index: 1000;
   display: block;
   top: $navbar-dense-height;
   left: 0;
