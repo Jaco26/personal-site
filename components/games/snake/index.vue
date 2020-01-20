@@ -10,8 +10,29 @@
                 {{gameStateControlText}}
               </button>
             </j-col>
-            <j-col class="text-right">
-              <j-select v-model="selected" label="Select a thing" :options="options"></j-select>
+            <j-col class="d-flex justify-end align-center">
+              <div class="px-4">
+                <j-slider
+                  id="speed-slider"
+                  :label="`Speed: ${snakeSpeed.value}`"
+                  step="1"
+                  tickmarks
+                  :min="snakeSpeed.min"
+                  :max="snakeSpeed.max"
+                  v-model="snakeSpeed.value"
+                ></j-slider>
+              </div>
+              <div class="pl-2">
+                <j-select
+                  label="Game Mode"
+                  v-model="gameMode"
+                  :options="['classic', 'polluter']"
+                >
+                  <template v-slot:option="{ value }">
+                    {{value[0].toUpperCase() + value.slice(1)}}
+                  </template>
+                </j-select>
+              </div>
             </j-col>
           </j-row>
         </div>
@@ -21,26 +42,46 @@
 </template>
 
 <script>
+import GameCanvas from '@/components/games/game-canvas'
+import Snake from '@/components/games/snake/snake'
+
+const STORAGE_NAMESPACE = 'snake'
+
 export default {
+  inject: ['breakpoint'],
+  props: {
+    controls: Object,
+  },
+  components: {
+    GameCanvas,
+    Snake,
+  },
   data() {
     return {
-      selected: null,
-      options: [
-        {
-          text: 'Jacob',
-          value: 'jacob',
-        },
-        {
-          text: 'Caroline',
-          value: 'caroline',
-        },
-        {
-          text: 'Xena',
-          value: 'xena',
-          selected: true,
-        },
-      ]
+      showSettings: false, // mobile settings menu
+      snakeSpeed: {
+        value: 4,
+        min: 1,
+        max: 7,
+      },
+      gameState: {
+        gameOn: false,
+        gameOver: false,
+        score: 0,
+      },
+      gameMode: 'classic',
+      showScore: false,
     }
+  },
+  mounted() {
+    if (this.breakpoint.isMobile) {
+      this.snakeSpeed.value = 2
+    }
+    this.loadSettings()
+    window.addEventListener('beforeunload', this.saveSettings)
+  },
+  beforeDestroy() {
+    window.removeEventListener('beforeunload', this.saveSettings)
   },
   computed: {
     gameStateControlText() {
@@ -51,12 +92,28 @@ export default {
     onGameStateControlClick() {
 
     },
+    saveSettings() {
+      localStorage.setItem(STORAGE_NAMESPACE, JSON.stringify({
+        showScore: this.showScore,
+        gameMode: this.gameMode,
+        snakeSpeed: this.snakeSpeed,
+      }))
+    },
+    loadSettings() {
+      let saved = localStorage.getItem(STORAGE_NAMESPACE)
+      if (saved) {
+        saved = JSON.parse(saved)
+        this.showScore = saved.showScore
+        this.gameMode = saved.gameMode
+        this.snakeSpeed.value = saved.snakeSpeed.value
+      }
+    }
   },
 }
 </script>
 
 <style lang="scss">
-@import 'assets/style/variables.scss';
+@import 'assets/style/_variables.scss';
 @import 'assets/style/tools/mixins.scss';
 .toolbar {
   padding: 0 1.25rem;

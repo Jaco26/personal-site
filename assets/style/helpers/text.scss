@@ -1,4 +1,5 @@
-@import '../variables.scss';
+@use '../_variables' as v;
+
 
 .text-center {
   text-align: center;
@@ -14,4 +15,8 @@
 }
 .text-underlined {
   text-decoration: underline;
+}
+
+.caption {
+  font-size: v.$caption;
 }
