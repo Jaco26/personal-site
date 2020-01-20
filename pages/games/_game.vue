@@ -1,6 +1,6 @@
 <template>
   <j-row>
-    <j-col class="d-flex">
+    <j-col class="d-flex flex-column align-center">
       <component
         :is="selectedGame.component"
         :ref="selectedGame.name"
@@ -10,20 +10,14 @@
       ></component>
     </j-col>
 
-    <!-- <article class="modal" v-if="showModal">
+    <!-- <article class="modal hidden-above-mobile">
       <j-container class="fullheight flex">
         <j-row>
           <j-col class="d-flex justify-center align-center">
             <section class="modal-content">
-              <div class="card">
-                <div class="card-title">
-                  I'm working on site renovations so the game controls look pretty ugly right now.
-                </div>
-                <div class="card-title">
-                  Hit the "r" to start/resume a game and "p" to pause
-                </div>
-                <div class="card-actions text-right">
-                  <button class="btn primary" @click="showModal = false">Ok</button>
+              <div class="card flat">
+                <div class="card-text">
+                  I apologize but games don't currently work on mobile. I'm working to change this.
                 </div>
               </div>
             </section>
@@ -126,17 +120,13 @@ export default {
     }
   },
   mounted() {
-    window.scrollTo(0, 0)
-    document.querySelector('html').style.overflow = 'hidden'
     document.addEventListener('keydown', this.handleKeyDown)
     document.addEventListener('keyup', this.handleKeyUp)
   },
   beforeRouteLeave(to, from, next) {
     document.removeEventListener('keydown', this.handleKeyDown)
     document.removeEventListener('keyup', this.handleKeyUp)
-    document.querySelector('html').style.overflow = 'auto'
-    // TODO: turn the reset back on
-    // this.$refs[this.selectedGame.name].reset()
+    this.$refs[this.selectedGame.name].reset()
     next()
   }
 }
@@ -149,13 +139,12 @@ export default {
   left: 0;
   height: 100%;
   width: 100%;
-  background: #000a;
-  z-index: 3;
+  background: #333a;
+
 }
 .modal-content {
   position: relative;
   top: -20%;
-  z-index: 4;
   background: white;
 }
 </style>

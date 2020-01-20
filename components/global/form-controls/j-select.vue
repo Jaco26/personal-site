@@ -4,7 +4,8 @@
     <label class="j-select__label" :for="id">
       <slot name="label">{{label}}</slot>
     </label>
-    <select
+    <select     
+      v-blur:oninput="blur"
       v-bind="$attrs"
       :id="id"
       :value="value"
@@ -33,6 +34,7 @@ export default {
       default: null
     },
     label: String,
+    blur: Boolean, // use this to conditionally apply custom v-blur directive to input
     placeholder: {
       type: String,
       default: 'Make a selection'
@@ -76,6 +78,7 @@ export default {
 .j-select {
   display: flex;
   flex-direction: column;
+  height: 2.5rem;
 
   .j-select__label {
     @extend .caption;

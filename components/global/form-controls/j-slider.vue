@@ -12,6 +12,7 @@
         </ul>
 
         <input
+          v-blur:onmouseup="blur"
           ref="slider"
           class="j-slider__input"
           type="range"
@@ -32,6 +33,7 @@ export default {
   props: {
     value: Number,
     label: String,
+    blur: Boolean, // use this to conditionally apply custom v-blur directive to input
     min: {
       type: Number,
       default: 0,
@@ -83,7 +85,6 @@ export default {
     top: .625rem;
     width: 100%;
     display: flex;
-    z-index: 1;
 
     .tickmark {
       flex: 1;
@@ -97,16 +98,6 @@ export default {
   .j-slider__input {
     position: relative;
     top: .125rem;
-    z-index: 2;
   }
 }
-.slider-wrapper {
-  position: relative;
-}
-
-// .tickmarks {
-
-// }
-
-
 </style>

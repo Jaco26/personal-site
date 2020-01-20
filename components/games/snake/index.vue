@@ -1,42 +1,60 @@
 <template>
-  <j-row>
-    <j-col class="d-flex flex-column">
-
-      <section class="toolbar dense flat bg-light--darker">
+  <j-row class="justify-center">
+    <j-col class="d-flex flex-column align-center ">
+      <section class="toolbar dense flat ">
         <div class="toolbar-actions">
-          <j-row class="align-center">
-            <j-col>
-              <button class="btn small primary" @click="onGameStateControlClick">
-                {{gameStateControlText}}
-              </button>
-            </j-col>
-            <j-col class="d-flex justify-end align-center">
-              <div class="px-4">
-                <j-slider
-                  id="speed-slider"
-                  :label="`Speed: ${snakeSpeed.value}`"
-                  step="1"
-                  tickmarks
-                  :min="snakeSpeed.min"
-                  :max="snakeSpeed.max"
-                  v-model="snakeSpeed.value"
-                ></j-slider>
-              </div>
-              <div class="pl-2">
-                <j-select
-                  label="Game Mode"
-                  v-model="gameMode"
-                  :options="['classic', 'polluter']"
-                >
-                  <template v-slot:option="{ value }">
-                    {{value[0].toUpperCase() + value.slice(1)}}
-                  </template>
-                </j-select>
-              </div>
-            </j-col>
-          </j-row>
+          <j-col class="shrink px-0">
+            <button class="btn small" :class="gameStateClass" @click="onGameStateControlClick">
+              {{gameStateControlText}}
+            </button>
+          </j-col>
+          <j-col class="d-flex justify-end align-center px-0">
+            <div class="px-2">
+              <j-checkbox id="show-score-checkbox" label="Show Score" v-model="showScore"></j-checkbox>
+            </div>
+            <div class="px-2">
+              <j-slider
+                blur
+                ref="slider"
+                id="speed-slider"
+                :label="`Speed: ${snakeSpeed.value}`"
+                step="1"
+                tickmarks
+                :min="snakeSpeed.min"
+                :max="snakeSpeed.max"
+                v-model="snakeSpeed.value"
+              ></j-slider>
+            </div>
+            <div class="pl-2">
+              <j-select
+                blur
+                label="Game Mode"
+                v-model="gameMode"
+                :options="['classic', 'polluter']"
+              >
+                <template v-slot:option="{ value }">
+                  {{value[0].toUpperCase() + value.slice(1)}}
+                </template>
+              </j-select>
+            </div>
+          </j-col>
         </div>
       </section>
+
+      <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
+        <Snake
+          v-if="hasCtx"
+          ref="snake"
+          :dimensions="dimensions"
+          :controls="controls"
+          :gameMode="gameMode"
+          :showScore="showScore"
+          :snakeOptions="snakeOptions"
+          :animationRate="animationRate"
+          v-bind.sync="gameState"
+          @reset="reset"
+        />
+      </game-canvas>
     </j-col>
   </j-row>
 </template>
@@ -84,21 +102,37 @@ export default {
     window.removeEventListener('beforeunload', this.saveSettings)
   },
   computed: {
-    gameStateControlText() {
-      return 'Hey Babe'
+    animationRate() {
+      switch (this.snakeSpeed.value) {
+        case 1: return 8;
+        case 2: return 7;
+        case 3: return 6;
+        case 4: return 5;
+        case 5: return 4;
+        case 6: return 3;
+        case 7: return 2;
+      }
     },
+    gameStateControlText() {
+      if (this.gameState.gameOn) {
+        return 'Pause'
+      } else if (this.gameState.gameOver) {
+        return 'Reset'
+      } else {
+        return 'Start'
+      }
+    },
+    gameStateClass() {
+      if (this.gameState.gameOn) {
+        return 'light'
+      } else if (this.gameState.gameOver) {
+        return 'error'
+      } else {
+        return 'success'
+      }
+    }
   },
   methods: {
-    onGameStateControlClick() {
-
-    },
-    saveSettings() {
-      localStorage.setItem(STORAGE_NAMESPACE, JSON.stringify({
-        showScore: this.showScore,
-        gameMode: this.gameMode,
-        snakeSpeed: this.snakeSpeed,
-      }))
-    },
     loadSettings() {
       let saved = localStorage.getItem(STORAGE_NAMESPACE)
       if (saved) {
@@ -107,6 +141,28 @@ export default {
         this.gameMode = saved.gameMode
         this.snakeSpeed.value = saved.snakeSpeed.value
       }
+    },
+    saveSettings() {
+      localStorage.setItem(STORAGE_NAMESPACE, JSON.stringify({
+        showScore: this.showScore,
+        gameMode: this.gameMode,
+        snakeSpeed: this.snakeSpeed,
+      }))
+    },
+    reset() {
+      this.$refs.snake.setup()
+      this.gameState.gameOn = false;
+      this.gameState.gameOver = false;
+      this.gameState.score = 0
+    },
+    onGameStateControlClick() {
+      this.gameState.gameOver
+        ? this.reset()
+        : this.gameState.gameOn = !this.gameState.gameOn
+    },
+    onShowTouchSettings() {
+      this.showSettings = true;
+      this.gameState.gameOn = false
     }
   },
 }
@@ -116,7 +172,6 @@ export default {
 @import 'assets/style/_variables.scss';
 @import 'assets/style/tools/mixins.scss';
 .toolbar {
-  padding: 0 1.25rem;
   margin: 0;
   height: $navbar-height;
   width: 100%;
@@ -148,9 +203,7 @@ export default {
     display: flex;
     height: 100%;
     align-items: center;
-    justify-content: center;
-
-    // flex: 1;
+    justify-content: space-between;
   }
 }
 

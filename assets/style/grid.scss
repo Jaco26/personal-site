@@ -33,8 +33,11 @@
       flex-grow: 1;
       max-width: 100%;
       position: relative;
-      width: 100%;
       padding: .25rem .5rem;
+
+      &.shrink {
+        flex-grow: 0;
+      }
 
       @each $breakpoint, $sizes in $breakpoints {
         @media print, screen and (min-width: map-get($sizes, 'min')) {

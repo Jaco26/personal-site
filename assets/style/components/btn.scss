@@ -110,4 +110,42 @@
     }
   }
 
+  &.success {
+    background: $green;
+    color: whitesmoke;
+
+    &:hover {
+      // background: $secondary-lighter;
+      box-shadow: 2px 2px 2px #555;
+    }
+    &:active {
+      // background: $secondary-darker;
+      box-shadow: 1px 1px 1px #555;
+    }
+    &:disabled {
+      // background: $secondary;
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+
+  &.error {
+    background: $red;
+    color: whitesmoke;
+
+    &:hover {
+      // background: $secondary-lighter;
+      box-shadow: 2px 2px 2px #555;
+    }
+    &:active {
+      // background: $secondary-darker;
+      box-shadow: 1px 1px 1px #555;
+    }
+    &:disabled {
+      // background: $secondary;
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+
 }
