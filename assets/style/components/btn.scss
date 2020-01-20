@@ -32,7 +32,6 @@
   }
 
   &.small {
-    // @extend .btn;
     min-width: 4rem;
     padding: .25rem .5rem;
   }
@@ -40,6 +39,10 @@
   &.large {
     min-width: 8rem;
     padding: .75rem 1.5rem;
+
+    &.square {
+      min-width: 0;
+    }
   }
 
   &.text {

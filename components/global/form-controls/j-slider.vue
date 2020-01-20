@@ -75,6 +75,7 @@ export default {
 <style lang="scss" scoped>
 .j-slider {
   position: relative;
+  // display: flex;
 
   .j-slider__tickmarks {
     list-style: none;
@@ -89,7 +90,7 @@ export default {
     .tickmark {
       flex: 1;
       padding: 0;
-      margin: auto;
+      // margin: auto;
       height: .25rem;
       border-left: 1px solid black
     }

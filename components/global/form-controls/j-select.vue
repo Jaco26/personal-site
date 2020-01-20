@@ -11,7 +11,7 @@
       :value="value"
       @input="$emit('input', $event.target.value)"
     >
-      <option selected disabled value="">{{placeholder}}</option>
+      <option v-if="placeholder" selected disabled value="">{{placeholder}}</option>
       <option
         v-for="(opt, i) in selectionOptions"
         :key="i"
@@ -35,10 +35,7 @@ export default {
     },
     label: String,
     blur: Boolean, // use this to conditionally apply custom v-blur directive to input
-    placeholder: {
-      type: String,
-      default: 'Make a selection'
-    },
+    placeholder: String,
     options: {
       type: Array,
       default: () => [],
