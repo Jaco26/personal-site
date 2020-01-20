@@ -4,7 +4,7 @@
       <nav>
         <div class="d-flex align-center">
           <div class="navbar-title">
-            <nuxt-link to="/">jacobsalright</nuxt-link>
+            <nuxt-link to="/">jacobalbright</nuxt-link>
           </div>
           <ul class="breadcrumbs list">
             <li v-for="(crumb, i) in $store.state.breadcrumbs.slice(1)" :key="i">
