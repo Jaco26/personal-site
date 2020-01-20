@@ -1,0 +1,37 @@
+@import 'assets/style/_variables.scss';
+@import 'assets/style/tools/mixins.scss';
+.toolbar {
+  margin: 0;
+  height: $navbar-height;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  @include elevation(2px);
+  
+
+  &.dense {
+    height: $navbar-dense-height;
+  }
+
+  &.flat {
+    box-shadow: none;
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding-right: 1rem;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

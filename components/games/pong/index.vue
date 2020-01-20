@@ -1,32 +1,27 @@
 
 <template>
-  <div>
-    <div class="columns is-centered is-vcentered">
-      <div class="is-hidden-desktop column is-narrow">
-        Sorry, my version of Pong doesn't work on your phone/tablet yet. You can play it on a laptop or desktop though!
-      </div>
-      <div class="is-hidden-touch column is-narrow">
-        <div class="columns level">
-          <div class="column">
-            <b-button @click="onGameStateControlClick">{{gameStateControlText}}</b-button>
-          </div>
-          <div class="column is-narrow">
-              <span>Score: {{gameState.score}}</span>
-          </div>
+  <j-row class="justify-center">
+    <j-col class="d-flex flex-column align-center">
+      <section class="toolbar dense flat">
+        <div class="toolbar-actions">
+          <button class="btn primary small" :class="gameStateClass" @click="onGameStateControlClick">
+            {{gameStateControlText}}
+          </button>
+          <span>Score: {{gameState.score}}</span>
         </div>
-        <game-canvas v-slot="{ hasCtx, dimensions }">
-          <Pong
-            v-if="hasCtx"
-            ref="pong"
-            :dimensions="dimensions"
-            :controls="controls"
-            v-bind.sync="gameState"
-            @reset="reset"
-          />
-        </game-canvas>
-      </div>
-    </div>
-  </div>
+      </section>
+      <game-canvas v-slot="{ hasCtx, dimensions }">
+        <Pong
+          v-if="hasCtx"
+          ref="pong"
+          :dimensions="dimensions"
+          :controls="controls"
+          v-bind.sync="gameState"
+          @reset="reset"
+        />
+      </game-canvas>
+    </j-col>
+  </j-row>
 </template>
 
 <script>
@@ -64,6 +59,15 @@ export default {
         return 'Reset'
       } else {
         return 'Start'
+      }
+    },
+    gameStateClass() {
+      if (this.gameState.gameOn) {
+        return 'primary'
+      } else if (this.gameState.gameOver) {
+        return 'error'
+      } else {
+        return 'success'
       }
     }
   },
