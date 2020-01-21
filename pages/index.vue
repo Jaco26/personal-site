@@ -37,8 +37,7 @@
         </div>
         <div class="card-text">
           <p class="my-0">
-            Have fun with some classic arcade games I've implemented with my own spin using
-            HTML Canvas and Javascript.
+            Have fun with some classic arcade games I've implemented with JavaScript.
           </p>
         </div>
       </nuxt-link>
