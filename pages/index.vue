@@ -37,7 +37,7 @@
         </div>
         <div class="card-text">
           <p class="my-0">
-            Have fun with some classic arcade games I've implemented with JavaScript.
+            Have fun with some classic arcade games I've implemented using JavaScript.
           </p>
         </div>
       </nuxt-link>
