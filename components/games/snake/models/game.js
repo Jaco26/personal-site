@@ -162,23 +162,21 @@ function drawSadFace(ctx, { width, height, x, y }) {
 
   ctx.beginPath()
   ctx.fillStyle = 'limegreen'
-  ctx.strokeStyle = 'limegreen'
-  ctx.lineWidth = '4px'
 
   ctx.fillRect(leftEye.x, leftEye.y, 3, 3)
   ctx.fillRect(rightEye.x, rightEye.y, 3, 3)
 
   const mouth = {
-    startX: leftEye.x,
+    startX: leftEye.x - 1,
     startY: y + (height * 0.8),
     cpx: x + (width / 2),
-    cpy: y + (height * 0.5),
-    endX: rightEye.x + 3,
+    cpy: y + (height * 0.4),
+    endX: rightEye.x + 4,
     endY: y + (height * 0.8),
   }
 
   ctx.moveTo(mouth.startX, mouth.startY);
   ctx.quadraticCurveTo(mouth.cpx, mouth.cpy, mouth.endX, mouth.endY)
-  ctx.stroke()
+  ctx.fill()
   ctx.closePath()
 } 
