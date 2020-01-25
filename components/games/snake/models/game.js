@@ -33,11 +33,7 @@ function randRange(min, max) {
 export default class Game extends GameBase {
 
   score = 0
-
-  food = {
-    row: null,
-    col: null,
-  }
+  food = null
 
   width = 0
   height = 0
@@ -60,7 +56,7 @@ export default class Game extends GameBase {
     this.nCols = dimensions.nCols
     this.cellMap = new CellMap(dimensions);
     this.painter = new Painter(ctx);
-    this.snake = new Snake({ ...initPosition, gameMode });
+    this.snake = new Snake({ initPosition, gameMode });
     this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
@@ -78,47 +74,41 @@ export default class Game extends GameBase {
     this.paintCells()
   }
 
-  getCellKind(row, col) {
-    if (this.snake.bodyMap[`${row},${col}`]) {
+  getCellKind(i) {
+    if (this.snake.bodyMap[i]) {
       return 2
-    } else if (this.food.row === row && this.food.col === col) {
+    } else if (this.food === i) {
       return 3
     }
     return 1
   }
 
   paintCells() {
-    this.painter.ctx.clearRect(0, 0, this.painter.ctx.canvas.width, this.painter.ctx.canvas.height)
-    
-    this.cellMap.cells.forEach((row, ri) => {
-      row.forEach((cell, ci) => {
-        cell.kind = this.getCellKind(ri, ci);
-        this.painter.paintCell(cell)
-      })
-    });
+    this.painter.clearCanvas()
+    this.cellMap.cells.forEach((cell, i) => {
+      cell.kind = this.getCellKind(i)
+      this.painter.paintCell(cell)
+    })
   }
 
   generateFood() {
-    const col = randRange(0, this.nCols)
-    const row = randRange(0, this.nRows)
-    if (this.snake.bodyMap[`${row},${col}`]) {
-      return this.generateFood()
+    const food = randRange(0, this.nCols * this.nRows)
+    if (this.snake.bodyMap[food]) {
+      this.generateFood()
     }
-    this.food.col = col
-    this.food.row = row
+    this.food = food
   }
 
   snakeDidEatFood() {
-    return this.snake.headRow === this.food.row && this.snake.headCol === this.food.col;
+    return this.snake.headPosition === this.food
   }
 
   gameIsOver() {
-    const { headCol, headRow } = this.snake
-    return headCol < 0 ||
-      headCol >= this.nCols ||
-      headRow < 0 ||
-      headRow >= this.nRows ||
-      this.snake.didCollideWithSelf // if the snake eats itself
+    return this.snake.headPosition < 0 ||
+      this.snake.headPosition > this.nCols * this.nRows ||
+      (this.snake.dx > 0 && this.snake.headPosition % this.nCols === 0) ||
+      (this.snake.dx < 0 && this.snake.prevHeadPosition % this.nCols === 0) ||
+      this.snake.didCollideWithSelf
   }
 
   paintScore() {
@@ -132,16 +122,13 @@ export default class Game extends GameBase {
   }
 
   paintGameOver() {
-    const { prevHeadCol, prevHeadRow, headCol, headRow } = this.snake
-
-    const head = this.cellMap.getCell(headRow, headCol)
-    // the head will be undefined –– outside the map bounds –– if it's game over because we hit a wall
-    if (head) {
+    if (this.snake.didCollideWithSelf) {
+      const head = this.cellMap.getCell(this.snake.headPosition)
       head.kind = 4 // game over
       this.painter.paintCell(head)
     }
 
-    drawSadFace(this.painter.ctx, this.cellMap.getCell(prevHeadRow, prevHeadCol))
+    drawSadFace(this.painter.ctx, this.cellMap.getCell(this.snake.prevHeadPosition))
 
     this.painter.paintText({
       text: 'GAME OVER ! ! !',

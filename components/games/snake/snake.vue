@@ -1,7 +1,7 @@
 
 <script>
 
-import Game from '@/components/games/snake/models/game-v2.js'
+import Game from '@/components/games/snake/models/game.js'
 import CellMap from './models/cell-map';
 
 let game;
@@ -111,23 +111,6 @@ export default {
         return 551
       }
     }
-    // initPosition() {
-    //   const rv = {
-    //     col: 0,
-    //     row: 0,
-    //   }
-    //   if (this.breakpoint.isMobile) {
-    //     rv.col = 14
-    //     rv.row = 9
-    //   } else if (this.breakpoint.isTablet) {
-    //     rv.col = 20
-    //     rv.row = 13
-    //   } else {
-    //     rv.col = 29
-    //     rv.row = 19
-    //   }
-    //   return rv
-    // }
   },
   mounted() {
     // IMPORTANT: Always instantiate new Game on mounted. Otherwise, the game
@@ -141,7 +124,6 @@ export default {
     // stored in the callbacks lexical memory/scope or whatever no longer existed.
     game = new Game()
     this.setup()
-    console.log(game)
   },
   methods: {
     update(key, val) {
@@ -149,7 +131,6 @@ export default {
     },
     setup() {
       game.setup({
-        // ctx: this.ctxProvider.ctx,
         ctx: this.ctx(),
         dimensions: this.dimensions,
         initPosition: this.initPosition,
