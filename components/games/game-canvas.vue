@@ -15,7 +15,7 @@ export default {
       },
     }
   },
-  inject: ['windowSize', 'breakpoint'],
+  inject: ['breakpoint'],
   provide() {
     return {
       ctxProvider: this.ctxProvider

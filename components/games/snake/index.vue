@@ -41,21 +41,19 @@
         </div>
       </section>
 
-      <game-canvas v-slot="{ hasCtx, dimensions, snakeOptions }">
+      <game-wrap v-slot="{ ctx, dimensions, keyboard }">
         <Snake
-          v-if="hasCtx"
           ref="snake"
+          :ctx="() => ctx"
           :dimensions="dimensions"
-          :controls="controls"
+          :controls="keyboard"
           :gameMode="gameMode"
           :showScore="showScore"
-          :snakeOptions="snakeOptions"
           :animationRate="animationRate"
           v-bind.sync="gameState"
           @reset="reset"
         />
-      </game-canvas>
-
+      </game-wrap>
 
       <div id="mobile-controls" class="hidden-above-mobile">
         <div class="d-flex justify-between">
@@ -122,7 +120,7 @@
 </template>
 
 <script>
-import GameCanvas from '@/components/games/game-canvas'
+import GameWrap from '@/components/game-wrap'
 import Snake from '@/components/games/snake/snake'
 import MobileSettings from '@/components/games/snake/mobile-settings'
 
@@ -134,7 +132,7 @@ export default {
     controls: Object,
   },
   components: {
-    GameCanvas,
+    GameWrap,
     Snake,
     MobileSettings,
   },

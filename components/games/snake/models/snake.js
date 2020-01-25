@@ -4,6 +4,9 @@ export default class Snake {
   dx = 1
   dy = 0
 
+  prevHeadCol = null
+  prevHeadRow = null
+
   didCollideWithSelf = false
   
   constructor({ row, col, gameMode } = {}) {
@@ -55,6 +58,9 @@ export default class Snake {
         this.body[i] = { row, col }
       }
     }
+    this.prevHeadCol = this.headCol
+    this.prevHeadRow = this.headRow
+
     this.headCol += this.dx
     this.headRow += this.dy    
     

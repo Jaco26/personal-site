@@ -9,22 +9,6 @@
         @mobileControlUp="onMobileControlUp"
       ></component>
     </j-col>
-
-    <!-- <article class="modal hidden-above-mobile">
-      <j-container class="fullheight flex">
-        <j-row>
-          <j-col class="d-flex justify-center align-center">
-            <section class="modal-content">
-              <div class="card flat">
-                <div class="card-text">
-                  I apologize but games don't currently work on mobile. I'm working to change this.
-                </div>
-              </div>
-            </section>
-          </j-col>
-        </j-row>
-      </j-container>
-    </article> -->
   </j-row>
 </template>
 

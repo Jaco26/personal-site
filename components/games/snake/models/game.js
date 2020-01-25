@@ -52,7 +52,7 @@ export default class Game extends GameBase {
   painter = null
 
    /** @param {SetupOptions} options */
-  setup({ ctx, animationRate, dimensions, snakeOptions, gameMode, paintScore }) {
+  setup({ ctx, animationRate, dimensions, initPosition, gameMode, paintScore }) {
     this.score = 0
     this.width = dimensions.width
     this.height = dimensions.height
@@ -60,7 +60,7 @@ export default class Game extends GameBase {
     this.nCols = dimensions.nCols
     this.cellMap = new CellMap(dimensions);
     this.painter = new Painter(ctx);
-    this.snake = new Snake({ ...snakeOptions, gameMode });
+    this.snake = new Snake({ ...initPosition, gameMode });
     this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
@@ -131,6 +131,10 @@ export default class Game extends GameBase {
   }
 
   paintGameOver() {
+    const { prevHeadCol, prevHeadRow } = this.snake
+
+    drawSadFace(this.painter.ctx, this.cellMap.cells[prevHeadRow][prevHeadCol])
+
     this.painter.paintText({
       text: 'GAME OVER ! ! !',
       fillStyle: 'red',
@@ -140,3 +144,41 @@ export default class Game extends GameBase {
     })
   }
 }
+
+
+/**
+ * 
+ * @param {CanvasRenderingContext2D} ctx 
+ */
+function drawSadFace(ctx, { width, height, x, y }) {
+  const leftEye = {
+    x: x + (width * 0.2),
+    y: y + (height * 0.2),
+  }
+  const rightEye = {
+    x: x + (width * 0.6),
+    y: y + (height * 0.2),
+  }
+
+  ctx.beginPath()
+  ctx.fillStyle = 'limegreen'
+  ctx.strokeStyle = 'limegreen'
+  ctx.lineWidth = '4px'
+
+  ctx.fillRect(leftEye.x, leftEye.y, 3, 3)
+  ctx.fillRect(rightEye.x, rightEye.y, 3, 3)
+
+  const mouth = {
+    startX: leftEye.x,
+    startY: y + (height * 0.8),
+    cpx: x + (width / 2),
+    cpy: y + (height * 0.5),
+    endX: rightEye.x + 3,
+    endY: y + (height * 0.8),
+  }
+
+  ctx.moveTo(mouth.startX, mouth.startY);
+  ctx.quadraticCurveTo(mouth.cpx, mouth.cpy, mouth.endX, mouth.endY)
+  ctx.stroke()
+  ctx.closePath()
+} 

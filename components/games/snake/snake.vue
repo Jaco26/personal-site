@@ -7,11 +7,11 @@ import CellMap from './models/cell-map';
 let game;
 
 export default {
-  inject: ['ctxProvider', 'windowSize'],
+  inject: ['breakpoint'],
   props: {
+    ctx: Function,
     dimensions: Object,
     controls: Object,
-    snakeOptions: Object,
     gameMode: String,
     showScore: Boolean,
     animationRate: Number,
@@ -101,6 +101,25 @@ export default {
       }
     }
   },
+  computed: {
+    initPosition() {
+      const rv = {
+        col: 0,
+        row: 0,
+      }
+      if (this.breakpoint.isMobile) {
+        rv.col = 14
+        rv.row = 9
+      } else if (this.breakpoint.isTablet) {
+        rv.col = 20
+        rv.row = 13
+      } else {
+        rv.col = 29
+        rv.row = 19
+      }
+      return rv
+    }
+  },
   mounted() {
     // IMPORTANT: Always instantiate new Game on mounted. Otherwise, the game
     // instance lives on in memory after the compontent is destroyed. This results
@@ -120,9 +139,10 @@ export default {
     },
     setup() {
       game.setup({
-        ctx: this.ctxProvider.ctx,
+        // ctx: this.ctxProvider.ctx,
+        ctx: this.ctx(),
         dimensions: this.dimensions,
-        snakeOptions: this.snakeOptions,
+        initPosition: this.initPosition,
         animationRate: this.animationRate,
         gameMode: this.gameMode,
         paintScore: this.showScore,
