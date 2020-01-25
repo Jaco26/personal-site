@@ -3,6 +3,10 @@ export default class Painter {
     /** @type {CanvasRenderingContext2D} */
     this.ctx = ctx;
   }
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+  }
+
   paintCell(cell) {
     this.ctx.beginPath();
     this.ctx.rect(cell.x, cell.y, cell.width, cell.height);

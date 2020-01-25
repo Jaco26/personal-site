@@ -1,23 +1,21 @@
 import Cell from './cell'
 
 function createCells(nRows, nCols, width, height) {
-  const accum = [];
+  const accum = []
   const cellWidth = Math.floor(width / nCols)
-  const cellHeigt = Math.floor(height / nRows)
+  const cellHeight = Math.floor(height / nRows)
   for (let row = 0; row < nRows; row++) {
-    const cellY = cellHeigt * row;
-    const rowAccum = []
+    const cellY = cellHeight * row
     for (let col = 0; col < nCols; col++) {
-      rowAccum.push(new Cell({
+      accum.push(new Cell({
         x: cellWidth * col,
         y: cellY,
         width: cellWidth,
-        height: cellHeigt
+        height: cellHeight
       }))
     }
-    accum.push(rowAccum)
   }
-  return accum;
+  return accum
 }
 
 
@@ -26,11 +24,7 @@ export default class CellMap {
     this.cells = createCells(nRows, nCols, width, height)
   }
 
-  getCell(row, col) {
-    try {
-      return this.cells[row][col]
-    } catch (error) {
-      return null
-    }
+  getCell(index) {
+    return this.cells[index]
   }
 }

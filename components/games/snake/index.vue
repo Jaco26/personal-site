@@ -1,12 +1,15 @@
 <template>
   <j-row class="justify-center">
-    <j-col class="d-flex flex-column align-center ">
+    <j-col class="d-flex flex-column align-center">
       <section class="toolbar dense flat hidden-mobile">
         <div class="toolbar-actions">
-          <j-col class="shrink px-0">
+          <j-col class="px-0">
             <button class="btn small" :class="gameStateClass" @click="onGameStateControlClick">
               {{gameStateControlText}}
             </button>
+            <span class="ml-1">
+              "P" = pause, "R" = start/reset
+            </span>
           </j-col>
           <j-col class="d-flex justify-end align-center px-0">
             <div class="px-2">

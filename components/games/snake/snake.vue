@@ -1,7 +1,7 @@
 
 <script>
 
-import Game from '@/components/games/snake/models/game.js'
+import Game from '@/components/games/snake/models/game-v2.js'
 import CellMap from './models/cell-map';
 
 let game;
@@ -26,7 +26,7 @@ export default {
           game.resume()
         } else {
           game.run(() => {
-            game.snake.updateBody()
+            game.snake.updateBody(game.nCols) // pass in the rowLength so as to accurately update snake body along y-axis
             if (game.gameIsOver()) {
               game.stop()
               game.paintGameOver()
@@ -103,22 +103,31 @@ export default {
   },
   computed: {
     initPosition() {
-      const rv = {
-        col: 0,
-        row: 0,
-      }
       if (this.breakpoint.isMobile) {
-        rv.col = 14
-        rv.row = 9
+        return 126
       } else if (this.breakpoint.isTablet) {
-        rv.col = 20
-        rv.row = 13
+        return 260
       } else {
-        rv.col = 29
-        rv.row = 19
+        return 551
       }
-      return rv
     }
+    // initPosition() {
+    //   const rv = {
+    //     col: 0,
+    //     row: 0,
+    //   }
+    //   if (this.breakpoint.isMobile) {
+    //     rv.col = 14
+    //     rv.row = 9
+    //   } else if (this.breakpoint.isTablet) {
+    //     rv.col = 20
+    //     rv.row = 13
+    //   } else {
+    //     rv.col = 29
+    //     rv.row = 19
+    //   }
+    //   return rv
+    // }
   },
   mounted() {
     // IMPORTANT: Always instantiate new Game on mounted. Otherwise, the game
@@ -132,6 +141,7 @@ export default {
     // stored in the callbacks lexical memory/scope or whatever no longer existed.
     game = new Game()
     this.setup()
+    console.log(game)
   },
   methods: {
     update(key, val) {
