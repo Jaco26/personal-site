@@ -12,7 +12,7 @@ export default class Cell {
     switch (this.kind) {
       case 1: // default
         return '#abcd'
-      case 2: // snake
+      case 2: // snake body
         return {
           strokeStyle: 'lime',
           fillStyle: '#a29'
@@ -22,7 +22,12 @@ export default class Cell {
           fillStyle: '#17b',
           strokeStyle: '#333',
         }
-      case 4: // game over!
+      case 4: // snake history
+        return {
+          fillStyle: '#abcd',
+          strokeStyle: '#789f'
+        }
+      case 5: // game over!
         return {
           fillStyle: '#f11',
           strokeStyle: '#fa5'

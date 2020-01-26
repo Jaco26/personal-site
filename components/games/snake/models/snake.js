@@ -15,6 +15,9 @@ export default class Snake {
 
     this.bodyMap = {}
     this.bodyMap[initPosition] = true
+
+    this.history= {}
+    this.history[initPosition] = true
   }
 
   isSnake(position) {
@@ -49,6 +52,8 @@ export default class Snake {
   updateBody(rowLength) {
     this.bodyMap = {}
 
+    this.history[this.headPosition] = true
+  
     if (this.nSegmentsToPush > 0) {
       this.body.push(null) // the value pushed onto the body will be reassigned below to the new headPosition
       this.nSegmentsToPush -= 1
