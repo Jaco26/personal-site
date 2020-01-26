@@ -79,6 +79,8 @@ export default class Game extends GameBase {
       return 2
     } else if (this.food === i) {
       return 3
+    } else if (this.snake.history[i]) {
+      // return 4
     }
     return 1
   }
@@ -92,9 +94,9 @@ export default class Game extends GameBase {
   }
 
   generateFood() {
-    const food = randRange(0, this.nCols * this.nRows)
+    const food = randRange(0, this.nCols * this.nRows - 1)
     if (this.snake.bodyMap[food]) {
-      this.generateFood()
+      return this.generateFood()
     }
     this.food = food
   }
@@ -124,7 +126,7 @@ export default class Game extends GameBase {
   paintGameOver() {
     if (this.snake.didCollideWithSelf) {
       const head = this.cellMap.getCell(this.snake.headPosition)
-      head.kind = 4 // game over
+      head.kind = 5 // game over
       this.painter.paintCell(head)
     }
 
