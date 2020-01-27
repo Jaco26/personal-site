@@ -24,7 +24,8 @@ export default class Cell {
         }
       case 4: // snake history
         return {
-          fillStyle: '#abcd',
+          // fillStyle: '#abcd',
+          fillStyle: '#ddd',
           strokeStyle: '#789f'
         }
       case 5: // game over!

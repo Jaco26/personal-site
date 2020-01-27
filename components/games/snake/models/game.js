@@ -32,7 +32,15 @@ function randRange(min, max) {
 
 export default class Game extends GameBase {
 
+  options = {
+    paintScore: false,
+    trackHistory: false,
+  }
+
+
   score = 0
+  backtrackBonus = 0
+
   food = null
 
   width = 0
@@ -48,7 +56,7 @@ export default class Game extends GameBase {
   painter = null
 
    /** @param {SetupOptions} options */
-  setup({ ctx, animationRate, dimensions, initPosition, gameMode, paintScore }) {
+  setup({ ctx, animationRate, dimensions, initPosition, gameMode, paintScore, trackHistory }) {
     this.score = 0
     this.width = dimensions.width
     this.height = dimensions.height
@@ -60,9 +68,14 @@ export default class Game extends GameBase {
     this.animationRate = animationRate
     this.generateFood()
     this.paintCells()
-    if (paintScore) {
+
+    this.options.paintScore = paintScore
+    this.options.trackHistory = trackHistory
+
+    if (this.options.paintScore) {
       this.paintScore()
     }
+
   }
 
   resize(width, height, nRows, nCols) {
@@ -80,7 +93,7 @@ export default class Game extends GameBase {
     } else if (this.food === i) {
       return 3
     } else if (this.snake.history[i]) {
-      // return 4
+      return 4
     }
     return 1
   }
@@ -121,6 +134,16 @@ export default class Game extends GameBase {
       x: this.width - 25,
       y: 30,
     })
+
+    // if (this.options.trackHistory) {
+    //   this.painter.paintText({
+    //     text: `backtrack bonus: ${this.backtrackBonus}`,
+    //     fillStyle: 'black',
+    //     font: '14px Arial',
+    //     x: this.width - 135,
+    //     y: 30,
+    //   })
+    // }
   }
 
   paintGameOver() {

@@ -12,6 +12,9 @@
             </span>
           </j-col>
           <j-col class="d-flex justify-end align-center px-0">
+            <!-- <div class="px-2">
+              <j-checkbox id="track-history-checkbox" label="Track History" v-model="trackHistory"></j-checkbox>
+            </div> -->
             <div class="px-2">
               <j-checkbox id="show-score-checkbox" label="Show Score" v-model="showScore"></j-checkbox>
             </div>
@@ -51,6 +54,7 @@
           :dimensions="dimensions"
           :controls="keyboard"
           :gameMode="gameMode"
+          :trackHistory="trackHistory"
           :showScore="showScore"
           :animationRate="animationRate"
           v-bind.sync="gameState"
@@ -153,6 +157,7 @@ export default {
         score: 0,
       },
       gameMode: 'classic',
+      trackHistory: false,
       showScore: false,
     }
   },
@@ -205,6 +210,7 @@ export default {
         this.showScore = saved.showScore
         this.gameMode = saved.gameMode
         this.snakeSpeed.value = saved.snakeSpeed.value
+        this.trackHistory = saved.trackHistory
       }
     },
     saveSettings() {
@@ -212,6 +218,7 @@ export default {
         showScore: this.showScore,
         gameMode: this.gameMode,
         snakeSpeed: this.snakeSpeed,
+        trackHistory: this.trackHistory,
       }))
     },
     reset() {

@@ -14,6 +14,7 @@ export default {
     controls: Object,
     gameMode: String,
     showScore: Boolean,
+    trackHistory: Boolean,
     animationRate: Number,
     gameOn: Boolean,
     gameOver: Boolean,
@@ -26,7 +27,7 @@ export default {
           game.resume()
         } else {
           game.run(() => {
-            game.snake.updateBody(game.nCols) // pass in the rowLength so as to accurately update snake body along y-axis
+            game.snake.updateBody(game.nCols, this.trackHistory) // pass in the rowLength so as to accurately update snake body along y-axis
             if (game.gameIsOver()) {
               game.stop()
               game.paintGameOver()
@@ -55,6 +56,13 @@ export default {
       if (val) 
         game.paintScore()
       else 
+        game.paintCells()
+    },
+    trackHistory(val) {
+      game.options.trackHistory = val
+      if (val)
+        game.paintScore()
+      else
         game.paintCells()
     },
     controls: {
@@ -137,6 +145,7 @@ export default {
         animationRate: this.animationRate,
         gameMode: this.gameMode,
         paintScore: this.showScore,
+        trackHistory: this.trackHistory,
       })
     },
   },

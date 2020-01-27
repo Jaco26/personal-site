@@ -80,7 +80,7 @@ export default {
     },
     onGameStateControlClick() {
       this.gameState.gameOver
-        ? this.$refs.pong.reset()
+        ? this.reset()
         : this.gameState.gameOn = !this.gameState.gameOn
     }
   }
