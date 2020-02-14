@@ -13,7 +13,7 @@
           <p>
             There he learned that, after more than a half century of countless hours of work and sweeping infrastructure 
             built by innumerable programmers, software development actually often requires a much less specialized skillset
-            than he had imagined and takes only curisoty, practice and patience. Since, he has delighted in assembling various
+            than he had imagined and takes only curiosity, practice and patience. Since, he has delighted in assembling various
             applications; most written for their own sake, and some – like this website – with the idea that others would look.
           </p>
           <p>
